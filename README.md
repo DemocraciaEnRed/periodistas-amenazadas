@@ -7,7 +7,7 @@
 ![Docker](https://img.shields.io/badge/docker-ready-blue)
 ![Version](https://img.shields.io/github/v/release/DemocraciaEnRed/periodistas-amenazadas)
 
-ToDo: Descripción del proyecto
+Sitio web del Proyecto de investigación de FOPEA sobre periodistas amenazadas
 
 ## ⚒️ Guía de instalación y ejecución
 
