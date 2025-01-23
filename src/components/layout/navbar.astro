@@ -1,0 +1,56 @@
+---
+import { Image } from "astro:assets";
+import logoPeriodistas from "../../assets/logo.png";
+import logoUnesco from "../../assets/unesco.png";
+---
+
+<nav class="p-5 border-b-2 border-gray-200">
+  <div class="container mx-auto flex justify-between items-center">
+    <div>
+      <a href="/" class="flex gap-5">
+        <Image src={logoUnesco} alt="logo Unesco" height={70} />
+        <Image
+          src={logoPeriodistas}
+          alt="logo periodistas amenazadas"
+          height={70}
+        />
+      </a>
+    </div>
+    <div>
+      <ul class="flex gap-10 text-lg">
+        <li
+          class={`${Astro.url.pathname === "/acercade" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
+        >
+          <a href="acercade">Acerca De</a>
+        </li>
+        <li
+          class={`${Astro.url.pathname === "/testimonios" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
+        >
+          <a href="testimonios">Testimonios</a>
+        </li>
+        <li
+          class={`${Astro.url.pathname === "/datos" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
+        >
+          <a href="datos">Datos</a>
+        </li>
+        <li
+          class={`${Astro.url.pathname === "/contacto" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
+        >
+          <a href="contacto">Contacto</a>
+        </li>
+        <li
+          class={`${Astro.url.pathname === "/metodologias" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
+        >
+          <a href="metodologias">Metodologia</a>
+        </li>
+        <li
+          class={`${Astro.url.pathname === "/faqs" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
+        >
+          <a href="faqs">Faqs</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<style></style>

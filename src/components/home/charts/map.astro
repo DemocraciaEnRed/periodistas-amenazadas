@@ -1,0 +1,84 @@
+---
+
+---
+
+<div id="mapGraph" style="height:800px;" class="w-1/2"></div>
+
+<style></style>
+
+<script>
+  import * as echarts from "echarts";
+  // Initialize the echarts instance based on the prepared dom
+  var myChart = echarts.init(document.getElementById("mapGraph"));
+  fetch("/argentina.json")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Error al cargar el mapa: ${response.statusText}`);
+      }
+      return response.json();
+    })
+    .then((geoJson) => {
+      // Registrar el mapa en ECharts
+      echarts.registerMap("argentina", geoJson);
+
+      const options = {
+        tooltip: {
+          trigger: "item",
+          formatter: "{b}: {c}", // Nombre de la provincia y el valor asociado
+        },
+        series: [
+          {
+            name: "Participantes",
+            type: "map",
+            map: "argentina", // Nombre del mapa registrado
+            itemStyle: {
+              areaColor: "#445d7b", // Color base de las áreas del mapa
+              borderColor: "#fff", // Color de los bordes de las provincias
+              borderWidth: 1, // Ancho de los bordes
+            },
+            emphasis: {
+              label: {
+                show: false, // Mostrar etiquetas en hover
+              },
+              itemStyle: {
+                areaColor: "#445d7b", // Color del área al hacer hover
+                borderColor: "#fff", // Color del borde en hover
+                borderWidth: 2, // Ancho del borde en hover
+              },
+            },
+            data: [
+              { name: "Buenos Aires", value: 80 },
+              { name: "Cordoba", value: 85 },
+              { name: "Santa Fe", value: 80 },
+              { name: "Mendoza", value: 20 },
+              { name: "Salta", value: 30 },
+              { name: "Tucuman", value: 50 },
+              { name: "Entre Rios", value: 25 },
+              { name: "Misiones", value: 35 },
+              { name: "Corrientes", value: 30 },
+              { name: "Formosa", value: 15 },
+              { name: "Chaco", value: 18 },
+              { name: "San Juan", value: 22 },
+              { name: "San Luis", value: 20 },
+              { name: "Jujuy", value: 28 },
+              { name: "La Rioja", value: 14 },
+              { name: "Catamarca", value: 12 },
+              { name: "Neuquen", value: 33 },
+              { name: "Rio Negro", value: 40 },
+              { name: "Chubut", value: 37 },
+              { name: "Santa Cruz", value: 15 },
+              { name: "Santiago del Estero", value: 30 },
+              { name: "Tierra del Fuego", value: 10 },
+              { name: "La Pampa", value: 23 },
+              { name: "Islas Malvinas", value: 0 },
+            ],
+          },
+        ],
+      };
+
+      myChart.setOption(options);
+    })
+    .catch((error) => {
+      console.error("Error al cargar el GeoJSON:", error);
+    });
+</script>

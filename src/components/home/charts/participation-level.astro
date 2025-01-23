@@ -1,0 +1,103 @@
+---
+
+---
+
+<div class="w-1/2">
+  <div class="mt-10 text-center h-full">
+    <h4 class="text-5xl">Nivel de participación.</h4>
+    <p class="text-xl">
+      A contnuación mostraremos algúnos datos recavados.....es un aproximado de
+      lo que vamos a mostrar.
+    </p>
+    <div id="barGraph" style="height:100%;" class="w-full"></div>
+  </div>
+</div>
+
+<style></style>
+
+<script>
+  import * as echarts from "echarts";
+  // Initialize the echarts instance based on the prepared dom
+  var myChart = echarts.init(document.getElementById("barGraph"));
+  // Registrar el mapa en ECharts
+
+  const options = {
+    title: {
+      text: "24 PROVINCIAS",
+      left: "center",
+      textStyle: {
+        fontSize: 18,
+      },
+    },
+    dataZoom: [
+      {
+        type: "slider", // vertical scrollbar
+        yAxisIndex: 0,
+        zoomLock: true,
+        width: 20,
+        right: 0,
+        top: 30,
+        bottom: 20,
+        showDetail: false,
+        backgroundColor: "#D3D3D3",
+        fillerColor: "#5A5A5A",
+        moveOnMouseMove: true,
+        moveOnMouseWheel: true,
+        start: 100,
+        end: 60,
+        brushSelect: false,
+      },
+    ],
+    dataset: {
+      source: [
+        ["amount", "product"],
+        [0, "Islas Malvinas"],
+        [23, "La Pampa"],
+        [10, "Tierra del Fuego"],
+        [30, "Santiago del Estero"],
+        [15, "Santa Cruz"],
+        [37, "Chubut"],
+        [40, "Rio Negro"],
+        [33, "Neuquen"],
+        [12, "Catamarca"],
+        [14, "La Rioja"],
+        [28, "Jujuy"],
+        [20, "San Luis"],
+        [22, "San Juan"],
+        [18, "Chaco"],
+        [15, "Formosa"],
+        [30, "Corrientes"],
+        [35, "Misiones"],
+        [25, "Entre Rios"],
+        [50, "Tucuman"],
+        [30, "Salta"],
+        [20, "Mendoza"],
+        [80, "Santa Fe"],
+        [85, "Cordoba"],
+        [80, "Buenos Aires"],
+      ],
+    },
+    grid: { containLabel: true },
+    xAxis: { name: "amount", show: false },
+    yAxis: { type: "category" },
+
+    series: [
+      {
+        type: "bar",
+        itemStyle: {
+          color: "#979797", // Color base de las áreas del mapa
+          borderColor: "#fff", // Color de los bordes de las provincias
+          borderWidth: 1, // Ancho de los bordes
+        },
+        encode: {
+          // Map the "amount" column to X axis.
+          x: "amount",
+          // Map the "product" column to Y axis
+          y: "product",
+        },
+      },
+    ],
+  };
+
+  myChart.setOption(options);
+</script>
