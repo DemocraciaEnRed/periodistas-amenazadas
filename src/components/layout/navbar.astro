@@ -70,7 +70,7 @@ import { Icon } from "astro-icon/components";
   const menuButton = document.querySelectorAll(".menuButton");
   menuButton?.forEach((button) => {
     button.addEventListener("click", () => {
-      document.querySelector(".linkMenu").classList.toggle("hidden");
+      document.querySelector(".linkMenu")?.classList.toggle("hidden");
     });
   });
 </script>
