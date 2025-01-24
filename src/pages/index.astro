@@ -3,14 +3,16 @@ import Layout from "../layouts/Layout.astro";
 import BannerVideo from "../components/home/banner-video.astro";
 import Banner from "../components/home/banner.astro";
 import Data from "../components/home/data.astro";
+import ShareHistory from "../components/home/share-history.astro";
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-  <main class="min-h-screen">
+  <main class="min-h-screen bg-gray-100">
     <Banner />
     <BannerVideo />
     <Data />
+    <ShareHistory />
   </main>
 </Layout>
