@@ -23,39 +23,39 @@ import { Icon } from "astro-icon/components";
     <div
       class="linkMenu fixed bottom-0 right-0 z-50 w-full h-screen md-w-auto md:h-auto bg-white hidden md:bg-transparent md:relative md:block"
     >
-      <div class="flex justify-end p-5">
+      <div class="flex justify-end p-5 md:hidden">
         <Icon name="mdi:menu" class="text-4xl cursor-pointer menuButton" />
       </div>
       <ul
-        class="flex-col md:p-4 md:flex-row w-full flex items-end gap-10 text-lg flex-wrap justify-end [&_li]:border-b [&_li]:border-gray-100 [&_li]:w-full [&_li]:text-right [&_li]:px-8"
+        class="flex-col md:p-4 md:flex-row w-full flex items-end gap-10 text-lg flex-wrap justify-end"
       >
         <li
-          class={`${Astro.url.pathname === "/acercade" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
+          class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/acercade" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
         >
           <a href="/acercade">Acerca De</a>
         </li>
         <li
-          class={`${Astro.url.pathname === "/testimonios" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
+          class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/testimonios" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
         >
           <a href="/testimonios">Testimonios</a>
         </li>
         <li
-          class={`${Astro.url.pathname === "/datos" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
+          class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/datos" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
         >
           <a href="/datos">Datos</a>
         </li>
         <li
-          class={`${Astro.url.pathname === "/contacto" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
+          class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/contacto" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
         >
           <a href="/contacto">Contacto</a>
         </li>
         <li
-          class={`${Astro.url.pathname === "/metodologias" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
+          class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/metodologias" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
         >
           <a href="/metodologias">Metodologia</a>
         </li>
         <li
-          class={`${Astro.url.pathname === "/faqs" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
+          class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/faqs" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
         >
           <a href="/faqs">Faqs</a>
         </li>
