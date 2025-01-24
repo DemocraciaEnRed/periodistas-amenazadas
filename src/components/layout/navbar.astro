@@ -2,22 +2,33 @@
 import { Image } from "astro:assets";
 import logoPeriodistas from "../../assets/logo.png";
 import logoUnesco from "../../assets/unesco.png";
+import { Icon } from "astro-icon/components";
 ---
 
 <nav class="p-5 border-b-2 border-gray-200">
-  <div class="container mx-auto flex justify-between items-center">
+  <div class="container mx-auto flex justify-between">
     <div>
       <a href="/" class="flex gap-5">
-        <Image src={logoUnesco} alt="logo Unesco" height={70} />
+        <Image src={logoUnesco} alt="logo Unesco" class="md:h-16 h-10 w-auto" />
         <Image
           src={logoPeriodistas}
           alt="logo periodistas amenazadas"
-          height={70}
+          class="md:h-16 h-10 w-auto"
         />
       </a>
     </div>
-    <div>
-      <ul class="flex gap-10 text-lg flex-wrap">
+    <div class="md:hidden">
+      <Icon name="mdi:menu" class="text-4xl cursor-pointer menuButton" />
+    </div>
+    <div
+      class="linkMenu fixed bottom-0 right-0 z-50 w-full h-screen md-w-auto md:h-auto bg-white hidden md:bg-transparent md:relative md:block"
+    >
+      <div class="flex justify-end p-5">
+        <Icon name="mdi:menu" class="text-4xl cursor-pointer menuButton" />
+      </div>
+      <ul
+        class="flex-col md:p-4 md:flex-row w-full flex items-end gap-10 text-lg flex-wrap justify-end [&_li]:border-b [&_li]:border-gray-100 [&_li]:w-full [&_li]:text-right [&_li]:px-8"
+      >
         <li
           class={`${Astro.url.pathname === "/acercade" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
         >
@@ -54,3 +65,12 @@ import logoUnesco from "../../assets/unesco.png";
 </nav>
 
 <style></style>
+
+<script>
+  const menuButton = document.querySelectorAll(".menuButton");
+  menuButton?.forEach((button) => {
+    button.addEventListener("click", () => {
+      document.querySelector(".linkMenu").classList.toggle("hidden");
+    });
+  });
+</script>
