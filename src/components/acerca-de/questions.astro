@@ -1,0 +1,154 @@
+---
+const faqs = [
+  {
+    question: "¿Cuál es el objetivo de este sitio?",
+    answer:
+      "Este sitio busca documentar y visibilizar las amenazas y agresiones sufridas por periodistas en Argentina. La información recopilada permite generar estadísticas, identificar patrones y promover acciones concretas para proteger la libertad de prensa.",
+  },
+  {
+    question: "¿Cómo se utilizan los datos recopilados?",
+    answer:
+      "Los datos son analizados de manera agregada y anónima para elaborar informes sobre el estado de la libertad de expresión en Argentina. También sirven como insumo para iniciativas de defensa de derechos humanos y libertad de prensa.",
+  },
+  {
+    question: "¿Qué tipo de información puedo compartir en el sitio?",
+    answer:
+      "Puedes reportar incidentes relacionados con amenazas, agresiones físicas, acoso digital, restricciones ilegítimas al ejercicio periodístico o cualquier situación que vulnere tu seguridad como periodista.",
+  },
+  {
+    question:
+      "¿Qué medidas de seguridad se toman para proteger los datos que se envían?",
+    answer:
+      "Implementamos encriptación de extremo a extremo para proteger la información enviada. Además, los datos personales sensibles son tratados de manera confidencial y no se comparten sin el consentimiento expreso de las personas afectadas.",
+  },
+  {
+    question: "¿Quién puede acceder a los datos recopilados?",
+    answer:
+      "Solo un equipo especializado y autorizado puede acceder a los datos para análisis. La información se presenta públicamente en forma de estadísticas agregadas que no identifican a las personas reportantes.",
+  },
+  {
+    question:
+      "¿Qué debo hacer si soy periodista y quiero reportar una amenaza?",
+    answer:
+      "Completa el formulario disponible en el sitio. Si necesitas asistencia inmediata, te sugerimos contactar a organizaciones como FOPEA o la Defensoría del Público mientras realizas el reporte.",
+  },
+  {
+    question: "¿Es obligatorio compartir mi identidad al reportar un caso?",
+    answer:
+      "No, puedes realizar un reporte de manera anónima. Sin embargo, si decides proporcionar tus datos, podemos ofrecerte recursos personalizados y conectarte con organizaciones de apoyo.",
+  },
+  {
+    question:
+      "¿Cómo se garantiza que mi información no será utilizada en mi contra?",
+    answer:
+      "Tu privacidad es nuestra prioridad. Los datos se almacenan en servidores seguros, y el acceso está estrictamente controlado. Además, cumplimos con las normativas de protección de datos vigentes en Argentina.",
+  },
+  {
+    question: "¿Este sitio solo recopila información sobre amenazas recientes?",
+    answer:
+      "No. Puedes reportar incidentes pasados, ya que toda información es valiosa para construir un panorama histórico y actual sobre las agresiones hacia periodistas.",
+  },
+  {
+    question: "¿Qué impacto tiene compartir mi experiencia en este sitio?",
+    answer:
+      "Al compartir tu experiencia, contribuyes a visibilizar la problemática y a generar datos clave para exigir medidas de protección más efectivas. Cada reporte ayuda a fortalecer la defensa de la libertad de prensa en Argentina.",
+  },
+  {
+    question: "¿Qué apoyo ofrece este sitio a las periodistas amenazadas?",
+    answer:
+      "Aunque nuestro principal objetivo es la documentación de casos, trabajamos en colaboración con organizaciones que pueden brindarte asesoramiento legal, apoyo psicológico y recursos para fortalecer tu seguridad.",
+  },
+  {
+    question:
+      "¿Cómo puedo asegurarme de que mi conexión es segura mientras uso este sitio?",
+    answer:
+      "Recomendamos acceder al sitio desde redes confiables y asegurarte de que estás en una página con protocolo HTTPS. Si tienes dudas, puedes usar navegadores con funciones de privacidad avanzada como Tor.",
+  },
+  {
+    question: "¿Puedo corregir o actualizar un reporte que ya envié?",
+    answer:
+      "Sí, puedes contactarnos a través del formulario de contacto para solicitar actualizaciones o correcciones en tu reporte.",
+  },
+  {
+    question: "¿Quién administra este sitio?",
+    answer:
+      "El sitio es administrado por un equipo de periodistas y defensores de derechos humanos en colaboración con organizaciones especializadas en libertad de prensa y protección de periodistas.",
+  },
+  {
+    question: "¿Cómo puedo ayudar si no soy periodista pero quiero colaborar?",
+    answer:
+      "Puedes difundir la iniciativa, apoyar con recursos, o unirte a campañas que promuevan la defensa de la libertad de prensa en Argentina.",
+  },
+];
+---
+
+<div class="bg-gray-50 p-6 rounded-lg shadow-md">
+  <h2 class="text-2xl font-semibold text-gray-800">Preguntas frecuentes</h2>
+  <p class="mt-2 text-gray-600">
+    Definiciones clave de la investigación para navegar los datos.
+  </p>
+
+  <div class="mt-4">
+    {
+      faqs.map((pregunta, index) => (
+        <div
+          class={`mt-2 border rounded-lg overflow-hidden relative  ${index !== 0 ? "shadow-sm" : ""}`}
+          data-accordion
+        >
+          <button
+            class={`w-full text-left p-8 font-semibold text-gray-800 flex justify-between items-center ${index === 0 ? "bg-purple-50 inset-shadow" : ""}`}
+            data-accordion-button
+          >
+            <span>{pregunta.question}</span>
+            <span class="text-gray-500" data-accordion-icon>
+              ▼
+            </span>
+          </button>
+          <div
+            class={`px-8 pb-8 bg-purple-50 text-gray-700 ${index !== 0 ? "hidden" : ""}`}
+            data-accordion-content
+          >
+            {pregunta.answer.split("\n").map((line, i) => (
+              <p>{line}</p>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .inset-shadow {
+    box-shadow: none;
+    ::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      box-shadow: 0 2px 3px 0 rgb(0 0 0 / 0.05) inset !important;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const accordions = document.querySelectorAll("[data-accordion]");
+    accordions.forEach((accordion) => {
+      const button = accordion.querySelector("[data-accordion-button]");
+      const content = accordion.querySelector("[data-accordion-content]");
+      const icon = accordion.querySelector("[data-accordion-icon]");
+
+      button?.addEventListener("click", () => {
+        const isOpen = content?.classList.toggle("hidden");
+        button.classList.toggle("bg-purple-50");
+        button.classList.toggle("inset-shadow");
+        button.parentElement?.classList.toggle("shadow-sm");
+
+        icon.textContent = isOpen ? "▼" : "▲";
+      });
+    });
+  });
+</script>
