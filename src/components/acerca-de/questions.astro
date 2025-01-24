@@ -80,6 +80,7 @@ const faqs = [
       "Puedes difundir la iniciativa, apoyar con recursos, o unirte a campañas que promuevan la defensa de la libertad de prensa en Argentina.",
   },
 ];
+import { Icon } from "astro-icon/components";
 ---
 
 <div class="bg-gray-50 p-6 rounded-lg shadow-md">
@@ -100,9 +101,11 @@ const faqs = [
             data-accordion-button
           >
             <span>{pregunta.question}</span>
-            <span class="text-gray-500" data-accordion-icon>
-              ▼
-            </span>
+            <Icon
+              name="mdi:chevron-down"
+              data-accordion-icon
+              class={`w-6 h-6 ${index === 0 ? "rotate-180" : ""}`}
+            />
           </button>
           <div
             class={`px-8 pb-8 bg-purple-50 text-gray-700 ${index !== 0 ? "hidden" : ""}`}
@@ -146,8 +149,7 @@ const faqs = [
         button.classList.toggle("bg-purple-50");
         button.classList.toggle("inset-shadow");
         button.parentElement?.classList.toggle("shadow-sm");
-
-        icon.textContent = isOpen ? "▼" : "▲";
+        icon?.classList.toggle("rotate-180");
       });
     });
   });
