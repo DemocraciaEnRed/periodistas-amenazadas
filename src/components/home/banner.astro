@@ -26,7 +26,7 @@ import silent from "../../assets/silent.png";
 
       <div class="flex gap-5 px-5">
         <a
-          href="/datos"
+          href="/informe"
           class="w-1/2 text-center bg-secondary-500 text-white px-4 py-2 rounded-full"
           >visitar informe completo</a
         >
@@ -38,7 +38,12 @@ import silent from "../../assets/silent.png";
       </div>
     </div>
     <div class="w-full pt-10 md:pt-0 md:w-1/2">
-      <Image src={silent} alt="mujer silenciada" class="h-full" />
+      <Image
+        transition:name="informe-image"
+        src={silent}
+        alt="mujer silenciada"
+        class="h-full"
+      />
     </div>
   </div>
 </div>

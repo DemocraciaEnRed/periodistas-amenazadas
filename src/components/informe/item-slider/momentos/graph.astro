@@ -1,0 +1,94 @@
+---
+
+---
+
+<section id="sectionMomento" class="r-stretch">
+  <div id="graficoMomento"></div>
+</section>
+<script>
+  import { observer } from "../../../../utils/observer";
+  import * as echarts from "echarts";
+  const chartDom = document.getElementById("graficoMomento");
+  const chart = echarts.init(chartDom);
+
+  const option = {
+    legend: {
+      selectedMode: false,
+    },
+    grid: {
+      left: 100,
+      right: 100,
+      top: 50,
+      bottom: 50,
+    },
+    yAxis: {
+      type: "value",
+    },
+    xAxis: {
+      type: "category",
+      data: [
+        "Psicológica",
+        "Física",
+        "Económica",
+        "Sexual",
+        "Laboral",
+        "Institucional",
+        "En línea",
+      ],
+    },
+    series: [
+      {
+        name: "Durante su actual empleo",
+        type: "bar",
+        stack: "total",
+        label: {
+          show: true,
+        },
+        color: "#156082",
+        emphasis: {
+          focus: "series",
+        },
+        data: [36, 1, 32, 17, 4, 36, 38],
+      },
+      {
+        name: "Durante empleos al comienzo de su trayectoria periodística",
+        type: "bar",
+        stack: "total",
+        label: {
+          show: true,
+        },
+        color: "#E97132",
+        emphasis: {
+          focus: "series",
+        },
+        data: [71, 19, 58, 61, 23, 46, 19],
+      },
+      {
+        name: "Durante el tratamiento de una noticia sensible",
+        type: "bar",
+        stack: "total",
+        label: {
+          show: true,
+        },
+        color: "#196b24",
+        emphasis: {
+          focus: "series",
+        },
+        data: [36, 9, 11, 1, 2, 26, 27],
+      },
+    ],
+  };
+  const initGraph = () => {
+    const section = document.getElementById("sectionMomento");
+    chartDom.style.width = section.offsetWidth + "px";
+    chartDom.style.height = section.offsetHeight + "px";
+    chart.resize();
+    chart.setOption(option);
+  };
+
+  observer(
+    chartDom,
+    () => initGraph(), // Función init
+    () => chart.clear() // Función destroy
+  );
+</script>

@@ -1,0 +1,50 @@
+---
+
+---
+
+<section id="sectionViolencia" class="r-stretch">
+  <div id="graficoViolencia"></div>
+</section>
+<script>
+  import { observer } from "../../../../utils/observer";
+  import * as echarts from "echarts";
+
+  const chartDom = document.getElementById("graficoViolencia");
+  const chart = echarts.init(chartDom);
+  const option = {
+    tooltip: {},
+    xAxis: {
+      data: [
+        "    Violencia psicológica",
+        "Violencia física",
+        "Violencia económica",
+        "Violencia sexual",
+        "Violencia laboral",
+        "Violencia institucional",
+        "Violencia en línea",
+      ],
+      axisLabel: { rotate: -45 },
+    },
+    yAxis: {},
+    series: [
+      {
+        type: "bar",
+        data: [150, 25, 115, 84, 31, 115, 88],
+      },
+    ],
+  };
+
+  const initGraph = () => {
+    const section = document.getElementById("sectionViolencia");
+    chartDom.style.width = section.offsetWidth + "px";
+    chartDom.style.height = section.offsetHeight + "px";
+    chart.resize();
+    chart.setOption(option);
+  };
+
+  observer(
+    chartDom,
+    () => initGraph(), // Función init
+    () => chart.clear() // Función destroy
+  );
+</script>

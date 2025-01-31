@@ -13,11 +13,15 @@ import "@fontsource/poppins";
     <meta name="generator" content={Astro.generator} />
     <title>FOPEA</title>
     <!-- Importa los estilos básicos de reveal.js -->
+    <link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css" />
+    <link
+      rel="stylesheet"
+      href="node_modules/reveal.js/dist/theme/simple.css"
+    />
   </head>
   <body>
     <Navbar />
     <slot />
-    <Footer />
   </body>
 </html>
 

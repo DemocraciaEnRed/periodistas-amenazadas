@@ -1,0 +1,45 @@
+---
+
+---
+
+<section id="sectionImpacto" class="r-stretch">
+  <div id="graficoImpacto"></div>
+</section>
+<script>
+  import { observer } from "../../../../utils/observer";
+  import * as echarts from "echarts";
+
+  const chartDom = document.getElementById("graficoImpacto");
+  const chart = echarts.init(chartDom);
+  const option = {
+    title: {
+      text: "ECharts example",
+    },
+    tooltip: {},
+    xAxis: {
+      data: ["category1", "category2", "category3", "category4", "category5"],
+    },
+    yAxis: {},
+    series: [
+      {
+        name: "Example Series",
+        type: "bar",
+        data: [5, 20, 36, 10, 10],
+      },
+    ],
+  };
+
+  const initGraph = () => {
+    const section = document.getElementById("sectionImpacto");
+    chartDom.style.width = section.offsetWidth + "px";
+    chartDom.style.height = section.offsetHeight + "px";
+    chart.resize();
+    chart.setOption(option);
+  };
+
+  observer(
+    chartDom,
+    () => initGraph(), // Función init
+    () => chart.clear() // Función destroy
+  );
+</script>

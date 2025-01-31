@@ -1,0 +1,35 @@
+---
+import Caratula from "./item-slider/caratula.astro";
+import CaratulaViolencia from "./item-slider/violencia/caratula-violencia.astro";
+import CaratulaMomento from "./item-slider/momentos/caratula-momento.astro";
+import CaratulaImpacto from "./item-slider/impacto/caratula-impacto.astro";
+import CaratulaAutores from "./item-slider/autores/caratula-autores.astro";
+// Define un estado inicial para currentSlide
+---
+
+<div class="reveal">
+  <div class="slides">
+    <Caratula />
+    <CaratulaViolencia />
+    <CaratulaMomento />
+    <CaratulaAutores />
+    <CaratulaImpacto />
+  </div>
+</div>
+
+<script>
+  const navbar = document.getElementById("navbar");
+  const reveal = document.querySelector(".reveal");
+  const height = navbar?.offsetHeight
+    ? window.innerHeight - navbar?.offsetHeight
+    : 1000;
+  reveal.style.height = `${height}px`;
+
+  import Reveal from "reveal.js";
+  import Markdown from "reveal.js/plugin/markdown/markdown.esm.js";
+  // Inicializa reveal.js
+  let deck = new Reveal({
+    plugins: [Markdown],
+  });
+  deck.initialize();
+</script>
