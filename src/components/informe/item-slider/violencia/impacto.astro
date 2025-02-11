@@ -2,40 +2,36 @@
 
 ---
 
-<section id="sectionViolencia" class="r-stretch">
-  <div id="graficoViolencia"></div>
+<section id="sectionImpacto" class="r-stretch">
+  Impacto de las violencias
+  <div id="graficoImpacto"></div>
 </section>
 <script>
   import { observer } from "../../../../utils/observer";
   import * as echarts from "echarts";
 
-  const chartDom = document.getElementById("graficoViolencia");
+  const chartDom = document.getElementById("graficoImpacto");
   const chart = echarts.init(chartDom);
   const option = {
+    title: {
+      text: "ECharts example",
+    },
     tooltip: {},
     xAxis: {
-      data: [
-        "    Violencia psicológica",
-        "Violencia física",
-        "Violencia económica",
-        "Violencia sexual",
-        "Violencia laboral",
-        "Violencia institucional",
-        "Violencia en línea",
-      ],
-      axisLabel: { rotate: -45 },
+      data: ["category1", "category2", "category3", "category4", "category5"],
     },
     yAxis: {},
     series: [
       {
+        name: "Example Series",
         type: "bar",
-        data: [150, 25, 115, 84, 31, 115, 88],
+        data: [5, 20, 36, 10, 10],
       },
     ],
   };
 
   const initGraph = () => {
-    const section = document.getElementById("sectionViolencia");
+    const section = document.getElementById("sectionImpacto");
     chartDom.style.width = section.offsetWidth + "px";
     chartDom.style.height = section.offsetHeight + "px";
     chart.resize();
