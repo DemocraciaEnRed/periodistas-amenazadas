@@ -47,7 +47,10 @@
   const initGraph = () => {
     const section = document.getElementById("sectionViolencia");
     chartDom.style.width = section.offsetWidth + "px";
-    chartDom.style.height = section.offsetHeight + "px";
+    chartDom.style.height = section.offsetHeight
+      ? section.offsetHeight + "px"
+      : "100vh";
+
     chart.resize();
     chart.setOption(option);
   };
