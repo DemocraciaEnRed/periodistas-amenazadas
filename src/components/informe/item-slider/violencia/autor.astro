@@ -3,7 +3,7 @@
 ---
 
 <section id="sectionAutores" class="r-stretch">
-  Autor de la violencia
+  <div class="text-start">Autor de la violencia</div>
   <div id="graficoAutores"></div>
 </section>
 <script>
@@ -11,8 +11,22 @@
   import * as echarts from "echarts";
   const chartDom = document.getElementById("graficoAutores");
   const chart = echarts.init(chartDom);
+  const colors = [
+    "#401F71",
+    "#88659F",
+    "#FFAC39",
+    "#E6E1CF",
+    "#ED8272",
+    "#2A0C4E",
+    "#B092C2",
+    "#F8D58D",
+    "#C9695B",
+  ];
+
   const option = {
-    legend: {},
+    title: {},
+    color: colors,
+    legend: { orient: "vertical", right: 0, bottom: 104 },
     tooltip: {},
     dataset: {
       source: [
@@ -63,15 +77,7 @@
         ["Funcionario y/o empleado público", 84, 15, 31, 26, 7, 59, 35],
       ],
     },
-    title: [
-      { text: "Psicológica", left: "50%", top: "10%", textAlign: "center" },
-      { text: "Física", left: "75%", top: "10%", textAlign: "center" },
-      { text: "Económica", left: "25%", top: "60%", textAlign: "center" },
-      { text: "Sexual", left: "25%", top: "35%", textAlign: "center" },
-      { text: "Laboral", left: "25%", top: "10%", textAlign: "center" },
-      { text: "Institucional", left: "50%", top: "35%", textAlign: "center" },
-      { text: "En línea", left: "50%", top: "60%", textAlign: "center" },
-    ],
+
     series: [
       {
         type: "pie",

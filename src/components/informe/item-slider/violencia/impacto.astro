@@ -3,7 +3,6 @@
 ---
 
 <section id="sectionImpacto" class="r-stretch">
-  Impacto de las violencias
   <div id="graficoImpacto"></div>
 </section>
 <script>
@@ -14,7 +13,13 @@
   const chart = echarts.init(chartDom);
   const option = {
     title: {
-      text: "ECharts example",
+      text: "Impacto de las violencias",
+      textStyle: {
+        fontSize: 40,
+        fontWeight: "normal",
+        color: "#000",
+      },
+      textAlign: "left",
     },
     tooltip: {},
     xAxis: {
@@ -26,6 +31,7 @@
         name: "Example Series",
         type: "bar",
         data: [5, 20, 36, 10, 10],
+        color: "#401F71",
       },
     ],
   };

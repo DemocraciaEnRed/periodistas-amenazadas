@@ -3,7 +3,6 @@
 ---
 
 <section id="sectionMomento" class="r-stretch">
-  Momento de ocurrencia de la violencia
   <div id="graficoMomento"></div>
 </section>
 <script>
@@ -13,8 +12,19 @@
   const chart = echarts.init(chartDom);
 
   const option = {
+    title: {
+      text: "Momento de ocurrencia de la violencia",
+      textStyle: {
+        fontSize: 40,
+        fontWeight: "normal",
+        color: "#000",
+      },
+      textAlign: "left",
+    },
     legend: {
-      selectedMode: false,
+      orient: "vertical",
+      right: 0,
+      top: 70,
     },
     grid: {
       left: 100,
@@ -45,7 +55,7 @@
         label: {
           show: true,
         },
-        color: "#156082",
+        color: "#401F71",
         emphasis: {
           focus: "series",
         },
@@ -58,7 +68,7 @@
         label: {
           show: true,
         },
-        color: "#E97132",
+        color: "#FFAC39",
         emphasis: {
           focus: "series",
         },
@@ -71,7 +81,7 @@
         label: {
           show: true,
         },
-        color: "#196b24",
+        color: "#ED8272",
         emphasis: {
           focus: "series",
         },

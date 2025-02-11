@@ -3,7 +3,6 @@
 ---
 
 <section id="sectionViolencia" class="r-stretch">
-  Violencia sufrida por las encuestadas
   <div id="graficoViolencia"></div>
 </section>
 <script>
@@ -14,6 +13,15 @@
   const chart = echarts.init(chartDom);
   const option = {
     tooltip: {},
+    title: {
+      text: "Violencia sufrida por las encuestadas",
+      textStyle: {
+        fontSize: 40,
+        fontWeight: "normal",
+        color: "#000",
+      },
+      textAlign: "left",
+    },
     xAxis: {
       data: [
         "    Violencia psicológica",
@@ -31,6 +39,7 @@
       {
         type: "bar",
         data: [150, 25, 115, 84, 31, 115, 88],
+        color: "#401F71",
       },
     ],
   };
