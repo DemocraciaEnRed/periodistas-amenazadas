@@ -2,13 +2,13 @@
 
 ---
 
-<section id="sectionMomento" class="r-stretch">
-  <div id="graficoMomento"></div>
+<section id="sectionMitigacion" class="r-stretch">
+  <div id="graficoMitigacion"></div>
 </section>
 <script>
   import { observer } from "../../../../utils/observer";
   import * as echarts from "echarts";
-  const chartDom = document.getElementById("graficoMomento");
+  const chartDom = document.getElementById("graficoMitigacion");
   const chart = echarts.init(chartDom);
 
   const option = {
@@ -79,7 +79,7 @@
     ],
   };
   const initGraph = () => {
-    const section = document.getElementById("sectionMomento");
+    const section = document.getElementById("sectionMitigacion");
     chartDom.style.width = section.offsetWidth + "px";
     chartDom.style.height = section.offsetHeight + "px";
     chart.resize();

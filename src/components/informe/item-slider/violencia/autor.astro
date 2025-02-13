@@ -1,10 +1,14 @@
 ---
-
+import Background from "../background.astro";
+import warningImage from "../../../../assets/warning.svg";
 ---
 
 <section id="sectionAutores" class="r-stretch">
-  <div class="text-start">Autor de la violencia</div>
-  <div id="graficoAutores"></div>
+  <Background image={warningImage} size={600} position="-right-40 -bottom-20" />
+
+  <div id="autores-container" class="w-10/12 h-full m-auto">
+    <div id="graficoAutores"></div>
+  </div>
 </section>
 <script>
   import { observer } from "../../../../utils/observer";
@@ -24,7 +28,15 @@
   ];
 
   const option = {
-    title: {},
+    title: {
+      text: "Autor de la violencia",
+      textStyle: {
+        fontSize: 40,
+        fontWeight: "normal",
+        color: "#000",
+      },
+      left: "center",
+    },
     color: colors,
     legend: { orient: "vertical", right: 0, bottom: 104 },
     tooltip: {},
@@ -83,6 +95,7 @@
         type: "pie",
         radius: "20%",
         center: ["50%", "25%"],
+        name: "Psicológica",
         encode: {
           itemName: "Autor de la violencia",
           value: "Psicológica",
@@ -93,6 +106,7 @@
         type: "pie",
         radius: "20%",
         center: ["75%", "25%"],
+        name: "Física",
         encode: {
           itemName: "Autor de la violencia",
           value: "Física",
@@ -103,6 +117,7 @@
         type: "pie",
         radius: "20%",
         center: ["25%", "75%"],
+        name: "Económica",
         encode: {
           itemName: "Autor de la violencia",
           value: "Económica",
@@ -113,6 +128,7 @@
         type: "pie",
         radius: "20%",
         center: ["25%", "50%"],
+        name: "Sexual",
         encode: {
           itemName: "Autor de la violencia",
           value: "Sexual",
@@ -123,6 +139,7 @@
         type: "pie",
         radius: "20%",
         center: ["25%", "25%"],
+        name: "Laboral",
         encode: {
           itemName: "Autor de la violencia",
           value: "Laboral",
@@ -133,6 +150,7 @@
         type: "pie",
         radius: "20%",
         center: ["50%", "50%"],
+        name: "Institucional",
         encode: {
           itemName: "Autor de la violencia",
           value: "Institucional",
@@ -143,6 +161,7 @@
         type: "pie",
         radius: "20%",
         center: ["50%", "75%"],
+        name: "En línea",
         encode: {
           itemName: "Autor de la violencia",
           value: "En línea",
@@ -150,17 +169,113 @@
         label: { show: false },
       },
     ],
+    graphic: [
+      {
+        type: "text",
+        left: "46%",
+        top: "11%",
+        style: {
+          text: "Psicológica",
+          fontSize: 16,
+          fontWeight: "bold",
+          fill: "#000",
+          textAlign: "center",
+        },
+      },
+      {
+        type: "text",
+        left: "73%",
+        top: "11%",
+        style: {
+          text: "Física",
+          fontSize: 16,
+          fontWeight: "bold",
+          fill: "#000",
+          textAlign: "center",
+        },
+      },
+      {
+        type: "text",
+        left: "21%",
+        top: "61%",
+        style: {
+          text: "Económica",
+          fontSize: 16,
+          fontWeight: "bold",
+          fill: "#000",
+          textAlign: "center",
+        },
+      },
+      {
+        type: "text",
+        left: "23%",
+        top: "36%",
+        style: {
+          text: "Sexual",
+          fontSize: 16,
+          fontWeight: "bold",
+          fill: "#000",
+          textAlign: "center",
+        },
+      },
+      {
+        type: "text",
+        left: "22%",
+        top: "11%",
+        style: {
+          text: "Laboral",
+          fontSize: 16,
+          fontWeight: "bold",
+          fill: "#000",
+          textAlign: "center",
+        },
+      },
+      {
+        type: "text",
+        left: "46%",
+        top: "36%",
+        style: {
+          text: "Institucional",
+          fontSize: 16,
+          fontWeight: "bold",
+          fill: "#000",
+          textAlign: "center",
+        },
+      },
+      {
+        type: "text",
+        left: "47%",
+        top: "61%",
+        style: {
+          text: "En línea",
+          fontSize: 16,
+          fontWeight: "bold",
+          fill: "#000",
+          textAlign: "center",
+        },
+      },
+    ],
   };
 
-  const initGraph = () => {
-    const section = document.getElementById("sectionAutores");
-    chartDom.style.width = section.offsetWidth + "px";
-    chartDom.style.height = section.offsetHeight
+  const resizeChart = () => {
+    const section = document.getElementById("autores-container");
+    if (!chartDom) return;
+    chartDom.style.width = section?.offsetWidth + "px";
+    chartDom.style.height = section?.offsetHeight
       ? section.offsetHeight + "px"
-      : "100vh";
+      : "60vh";
     chart.resize();
+  };
+  const initGraph = () => {
+    resizeChart();
     chart.setOption(option);
   };
+
+  window.addEventListener("resize", () => {
+    if (chart) {
+      resizeChart();
+    }
+  });
 
   observer(
     chartDom,

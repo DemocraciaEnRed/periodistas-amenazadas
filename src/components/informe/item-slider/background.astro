@@ -1,0 +1,12 @@
+---
+import { Image } from "astro:assets";
+const { image,position,size=700 } = Astro.props;
+---   
+
+
+  <Image
+  src={image}
+  alt="mujer silenciada"
+  height={size}
+  class={"absolute opacity-40 "+position}
+/>

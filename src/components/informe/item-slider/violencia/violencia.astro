@@ -1,10 +1,16 @@
 ---
-
+import { Image } from "astro:assets";
+import microphoneImage from "../../../../assets/microphone.svg";
+import Background from "../background.astro";
 ---
 
 <section id="sectionViolencia" class="r-stretch">
-  <div id="graficoViolencia"></div>
+  <Background image={microphoneImage} position="-right-24 -bottom-20" />
+  <div id="violencia-container" class="w-10/12 h-full m-auto">
+    <div id="graficoViolencia"></div>
+  </div>
 </section>
+
 <script>
   import { observer } from "../../../../utils/observer";
   import * as echarts from "echarts";
@@ -20,7 +26,7 @@
         fontWeight: "normal",
         color: "#000",
       },
-      textAlign: "left",
+      left: "center",
     },
     xAxis: {
       data: [
@@ -44,16 +50,25 @@
     ],
   };
 
-  const initGraph = () => {
-    const section = document.getElementById("sectionViolencia");
-    chartDom.style.width = section.offsetWidth + "px";
-    chartDom.style.height = section.offsetHeight
+  const resizeChart = () => {
+    const section = document.getElementById("momento-container");
+    if (!chartDom) return;
+    chartDom.style.width = section?.offsetWidth + "px";
+    chartDom.style.height = section?.offsetHeight
       ? section.offsetHeight + "px"
       : "100vh";
-
     chart.resize();
+  };
+  const initGraph = () => {
+    resizeChart();
     chart.setOption(option);
   };
+
+  window.addEventListener("resize", () => {
+    if (chart) {
+      resizeChart();
+    }
+  });
 
   observer(
     chartDom,

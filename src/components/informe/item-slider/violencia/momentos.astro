@@ -1,9 +1,14 @@
 ---
-
+import { Image } from "astro:assets";
+import xImage from "../../../../assets/x.svg";
+import Background from "../background.astro";
 ---
 
 <section id="sectionMomento" class="r-stretch">
-  <div id="graficoMomento"></div>
+  <Background image={xImage} position="-right-96 -bottom-80" />
+  <div id="momento-container" class="w-10/12 h-full m-auto">
+    <div id="graficoMomento"></div>
+  </div>
 </section>
 <script>
   import { observer } from "../../../../utils/observer";
@@ -19,7 +24,7 @@
         fontWeight: "normal",
         color: "#000",
       },
-      textAlign: "left",
+      left: "center",
     },
     legend: {
       orient: "vertical",
@@ -89,15 +94,26 @@
       },
     ],
   };
-  const initGraph = () => {
-    const section = document.getElementById("sectionMomento");
-    chartDom.style.width = section.offsetWidth + "px";
-    chartDom.style.height = section.offsetHeight
+
+  const resizeChart = () => {
+    const section = document.getElementById("momento-container");
+    if (!chartDom) return;
+    chartDom.style.width = section?.offsetWidth + "px";
+    chartDom.style.height = section?.offsetHeight
       ? section.offsetHeight + "px"
       : "100vh";
     chart.resize();
+  };
+  const initGraph = () => {
+    resizeChart();
     chart.setOption(option);
   };
+
+  window.addEventListener("resize", () => {
+    if (chart) {
+      resizeChart();
+    }
+  });
 
   observer(
     chartDom,

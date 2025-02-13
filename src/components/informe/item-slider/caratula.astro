@@ -3,12 +3,9 @@ import Image from "astro/components/Image.astro";
 import silent from "../../../assets/silent.png";
 ---
 
-<section>
-  Caratula principal
-  <Image
-    src={silent}
-    transition:name="informe-image"
-    alt="mujer silenciada"
-    class="h-1/6"
-  />
+<section class="r-stretch">
+  <div class="flex flex-col items-center">
+    <h2 class="text-5xl">Caratula principal</h2>
+    <Image src={silent} alt="mujer silenciada" height={700} class="h-1/6" />
+  </div>
 </section>

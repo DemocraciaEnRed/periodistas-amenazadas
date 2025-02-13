@@ -8,12 +8,12 @@ import CapituloEncuestadas from "./item-slider/encuestadas/index.astro";
 ---
 
 <div class="reveal">
-  <div class="slides">
+  <div class="slides !mx-4 !mt-10">
     <Caratula />
     <CapituloViolencias />
-    <CapituloMitigacion />
+    <!-- <CapituloMitigacion />
     <CapituloPercepciones />
-    <CapituloEncuestadas />
+    <CapituloEncuestadas /> -->
   </div>
 </div>
 
@@ -29,7 +29,13 @@ import CapituloEncuestadas from "./item-slider/encuestadas/index.astro";
   import Markdown from "reveal.js/plugin/markdown/markdown.esm.js";
   // Inicializa reveal.js
   let deck = new Reveal({
+    width: "100%",
+    margin: 0,
     plugins: [Markdown],
   });
   deck.initialize();
+  // select slide to start
+  // deck.on("ready", (event) => {
+  //   deck.slide(1, 2);
+  // });
 </script>
