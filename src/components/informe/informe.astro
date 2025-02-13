@@ -34,8 +34,8 @@ import CapituloEncuestadas from "./item-slider/encuestadas/index.astro";
     plugins: [Markdown],
   });
   deck.initialize();
-  // select slide to start
-  // deck.on("ready", (event) => {
-  //   deck.slide(1, 2);
-  // });
+  //select slide to start
+  deck.on("ready", (event) => {
+    deck.slide(0, 1);
+  });
 </script>

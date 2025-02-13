@@ -1,0 +1,103 @@
+export const tipoViolencia = [
+  { name: "Psicológica", slug: "psicologica" },
+  { name: "Física", slug: "fisica" },
+  { name: "Económica", slug: "economica" },
+  { name: "Sexual", slug: "sexual" },
+  { name: "Laboral", slug: "laboral" },
+  { name: "Institucional", slug: "institucional" },
+  { name: "En línea", slug: "en-línea" },
+];
+
+export const datosAutores = {
+  psicologica: [
+    { name: "Pareja", value: 19 },
+    {
+      name: "Varón con jerarquía superior en el medio de comunicación",
+      value: 104,
+    },
+    { name: "Varón compañero en el medio de comunicación", value: 83 },
+    { name: "Varón de otro medio de comunicación", value: 49 },
+    { name: "Otra mujer periodista", value: 54 },
+    { name: "Otra mujer que trabaja en los medios de comunicación", value: 47 },
+    { name: "Ciudadano/particular", value: 71 },
+    { name: "Funcionario y/o empleado público", value: 84 },
+  ],
+  fisica: [
+    { name: "Pareja", value: 4 },
+    {
+      name: "Varón con jerarquía superior en el medio de comunicación",
+      value: 11,
+    },
+    { name: "Varón compañero en el medio de comunicación", value: 7 },
+    { name: "Varón de otro medio de comunicación", value: 7 },
+    { name: "Otra mujer periodista", value: 6 },
+    { name: "Otra mujer que trabaja en los medios de comunicación", value: 6 },
+    { name: "Ciudadano/particular", value: 11 },
+    { name: "Funcionario y/o empleado público", value: 15 },
+  ],
+  economica: [
+    { name: "Pareja", value: 10 },
+    {
+      name: "Varón con jerarquía superior en el medio de comunicación",
+      value: 95,
+    },
+    { name: "Varón compañero en el medio de comunicación", value: 32 },
+    { name: "Varón de otro medio de comunicación", value: 11 },
+    { name: "Otra mujer periodista", value: 21 },
+    { name: "Otra mujer que trabaja en los medios de comunicación", value: 20 },
+    { name: "Ciudadano/particular", value: 12 },
+    { name: "Funcionario y/o empleado público", value: 31 },
+  ],
+  sexual: [
+    { name: "Pareja", value: 2 },
+    {
+      name: "Varón con jerarquía superior en el medio de comunicación",
+      value: 43,
+    },
+    { name: "Varón compañero en el medio de comunicación", value: 43 },
+    { name: "Varón de otro medio de comunicación", value: 18 },
+    { name: "Otra mujer periodista", value: 0 },
+    { name: "Otra mujer que trabaja en los medios de comunicación", value: 3 },
+    { name: "Ciudadano/particular", value: 16 },
+    { name: "Funcionario y/o empleado público", value: 26 },
+  ],
+  laboral: [
+    { name: "Pareja", value: 4 },
+    {
+      name: "Varón con jerarquía superior en el medio de comunicación",
+      value: 27,
+    },
+    { name: "Varón compañero en el medio de comunicación", value: 11 },
+    { name: "Varón de otro medio de comunicación", value: 4 },
+    { name: "Otra mujer periodista", value: 6 },
+    { name: "Otra mujer que trabaja en los medios de comunicación", value: 7 },
+    { name: "Ciudadano/particular", value: 3 },
+    { name: "Funcionario y/o empleado público", value: 7 },
+  ],
+  institucional: [
+    { name: "Pareja", value: 3 },
+    {
+      name: "Varón con jerarquía superior en el medio de comunicación",
+      value: 82,
+    },
+    { name: "Varón compañero en el medio de comunicación", value: 42 },
+    { name: "Varón de otro medio de comunicación", value: 14 },
+    { name: "Otra mujer periodista", value: 23 },
+    { name: "Otra mujer que trabaja en los medios de comunicación", value: 21 },
+    { name: "Ciudadano/particular", value: 12 },
+    { name: "Funcionario y/o empleado público", value: 59 },
+  ],
+  "en-línea": [
+    { name: "Pareja", value: 5 },
+    {
+      name: "Varón con jerarquía superior en el medio de comunicación",
+      value: 14,
+    },
+    { name: "Varón compañero en el medio de comunicación", value: 14 },
+    { name: "Varón de otro medio de comunicación", value: 26 },
+    { name: "Otra mujer periodista", value: 11 },
+    { name: "Otra mujer que trabaja en los medios de comunicación", value: 17 },
+    { name: "Ciudadano/particular", value: 62 },
+    { name: "Funcionario y/o empleado público", value: 35 },
+  ],
+};

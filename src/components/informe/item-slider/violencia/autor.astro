@@ -1,20 +1,46 @@
 ---
 import Background from "../background.astro";
 import warningImage from "../../../../assets/warning.svg";
+import { tipoViolencia, datosAutores } from "../../../../utils/constants";
 ---
 
 <section id="sectionAutores" class="r-stretch">
   <Background image={warningImage} size={600} position="-right-40 -bottom-20" />
 
-  <div id="autores-container" class="w-10/12 h-full m-auto">
-    <div id="graficoAutores"></div>
+  <div class="flex w-full h-full justify-center">
+    <div class="flex flex-col justify-center w-2/12 gap-7">
+      {
+        tipoViolencia.map((tipo) => (
+          <div class="contents ">
+            <input
+              type="radio"
+              name="violencia-tipo"
+              id={tipo.slug}
+              value={tipo.slug}
+              class="hidden peer"
+            />
+            <label
+              class="bg-transparent w-fullfont-semibold w-full py-2 px-4  hover:bg-primary-500 text-gray-500  hover:text-white  border-2 border-primary-500 hover:border-transparent rounded-lg peer-checked:bg-primary-600 peer-checked:text-white cursor-pointer"
+              for={tipo.slug}
+            >
+              {tipo.name}
+            </label>
+          </div>
+        ))
+      }
+    </div>
+    <div id="autores-container" class="w-8/12 h-full">
+      <div id="graficoAutores"></div>
+    </div>
   </div>
 </section>
 <script>
+  import { datosAutores } from "../../../../utils/constants";
   import { observer } from "../../../../utils/observer";
   import * as echarts from "echarts";
   const chartDom = document.getElementById("graficoAutores");
   const chart = echarts.init(chartDom);
+  const buttons = document.getElementsByName("violencia-tipo");
   const colors = [
     "#401F71",
     "#88659F",
@@ -28,231 +54,25 @@ import warningImage from "../../../../assets/warning.svg";
   ];
 
   const option = {
-    title: {
-      text: "Autor de la violencia",
-      textStyle: {
-        fontSize: 40,
-        fontWeight: "normal",
-        color: "#000",
-      },
-      left: "center",
+    legend: {
+      top: "center",
+      right: 10,
+      orient: "vertical",
+      // backgroundColor: "white",
     },
     color: colors,
-    legend: { orient: "vertical", right: 0, bottom: 104 },
     tooltip: {},
-    dataset: {
-      source: [
-        [
-          "Autor de la violencia",
-          "Psicológica",
-          "Física",
-          "Económica",
-          "Sexual",
-          "Laboral",
-          "Institucional",
-          "En línea",
-        ],
-        ["Pareja", 19, 4, 10, 2, 4, 3, 5],
-        [
-          "Varón con jerarquía superior en el medio de comunicación",
-          104,
-          11,
-          95,
-          43,
-          27,
-          82,
-          14,
-        ],
-        [
-          "Varón compañero en el medio de comunicación",
-          83,
-          7,
-          32,
-          43,
-          11,
-          42,
-          14,
-        ],
-        ["Varón de otro medio de comunicación", 49, 7, 11, 18, 4, 14, 26],
-        ["Otra mujer periodista", 54, 6, 21, 0, 6, 23, 11],
-        [
-          "Otra mujer que trabaja en los medios de comunicación",
-          47,
-          6,
-          20,
-          3,
-          7,
-          21,
-          17,
-        ],
-        ["Ciudadano/particular", 71, 11, 12, 16, 3, 12, 62],
-        ["Funcionario y/o empleado público", 84, 15, 31, 26, 7, 59, 35],
-      ],
-    },
-
     series: [
       {
         type: "pie",
-        radius: "20%",
-        center: ["50%", "25%"],
-        name: "Psicológica",
-        encode: {
-          itemName: "Autor de la violencia",
-          value: "Psicológica",
+        radius: [50, 250],
+        center: ["30%", "50%"],
+        roseType: "area",
+        itemStyle: {
+          borderRadius: 8,
         },
         label: { show: false },
-      },
-      {
-        type: "pie",
-        radius: "20%",
-        center: ["75%", "25%"],
-        name: "Física",
-        encode: {
-          itemName: "Autor de la violencia",
-          value: "Física",
-        },
-        label: { show: false },
-      },
-      {
-        type: "pie",
-        radius: "20%",
-        center: ["25%", "75%"],
-        name: "Económica",
-        encode: {
-          itemName: "Autor de la violencia",
-          value: "Económica",
-        },
-        label: { show: false },
-      },
-      {
-        type: "pie",
-        radius: "20%",
-        center: ["25%", "50%"],
-        name: "Sexual",
-        encode: {
-          itemName: "Autor de la violencia",
-          value: "Sexual",
-        },
-        label: { show: false },
-      },
-      {
-        type: "pie",
-        radius: "20%",
-        center: ["25%", "25%"],
-        name: "Laboral",
-        encode: {
-          itemName: "Autor de la violencia",
-          value: "Laboral",
-        },
-        label: { show: false },
-      },
-      {
-        type: "pie",
-        radius: "20%",
-        center: ["50%", "50%"],
-        name: "Institucional",
-        encode: {
-          itemName: "Autor de la violencia",
-          value: "Institucional",
-        },
-        label: { show: false },
-      },
-      {
-        type: "pie",
-        radius: "20%",
-        center: ["50%", "75%"],
-        name: "En línea",
-        encode: {
-          itemName: "Autor de la violencia",
-          value: "En línea",
-        },
-        label: { show: false },
-      },
-    ],
-    graphic: [
-      {
-        type: "text",
-        left: "46%",
-        top: "11%",
-        style: {
-          text: "Psicológica",
-          fontSize: 16,
-          fontWeight: "bold",
-          fill: "#000",
-          textAlign: "center",
-        },
-      },
-      {
-        type: "text",
-        left: "73%",
-        top: "11%",
-        style: {
-          text: "Física",
-          fontSize: 16,
-          fontWeight: "bold",
-          fill: "#000",
-          textAlign: "center",
-        },
-      },
-      {
-        type: "text",
-        left: "21%",
-        top: "61%",
-        style: {
-          text: "Económica",
-          fontSize: 16,
-          fontWeight: "bold",
-          fill: "#000",
-          textAlign: "center",
-        },
-      },
-      {
-        type: "text",
-        left: "23%",
-        top: "36%",
-        style: {
-          text: "Sexual",
-          fontSize: 16,
-          fontWeight: "bold",
-          fill: "#000",
-          textAlign: "center",
-        },
-      },
-      {
-        type: "text",
-        left: "22%",
-        top: "11%",
-        style: {
-          text: "Laboral",
-          fontSize: 16,
-          fontWeight: "bold",
-          fill: "#000",
-          textAlign: "center",
-        },
-      },
-      {
-        type: "text",
-        left: "46%",
-        top: "36%",
-        style: {
-          text: "Institucional",
-          fontSize: 16,
-          fontWeight: "bold",
-          fill: "#000",
-          textAlign: "center",
-        },
-      },
-      {
-        type: "text",
-        left: "47%",
-        top: "61%",
-        style: {
-          text: "En línea",
-          fontSize: 16,
-          fontWeight: "bold",
-          fill: "#000",
-          textAlign: "center",
-        },
+        data: datosAutores["psicologica"],
       },
     ],
   };
@@ -282,4 +102,11 @@ import warningImage from "../../../../assets/warning.svg";
     () => initGraph(), // Función init
     () => chart.clear() // Función destroy
   );
+  buttons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      option.series[0].data = datosAutores[event.target.value];
+      chart.clear();
+      initGraph();
+    });
+  });
 </script>
