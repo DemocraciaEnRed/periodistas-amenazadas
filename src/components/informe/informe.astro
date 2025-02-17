@@ -4,11 +4,12 @@ import CapituloViolencias from "./item-slider/violencia/index.astro";
 import CapituloMitigacion from "./item-slider/mitigacion/index.astro";
 import CapituloPercepciones from "./item-slider/percepciones/index.astro";
 import CapituloEncuestadas from "./item-slider/encuestadas/index.astro";
+import { Icon } from "astro-icon/components";
 // Define un estado inicial para currentSlide
 ---
 
 <div class="reveal">
-  <div class="slides !mx-4 !mt-10">
+  <div class="slides !mx-4 md:!mt-20">
     <Caratula />
     <CapituloViolencias />
     <!-- <CapituloMitigacion />
@@ -16,26 +17,62 @@ import CapituloEncuestadas from "./item-slider/encuestadas/index.astro";
     <CapituloEncuestadas /> -->
   </div>
 </div>
+<div id="slide-overlay">
+  <Icon name="mdi:phone-rotate-landscape" class="text-8xl" />
+  Por favor, gira tu dispositivo para ver la presentación.
+</div>
+
+<style>
+  @media screen and (orientation: portrait) {
+    #slide-overlay {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.9);
+      color: white;
+      font-size: 2rem;
+      z-index: 9999;
+    }
+
+    .reveal {
+      display: none;
+    }
+  }
+</style>
 
 <script>
   const navbar = document.getElementById("navbar");
-  const reveal = document.querySelector(".reveal");
-  const height = navbar?.offsetHeight
-    ? window.innerHeight - navbar?.offsetHeight
-    : 1000;
-  reveal.style.height = `${height}px`;
+  // const reveal = document.querySelector(".reveal");
+  // const height = navbar?.offsetHeight
+  //   ? window.innerHeight - navbar?.offsetHeight
+  //   : 1000;
 
+  // reveal.style.height = `${height}px`;
   import Reveal from "reveal.js";
   import Markdown from "reveal.js/plugin/markdown/markdown.esm.js";
+
   // Inicializa reveal.js
   let deck = new Reveal({
     width: "100%",
     margin: 0,
     plugins: [Markdown],
   });
-  deck.initialize();
-  //select slide to start
-  deck.on("ready", (event) => {
-    deck.slide(0, 1);
+  const initReveal = () => {
+    deck.initialize();
+  };
+  initReveal();
+
+  window.addEventListener("orientationchange", () => {
+    const isLandscape = window.screen.orientation.type.includes("landscape");
+    if (isLandscape) {
+      initReveal();
+    } //else deck.destroy();
   });
 </script>

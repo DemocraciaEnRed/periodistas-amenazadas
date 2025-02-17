@@ -22,16 +22,16 @@ export default {
 					950: '#321553',
 				},
 				secondary: {
-					100: '#FFF4E0', // Color más claro
-					200: '#FFE4B8',
-					300: '#FFD390',
-					400: '#FFC368',
-					500: '#FFAC39', // Color principal
-					600: '#E69733',
-					700: '#CC822D',
-					800: '#B36E27',
-					900: '#8A541E', // Color más oscuro
-					950: '#6A4017', // Muy oscuro
+					50: "#FFECEB",  // Muy claro
+					100: "#FFD4D1",
+					200: "#FFB0AA",
+					300: "#FF8C82",
+					400: "#FF685B",
+					500: "#FF4C39",  // Color principal
+					600: "#E04330",
+					700: "#B93527",
+					800: "#8F281D",
+					900: "#661B14"   
 				}
 			},
 		},

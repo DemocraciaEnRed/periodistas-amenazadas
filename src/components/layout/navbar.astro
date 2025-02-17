@@ -5,11 +5,13 @@ import logoUnesco from "../../assets/unesco.png";
 import { Icon } from "astro-icon/components";
 ---
 
-<nav id="navbar" class="p-5 border-b-2 border-gray-200 bg-white">
-  <div class="container mx-auto flex justify-between">
+<nav id="navbar" class="border-b-2 border-gray-200 bg-white">
+  <div class="flex justify-center border-b-2 border-b-gray-200 p-2">
+    <Image src={logoUnesco} alt="logo Unesco" class="md:h-16 h-10 w-auto" />
+  </div>
+  <div class="container p-3 mx-auto flex justify-between">
     <div>
       <a href="/" class="flex gap-5">
-        <Image src={logoUnesco} alt="logo Unesco" class="md:h-16 h-10 w-auto" />
         <Image
           src={logoPeriodistas}
           alt="logo periodistas amenazadas"
@@ -32,7 +34,7 @@ import { Icon } from "astro-icon/components";
         <li
           class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/acercade" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
         >
-          <a href="/acercade">Acerca De</a>
+          <a href="/">Inicio</a>
         </li>
         <li
           class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/testimonios" ? "text-primary-900 font-semibold" : "text-gray-500"}`}

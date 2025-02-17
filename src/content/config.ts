@@ -2,8 +2,8 @@ import { defineCollection, z } from "astro:content";
 
 const videos = defineCollection({
   schema: z.object({
-    name: z.string(),
-    videoUrl: z.string().url(),
+    title: z.string(),
+    relatoUrl: z.string().url(),
     poster: z.string(),
   }),
 });
