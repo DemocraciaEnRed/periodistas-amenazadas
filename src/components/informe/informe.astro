@@ -12,9 +12,9 @@ import { Icon } from "astro-icon/components";
   <div class="slides !mx-4 lg:!mt-20 mt-1">
     <Caratula />
     <CapituloViolencias />
-    <!-- <CapituloMitigacion />
+    <CapituloMitigacion />
     <CapituloPercepciones />
-    <CapituloEncuestadas /> -->
+    <CapituloEncuestadas />
   </div>
 </div>
 <div id="slide-overlay">
@@ -49,12 +49,12 @@ import { Icon } from "astro-icon/components";
 
 <script>
   const navbar = document.getElementById("navbar");
-  // const reveal = document.querySelector(".reveal");
-  // const height = navbar?.offsetHeight
-  //   ? window.innerHeight - navbar?.offsetHeight
-  //   : 1000;
+  const reveal = document.querySelector(".reveal");
+  const height = navbar?.offsetHeight
+    ? window.innerHeight - navbar?.offsetHeight
+    : 1000;
 
-  // reveal.style.height = `${height}px`;
+  reveal.style.height = `${height}px`;
   import Reveal from "reveal.js";
   import Markdown from "reveal.js/plugin/markdown/markdown.esm.js";
 
