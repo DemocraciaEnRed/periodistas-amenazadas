@@ -1,6 +1,11 @@
 ---
-import Content from "./content.astro";
-import Graph from "./graph.astro";
+import Medidas from "./medidas.astro";
+import TextoGrado from "./grado-texto.astro";
+import Grado from "./grado.astro";
+import TextoImpacto from "./impacto-texto.astro";
+import Impacto from "./impacto.astro";
+import TextoReaccion from "./reaccion-texto.astro";
+import Reaccion from "./reaccion.astro";
 ---
 
 <section>
@@ -9,10 +14,15 @@ import Graph from "./graph.astro";
       <h2 class="text-5xl">Capitulo sobre mitigación</h2>
       <p class="text-sm">
         Aquí puede ir un pequeño texto introduciendo a los datos relacionados
-        con la percepción de las encuestadas
+        con las acciones de mitigación
       </p>
     </div>
   </section>
-  <Graph />
-  <Content />
+  <Medidas />
+  <TextoGrado />
+  <Grado />
+  <TextoImpacto />
+  <Impacto />  
+  <TextoReaccion />
+  <Reaccion />    
 </section>

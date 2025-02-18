@@ -1,0 +1,81 @@
+---
+import microphoneImage from "../../../../assets/microphone.svg";
+import Background from "../background.astro";
+---
+
+<section id="sectionMitigacionMedidas" class="r-stretch">
+  <Background image={microphoneImage} position="-right-24 -bottom-20" />
+  <div id="medidas-container" class="w-10/12 h-full m-auto">
+    <div id="graficoMitigacionMedidas"></div>
+  </div>
+</section>
+
+<script>
+  import { observer } from "../../../../utils/observer";
+  import * as echarts from "echarts";
+
+  const chartDom = document.getElementById("graficoMitigacionMedidas");
+  const chart = echarts.init(chartDom);
+  const option = {
+    tooltip: {},
+    title: {
+      text: "Medidas a corto y largo plazo para proteger a periodistas mujeres",
+      textStyle: {
+        fontSize: 40,
+        fontWeight: "normal",
+        color: "#000",
+      },
+      left: "center",
+    },
+    yAxis: {
+      data: [
+        "Acciones efectivas (penas, aplicación de las normativas de cualquier índole)",
+        "Nuevos protocolos y/o legislación",
+        "Sindicatos y/o cualquier tipo de organización de apoyo",
+        "Capacitación y formación en general",
+        "Concientización, difusión y cambio cultural",
+        "Denuncia",
+        "Apartamiento del victimario",
+      ],
+      // axisLabel: { rotate: -45 },
+    },
+    xAxis: {},
+    series: [
+      {
+        type: "bar",
+        data: [33,21,37,33,24,21,4],
+        color: "#401F71",
+      },
+    ],
+  };
+
+
+
+
+
+  const resizeChart = () => {
+    const section = document.getElementById("medidas-container");
+    if (!chartDom) return;
+    chartDom.style.width = section?.offsetWidth + "px";
+    chartDom.style.height = section?.offsetHeight
+      ? section.offsetHeight + "px"
+      : "100vh";
+    chart.resize();
+  };
+  const initGraph = () => {
+    resizeChart();
+    chart.setOption(option);
+  };
+
+  window.addEventListener("resize", () => {
+    if (chart) {
+      resizeChart();
+    }
+  });
+
+  observer(
+    chartDom,
+    () => initGraph(), // Función init
+    () => chart.clear() // Función destroy
+  );
+</script>
