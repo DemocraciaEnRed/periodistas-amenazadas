@@ -6,16 +6,16 @@ import { Icon } from "astro-icon/components";
 ---
 
 <nav id="navbar" class="border-b-2 border-gray-200 bg-white">
-  <div class="flex justify-center border-b-2 border-b-gray-200 p-2">
+  <!-- <div class="flex justify-center border-b-2 border-b-gray-200 p-2">
     <Image src={logoUnesco} alt="logo Unesco" class="md:h-16 h-10 w-auto" />
-  </div>
+  </div> -->
   <div class="container p-3 mx-auto flex justify-between">
     <div>
       <a href="/" class="flex gap-5">
         <Image
           src={logoPeriodistas}
           alt="logo periodistas amenazadas"
-          class="md:h-16 h-10 w-auto"
+          class="md:h-12 h-10 w-auto"
         />
       </a>
     </div>
@@ -29,7 +29,7 @@ import { Icon } from "astro-icon/components";
         <Icon name="mdi:menu" class="text-4xl cursor-pointer menuButton" />
       </div>
       <ul
-        class="flex-col md:p-4 md:flex-row w-full flex items-end gap-10 text-lg flex-wrap justify-end"
+        class="flex-col md:p-2 md:flex-row w-full flex items-end gap-10 text-lg flex-wrap justify-end"
       >
         <li
           class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/acercade" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
