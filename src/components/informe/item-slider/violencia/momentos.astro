@@ -4,16 +4,16 @@ import xImage from "../../../../assets/x.svg";
 import Background from "../background.astro";
 ---
 
-<section id="sectionMomento" class="r-stretch">
+<section id="sectionViolenciasMomento" class="r-stretch">
   <Background image={xImage} position="-right-96 -bottom-80" />
-  <div id="momento-container" class="w-10/12 h-full m-auto">
-    <div id="graficoMomento"></div>
+  <div id="violencias-momento-container" class="w-10/12 h-full m-auto">
+    <div id="graficoViolenciasMomento"></div>
   </div>
 </section>
 <script>
   import { observer } from "../../../../utils/observer";
   import * as echarts from "echarts";
-  const chartDom = document.getElementById("graficoMomento");
+  const chartDom = document.getElementById("graficoViolenciasMomento");
   const chart = echarts.init(chartDom);
 
   const option = {
@@ -96,7 +96,7 @@ import Background from "../background.astro";
   };
 
   const resizeChart = () => {
-    const section = document.getElementById("momento-container");
+    const section = document.getElementById("violencias-momento-container");
     if (!chartDom) return;
     chartDom.style.width = section?.offsetWidth + "px";
     chartDom.style.height = section?.offsetHeight

@@ -4,10 +4,10 @@ import microphoneImage from "../../../../assets/microphone.svg";
 import Background from "../background.astro";
 ---
 
-<section id="sectionViolencia" class="r-stretch">
+<section id="sectionViolenciasViolencia" class="r-stretch">
   <Background image={microphoneImage} position="-right-24 -bottom-20" />
-  <div id="violencia-container" class="w-10/12 h-full m-auto">
-    <div id="graficoViolencia"></div>
+  <div id="violencias-violencia-container" class="w-10/12 h-full m-auto">
+    <div id="graficoViolenciasViolencia"></div>
   </div>
 </section>
 
@@ -15,12 +15,12 @@ import Background from "../background.astro";
   import { observer } from "../../../../utils/observer";
   import * as echarts from "echarts";
 
-  const chartDom = document.getElementById("graficoViolencia");
+  const chartDom = document.getElementById("graficoViolenciasViolencia");
   const chart = echarts.init(chartDom);
   const option = {
     tooltip: {},
     title: {
-      text: "Violencia sufrida por las encuestadas",
+      text: "Violencias sufrida por las encuestadas",
       textStyle: {
         fontSize: 40,
         fontWeight: "normal",
@@ -28,19 +28,19 @@ import Background from "../background.astro";
       },
       left: "center",
     },
-    xAxis: {
+    yAxis: {
       data: [
-        "    Violencia psicológica",
-        "Violencia física",
-        "Violencia económica",
-        "Violencia sexual",
-        "Violencia laboral",
-        "Violencia institucional",
-        "Violencia en línea",
+        "    ViolenciasViolencia psicológica",
+        "ViolenciasViolencia física",
+        "ViolenciasViolencia económica",
+        "ViolenciasViolencia sexual",
+        "ViolenciasViolencia laboral",
+        "ViolenciasViolencia institucional",
+        "ViolenciasViolencia en línea",
       ],
-      axisLabel: { rotate: -45 },
+      // axisLabel: { rotate: -45 },
     },
-    yAxis: {},
+    xAxis: {},
     series: [
       {
         type: "bar",
@@ -51,7 +51,7 @@ import Background from "../background.astro";
   };
 
   const resizeChart = () => {
-    const section = document.getElementById("momento-container");
+    const section = document.getElementById("violencias-violencia-container");
     if (!chartDom) return;
     chartDom.style.width = section?.offsetWidth + "px";
     chartDom.style.height = section?.offsetHeight

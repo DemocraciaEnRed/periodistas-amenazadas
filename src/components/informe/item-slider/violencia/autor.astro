@@ -4,7 +4,7 @@ import warningImage from "../../../../assets/warning.svg";
 import { tipoViolencia, datosAutores } from "../../../../utils/constants";
 ---
 
-<section id="sectionAutores" class="r-stretch">
+<section id="sectionViolenciasAutores" class="r-stretch">
   <Background image={warningImage} size={600} position="-right-40 -bottom-20" />
 
   <div class="flex w-full h-full justify-center">
@@ -29,8 +29,8 @@ import { tipoViolencia, datosAutores } from "../../../../utils/constants";
         ))
       }
     </div>
-    <div id="autores-container" class="w-8/12 h-full">
-      <div id="graficoAutores"></div>
+    <div id="violencias-autores-container" class="w-8/12 h-full">
+      <div id="graficoViolenciasAutores"></div>
     </div>
   </div>
 </section>
@@ -38,7 +38,7 @@ import { tipoViolencia, datosAutores } from "../../../../utils/constants";
   import { datosAutores } from "../../../../utils/constants";
   import { observer } from "../../../../utils/observer";
   import * as echarts from "echarts";
-  const chartDom = document.getElementById("graficoAutores");
+  const chartDom = document.getElementById("graficoViolenciasAutores");
   const chart = echarts.init(chartDom);
   const buttons = document.getElementsByName("violencia-tipo");
   const colors = [
@@ -78,7 +78,7 @@ import { tipoViolencia, datosAutores } from "../../../../utils/constants";
   };
 
   const resizeChart = () => {
-    const section = document.getElementById("autores-container");
+    const section = document.getElementById("violencias-autores-container");
     if (!chartDom) return;
     chartDom.style.width = section?.offsetWidth + "px";
     chartDom.style.height = section?.offsetHeight
