@@ -1,0 +1,57 @@
+---
+
+---
+
+<section id="sectionPercepcionesNoticias" class="r-stretch">
+  <div id="graficoPercepcionesNoticias"></div>
+</section>
+<script>
+  import { observer } from "../../../../utils/observer";
+  import * as echarts from "echarts";
+  const chartDom = document.getElementById("graficoPercepcionesNoticias");
+  const chart = echarts.init(chartDom);
+
+  const option = {
+  title: {
+    text: 'Reacciones frente a las violencias'
+  },
+  legend: {
+    data: ['Allocated Budget', 'Actual Spending']
+  },
+  radar: {
+    // shape: 'circle',
+    indicator: [
+      { name: 'Sólo en temáticas puntuales se trabaja con perspectiva de género', max: 130 },
+      { name: 'Siempre se trabajan con perspectiva de género', max: 130 },
+      { name: 'Muchas veces se trabajan con perspectiva de género,', max: 130 },
+      { name: 'Algunas veces se trabajan con perspectiva de género', max: 130 },
+      { name: 'Nunca se trabaja con perspectiva de género', max: 130 },
+    ]
+  },
+  series: [
+    {
+      name: 'Budget vs spending',
+      type: 'radar',
+      data: [
+        {
+          value: [123, 3, 10, 65, 14],
+          name: 'Reacción'
+        },
+      ]
+    }
+  ]
+};
+  const initGraph = () => {
+    const section = document.getElementById("sectionPercepcionesNoticias");
+    chartDom.style.width = section.offsetWidth + "px";
+    chartDom.style.height = section.offsetHeight + "px";
+    chart.resize();
+    chart.setOption(option);
+  };
+
+  observer(
+    chartDom,
+    () => initGraph(), // Función init
+    () => chart.clear() // Función destroy
+  );
+</script>

@@ -1,0 +1,83 @@
+---
+
+---
+
+<section id="sectionPercepcionesIngresos" class="r-stretch">
+  <div class="flex w-full h-full justify-center">
+    <div id="percepciones-ingresos-container" class="w-8/12 h-full">
+      <div id="graficoPercepcionesIngresos"></div>
+    </div>
+  </div>
+</section>
+<script>
+  import { observer } from "../../../../utils/observer";
+  import * as echarts from "echarts";
+  const chartDom = document.getElementById("graficoPercepcionesIngresos");
+  const chart = echarts.init(chartDom);
+  const buttons = document.getElementsByName("violencia-tipo");
+  const colors = [
+    "#401F71",
+    "#88659F",
+    "#FFAC39",
+    "#E6E1CF",
+    "#ED8272",
+    "#2A0C4E",
+    "#B092C2",
+    "#F8D58D",
+    "#C9695B",
+  ];
+
+  const option = {
+    toolbox: {
+        show: true,
+        feature: {
+        mark: { show: true },
+        }
+    },
+    series: [
+        {
+        name: 'Nightingale Chart',
+        type: 'pie',
+        radius: [50, 250],
+        center: ['50%', '50%'],
+        roseType: 'area',
+        itemStyle: {
+            borderRadius: 8
+        },
+        data: [
+            { value: 46, name: 'Ganan igual que los varones periodistas por iguales tareas' },
+            { value: 97, name: 'Ganan menos que los varones periodistas por iguales tareas' },
+            { value: 1, name: 'Ganan más que los varones periodistas por iguales tareas' },
+            { value: 39, name: 'Ganan menos que los varones periodistas por iguales tareas sólo en determinadas áreas.' },
+            { value: 3, name: 'Ganan más que los varones periodistas por iguales tareas en determinadas áreas.' }
+        ]
+        }
+    ]
+    };
+
+  const resizeChart = () => {
+    const section = document.getElementById("percepciones-ingresos-container");
+    if (!chartDom) return;
+    chartDom.style.width = section?.offsetWidth + "px";
+    chartDom.style.height = section?.offsetHeight
+      ? section.offsetHeight + "px"
+      : "60vh";
+    chart.resize();
+  };
+  const initGraph = () => {
+    resizeChart();
+    chart.setOption(option);
+  };
+
+  window.addEventListener("resize", () => {
+    if (chart) {
+      resizeChart();
+    }
+  });
+
+  observer(
+    chartDom,
+    () => initGraph(), // Función init
+    () => chart.clear() // Función destroy
+  );
+</script>

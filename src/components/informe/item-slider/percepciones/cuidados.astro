@@ -1,0 +1,73 @@
+---
+
+---
+
+<section id="sectionPercepcionesCuidados" class="r-stretch">
+  <div id="percepciones-cuidados-container" class="w-10/12 h-full m-auto">
+    <div id="graficoPercepcionesCuidados"></div>
+  </div>
+</section>
+
+<script>
+  import { observer } from "../../../../utils/observer";
+  import * as echarts from "echarts";
+
+  const chartDom = document.getElementById("graficoPercepcionesCuidados");
+  const chart = echarts.init(chartDom);
+  const option = {
+    tooltip: {},
+    title: {
+      text: "Percepción sobre la dificultad en conseguir el puesto actual en el periodismo",
+      textStyle: {
+        fontSize: 40,
+        fontWeight: "normal",
+        color: "#000",
+      },
+      left: "center",
+    },
+    xAxis: {
+      data: [
+        "Nada",
+        "Poco",
+        "Algo",
+        "Bastante",
+        "Mucho",
+      ],
+      // axisLabel: { rotate: -45 },
+    },
+    yAxis: {},
+    series: [
+      {
+        type: "bar",
+        data: [15, 15, 44, 58, 83],
+        color: "#401F71",
+      },
+    ],
+  };
+
+  const resizeChart = () => {
+    const section = document.getElementById("percepciones-cuidados-container");
+    if (!chartDom) return;
+    chartDom.style.width = section?.offsetWidth + "px";
+    chartDom.style.height = section?.offsetHeight
+      ? section.offsetHeight + "px"
+      : "100vh";
+    chart.resize();
+  };
+  const initGraph = () => {
+    resizeChart();
+    chart.setOption(option);
+  };
+
+  window.addEventListener("resize", () => {
+    if (chart) {
+      resizeChart();
+    }
+  });
+
+  observer(
+    chartDom,
+    () => initGraph(), // Función init
+    () => chart.clear() // Función destroy
+  );
+</script>
