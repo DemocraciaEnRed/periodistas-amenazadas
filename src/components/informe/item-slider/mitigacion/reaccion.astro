@@ -3,45 +3,53 @@
 ---
 
 <section id="sectionMitigacionReaccion" class="r-stretch">
-  <div id="graficoMitigacionReaccion"></div>
+  <div id="graficoMitigacionReaccion" class="w-10/12 h-full m-auto"></div>
 </section>
 <script>
+  import { colors } from "../../../../utils/constants";
   import { observer } from "../../../../utils/observer";
   import * as echarts from "echarts";
   const chartDom = document.getElementById("graficoMitigacionReaccion");
   const chart = echarts.init(chartDom);
 
   const option = {
-  title: {
-    text: 'Reacciones frente a las violencias'
-  },
-  legend: {
-    data: ['Allocated Budget', 'Actual Spending']
-  },
-  radar: {
-    // shape: 'circle',
-    indicator: [
-      { name: 'No hizo o dijo nada', max: 120 },
-      { name: 'Lo comentó con otras mujeres en el periodismo,', max: 120 },
-      { name: 'Lo comentó con varones en el periodismo', max: 120 },
-      { name: 'Lo comentó con otras mujeres fuera del periodismo', max: 120 },
-      { name: 'Lo comentó con varones fuera del periodismo', max: 120 },
-      { name: 'Denunció ante órganos competentes', max: 120 }
-    ]
-  },
-  series: [
-    {
-      name: 'Budget vs spending',
-      type: 'radar',
-      data: [
-        {
-          value: [59,107,79,94,78,32],
-          name: 'Reacción'
-        },
-      ]
-    }
-  ]
-};
+    title: {
+      text: "Reacciones frente a las violencias",
+      textStyle: {
+        fontSize: 40,
+        fontWeight: "normal",
+        color: "#000",
+      },
+      left: "center",
+    },
+    color: colors,
+    legend: {
+      data: ["Allocated Budget", "Actual Spending"],
+    },
+    radar: {
+      // shape: 'circle',
+      indicator: [
+        { name: "No hizo o dijo nada", max: 120 },
+        { name: "Lo comentó con otras mujeres en el periodismo,", max: 120 },
+        { name: "Lo comentó con varones en el periodismo", max: 120 },
+        { name: "Lo comentó con otras mujeres fuera del periodismo", max: 120 },
+        { name: "Lo comentó con varones fuera del periodismo", max: 120 },
+        { name: "Denunció ante órganos competentes", max: 120 },
+      ],
+    },
+    series: [
+      {
+        name: "Budget vs spending",
+        type: "radar",
+        data: [
+          {
+            value: [59, 107, 79, 94, 78, 32],
+            name: "Reacción",
+          },
+        ],
+      },
+    ],
+  };
   const initGraph = () => {
     const section = document.getElementById("sectionMitigacionReaccion");
     chartDom.style.width = section.offsetWidth + "px";

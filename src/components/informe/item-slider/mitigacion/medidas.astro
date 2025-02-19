@@ -5,7 +5,7 @@ import Background from "../background.astro";
 
 <section id="sectionMitigacionMedidas" class="r-stretch">
   <Background image={microphoneImage} position="-right-24 -bottom-20" />
-  <div id="medidas-container" class="w-10/12 h-full m-auto">
+  <div id="mitigacion-medidas-container" class="w-10/12 h-full m-auto">
     <div id="graficoMitigacionMedidas"></div>
   </div>
 </section>
@@ -43,18 +43,14 @@ import Background from "../background.astro";
     series: [
       {
         type: "bar",
-        data: [33,21,37,33,24,21,4],
+        data: [33, 21, 37, 33, 24, 21, 4],
         color: "#401F71",
       },
     ],
   };
 
-
-
-
-
   const resizeChart = () => {
-    const section = document.getElementById("medidas-container");
+    const section = document.getElementById("mitigacion-medidas-container");
     if (!chartDom) return;
     chartDom.style.width = section?.offsetWidth + "px";
     chartDom.style.height = section?.offsetHeight

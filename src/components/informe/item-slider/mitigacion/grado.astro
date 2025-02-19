@@ -2,42 +2,77 @@
 
 ---
 
-<section id="sectionMitigacionGrado" class="r-stretch">
-  <div id="graficoMitigacionGrado"></div>
+<section class="r-stretch">
+  <div id="sectionMitigacionGrado" class="w-10/12 h-full m-auto">
+    <div id="graficoMitigacionGrado"></div>
+  </div>
 </section>
 <script>
+  import { colors } from "../../../../utils/constants";
   import { observer } from "../../../../utils/observer";
   import * as echarts from "echarts";
   const chartDom = document.getElementById("graficoMitigacionGrado");
   const chart = echarts.init(chartDom);
 
   const option = {
-  title: {
-    text: "Grado en que ayudan las medidas a proteger a las mujeres periodistas",
-    textStyle: {
-      fontSize: 40,
-      fontWeight: "normal",
-      color: "#000",
+    color: colors,
+    title: {
+      text: "Grado en que ayudan las medidas a proteger a las mujeres periodistas",
+      textStyle: {
+        fontSize: 40,
+        fontWeight: "normal",
+        color: "#000",
+      },
+      left: "center",
     },
-    left: "center",
-  },    
-  legend: {},
-  tooltip: {},
-  dataset: {
-    dimensions: ['product', "Nada", "Poco","Bastante","Mucho"],
-    source: [
-      { product: 'Protocolos de igualdad de género en las redacciones', "Nada": 29, "Poco": 68, "Bastante": 65, "Mucho": 39 },
-      { product: 'Procesos internos para resguardar a las víctimas en espacios laborales', "Nada": 27, "Poco": 56, "Bastante": 67, "Mucho": 51 },
-      { product: 'Denuncias públicas sobre casos de violencia en ejercicio del periodismo', "Nada": 29, "Poco": 50, "Bastante": 74, "Mucho": 53 },
-      { product: 'Capacitaciones sobre seguridad digital para periodistas', "Nada": 23, "Poco": 45, "Bastante": 75, "Mucho": 59 }
-    ]
-  },
-  yAxis: { type: 'category' },
-  xAxis: {},
-  // Declare several bar series, each will be mapped
-  // to a column of dataset.source by default.
-  series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
-};
+    legend: { bottom: 0 },
+    tooltip: {},
+    dataset: {
+      dimensions: ["product", "Nada", "Poco", "Bastante", "Mucho"],
+      source: [
+        {
+          product: "Protocolos de igualdad de género en las redacciones",
+          Nada: 29,
+          Poco: 68,
+          Bastante: 65,
+          Mucho: 39,
+        },
+        {
+          product:
+            "Procesos internos para resguardar a las víctimas en espacios laborales",
+          Nada: 27,
+          Poco: 56,
+          Bastante: 67,
+          Mucho: 51,
+        },
+        {
+          product:
+            "Denuncias públicas sobre casos de violencia en ejercicio del periodismo",
+          Nada: 29,
+          Poco: 50,
+          Bastante: 74,
+          Mucho: 53,
+        },
+        {
+          product: "Capacitaciones sobre seguridad digital para periodistas",
+          Nada: 23,
+          Poco: 45,
+          Bastante: 75,
+          Mucho: 59,
+        },
+      ],
+    },
+    yAxis: { type: "category" },
+    xAxis: {},
+    // Declare several bar series, each will be mapped
+    // to a column of dataset.source by default.
+    series: [
+      { type: "bar" },
+      { type: "bar" },
+      { type: "bar" },
+      { type: "bar" },
+    ],
+  };
   const initGraph = () => {
     const section = document.getElementById("sectionMitigacionGrado");
     chartDom.style.width = section.offsetWidth + "px";

@@ -45,6 +45,11 @@ import { Icon } from "astro-icon/components";
       display: none;
     }
   }
+  @media screen and (orientation: landscape) {
+    #slide-overlay {
+      display: none;
+    }
+  }
 </style>
 
 <script>
@@ -75,4 +80,7 @@ import { Icon } from "astro-icon/components";
       initReveal();
     } //else deck.destroy();
   });
+  // deck.addEventListener("ready", function (event) {
+  //   deck.slide(2, 7); //go to slide horizontal / vertical
+  // });
 </script>

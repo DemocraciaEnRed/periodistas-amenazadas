@@ -101,3 +101,15 @@ export const datosAutores = {
     { name: "Funcionario y/o empleado público", value: 35 },
   ],
 };
+
+export const colors = [
+  "#401F71",
+  "#88659F",
+  "#FFAC39",
+  "#E6E1CF",
+  "#ED8272",
+  "#2A0C4E",
+  "#B092C2",
+  "#F8D58D",
+  "#C9695B",
+];

@@ -4,8 +4,49 @@ import silent from "../../../assets/silent.png";
 ---
 
 <section class="r-stretch">
-  <div class="flex flex-col items-center">
-    <h2 class="text-5xl">Caratula principal</h2>
-    <Image src={silent} alt="mujer silenciada" height={700} class="h-1/6" />
+  <div class="flex flex-col items-center p-4">
+    <h2 class="text-5xl">Indice</h2>
+    <div class="w-8/12 mx-auto text-left leading-8">
+      <ul class="list-disc">
+        <li>
+          <a href="#/">indice</a>
+        </li>
+        <li>
+          <a href="#/seccionViolencia">Violencia</a>
+          <ul class="dashed px-4">
+            <li>
+              <a href="#/sectionViolenciasViolencia"
+                >violencia sufrida por las encuestadas</a
+              >
+            </li>
+            <li>
+              <a href="#/sectionViolenciasMomento"
+                >momento de ocurrencia de la violencia</a
+              >
+            </li>
+            <li>
+              <a href="#/sectionViolenciasAutores">tipos de violencias</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#/seccionMitigacion">Mitigacion</a>
+          <ul class="dashed px-4">
+            <li><a href="#/sectionPercepcionesIngresos">Medidas</a></li>
+            <li><a href="#/sectionPercepcionesDificultad">Grado</a></li>
+            <li><a href="#/sectionPercepcionesNoticias">Impacto</a></li>
+            <li><a href="#/sectionPercepcionesCuidado">Reaccion</a></li>
+          </ul>
+        </li>
+        <li><a href="#/seccionPercepciones">Percepciones</a></li>
+        <li><a href="#/seccionEncuestadas">Encuestadas</a></li>
+      </ul>
+    </div>
   </div>
 </section>
+
+<style>
+  .dashed {
+    list-style-type: "- ";
+  }
+</style>

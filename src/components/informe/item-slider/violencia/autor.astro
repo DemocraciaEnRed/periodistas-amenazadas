@@ -35,23 +35,12 @@ import { tipoViolencia, datosAutores } from "../../../../utils/constants";
   </div>
 </section>
 <script>
-  import { datosAutores } from "../../../../utils/constants";
+  import { colors, datosAutores } from "../../../../utils/constants";
   import { observer } from "../../../../utils/observer";
   import * as echarts from "echarts";
   const chartDom = document.getElementById("graficoViolenciasAutores");
   const chart = echarts.init(chartDom);
   const buttons = document.getElementsByName("violencia-tipo");
-  const colors = [
-    "#401F71",
-    "#88659F",
-    "#FFAC39",
-    "#E6E1CF",
-    "#ED8272",
-    "#2A0C4E",
-    "#B092C2",
-    "#F8D58D",
-    "#C9695B",
-  ];
 
   const option = {
     legend: {
