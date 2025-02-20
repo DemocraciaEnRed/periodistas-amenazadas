@@ -2,17 +2,17 @@
 
 ---
 
-<section id="seccionPercepcionesIngresos" class="r-stretch">
+<section id="seccionTrayectoriasIngresos" class="r-stretch">
   <div class="flex w-full h-full justify-center">
-    <div id="percepciones-ingresos-container" class="w-8/12 h-full">
-      <div id="graficoPercepcionesIngresos"></div>
+    <div id="trayectorias-ingresos-container" class="w-8/12 h-full">
+      <div id="graficoTrayectoriasIngresos"></div>
     </div>
   </div>
 </section>
 <script>
   import { observer } from "../../../../utils/observer";
   import * as echarts from "echarts";
-  const chartDom = document.getElementById("graficoPercepcionesIngresos");
+  const chartDom = document.getElementById("graficoTrayectoriasIngresos");
   const chart = echarts.init(chartDom);
   const buttons = document.getElementsByName("violencia-tipo");
   const colors = [
@@ -71,7 +71,7 @@
   };
 
   const resizeChart = () => {
-    const section = document.getElementById("percepciones-ingresos-container");
+    const section = document.getElementById("trayectorias-ingresos-container");
     if (!chartDom) return;
     chartDom.style.width = section?.offsetWidth + "px";
     chartDom.style.height = section?.offsetHeight

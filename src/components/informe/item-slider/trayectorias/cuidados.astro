@@ -2,9 +2,9 @@
 
 ---
 
-<section id="seccionPercepcionesCuidados" class="r-stretch">
-  <div id="percepciones-cuidados-container" class="w-10/12 h-full m-auto">
-    <div id="graficoPercepcionesCuidados"></div>
+<section id="seccionTrayectoriasCuidados" class="r-stretch">
+  <div id="trayectorias-cuidados-container" class="w-10/12 h-full m-auto">
+    <div id="graficoTrayectoriasCuidados"></div>
   </div>
 </section>
 
@@ -12,7 +12,7 @@
   import { observer } from "../../../../utils/observer";
   import * as echarts from "echarts";
 
-  const chartDom = document.getElementById("graficoPercepcionesCuidados");
+  const chartDom = document.getElementById("graficoTrayectoriasCuidados");
   const chart = echarts.init(chartDom);
   const option = {
     tooltip: {},
@@ -40,7 +40,7 @@
   };
 
   const resizeChart = () => {
-    const section = document.getElementById("percepciones-cuidados-container");
+    const section = document.getElementById("trayectorias-cuidados-container");
     if (!chartDom) return;
     chartDom.style.width = section?.offsetWidth + "px";
     chartDom.style.height = section?.offsetHeight

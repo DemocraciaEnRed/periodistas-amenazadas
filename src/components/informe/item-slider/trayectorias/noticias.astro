@@ -2,13 +2,13 @@
 
 ---
 
-<section id="seccionPercepcionesNoticias" class="r-stretch">
-  <div id="graficoPercepcionesNoticias"></div>
+<section id="seccionTrayectoriasNoticias" class="r-stretch">
+  <div id="graficoTrayectoriasNoticias"></div>
 </section>
 <script>
   import { observer } from "../../../../utils/observer";
   import * as echarts from "echarts";
-  const chartDom = document.getElementById("graficoPercepcionesNoticias");
+  const chartDom = document.getElementById("graficoTrayectoriasNoticias");
   const chart = echarts.init(chartDom);
 
   const option = {
@@ -51,7 +51,7 @@
     ],
   };
   const initGraph = () => {
-    const section = document.getElementById("seccionPercepcionesNoticias");
+    const section = document.getElementById("seccionTrayectoriasNoticias");
     chartDom.style.width = section.offsetWidth + "px";
     chartDom.style.height = section.offsetHeight + "px";
     chart.resize();
