@@ -2,8 +2,8 @@
 
 ---
 
-<section class="r-stretch">
-  <div id="sectionMitigacionGrado" class="w-10/12 h-full m-auto">
+<section id="seccionMitigacionGrado" class="r-stretch">
+  <div id="graphContainerMitigacionGrado" class="w-10/12 h-full m-auto">
     <div id="graficoMitigacionGrado"></div>
   </div>
 </section>
@@ -74,7 +74,7 @@
     ],
   };
   const initGraph = () => {
-    const section = document.getElementById("sectionMitigacionGrado");
+    const section = document.getElementById("graphContainerMitigacionGrado");
     chartDom.style.width = section.offsetWidth + "px";
     chartDom.style.height = section.offsetHeight + "px";
     chart.resize();
