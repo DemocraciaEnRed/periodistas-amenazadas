@@ -8,7 +8,7 @@ import { Icon } from "astro-icon/components";
 <nav id="navbar" class="border-b-2 border-gray-200 bg-white">
   <div class="container p-3 mx-auto flex justify-between">
     <div>
-      <a href="/" class="flex gap-5">
+      <a href="/periodistas-amenazadas/" class="flex gap-5">
         <Image
           src={logoPeriodistas}
           alt="logo periodistas amenazadas"
@@ -31,32 +31,32 @@ import { Icon } from "astro-icon/components";
         <li
           class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/acercade" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
         >
-          <a href="/">Inicio</a>
+          <a href="/periodistas-amenazadas/">Inicio</a>
         </li>
         <li
           class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/testimonios" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
         >
-          <a href="/testimonios">Testimonios</a>
+          <a href="/periodistas-amenazadas/testimonios">Testimonios</a>
         </li>
         <li
           class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/datos" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
         >
-          <a href="/datos">Datos</a>
+          <a href="/periodistas-amenazadas/datos">Datos</a>
         </li>
         <li
           class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/contacto" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
         >
-          <a href="/contacto">Contacto</a>
+          <a href="/periodistas-amenazadas/contacto">Contacto</a>
         </li>
         <li
           class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/metodologias" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
         >
-          <a href="/metodologias">Metodologia</a>
+          <a href="/periodistas-amenazadas/metodologias">Metodologia</a>
         </li>
         <li
           class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/faqs" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
         >
-          <a href="/faqs">Faqs</a>
+          <a href="/periodistas-amenazadas/faqs">Faqs</a>
         </li>
       </ul>
     </div>
@@ -64,11 +64,27 @@ import { Icon } from "astro-icon/components";
   <div class="border-t-2 py-3 text-gray-500">
     <div class="container px-3 mx-auto">
       <ul class="flex justify-between" id="subnavbar">
-        <li><a href="#/"> indice</a></li>
-        <li><a href="#/seccionViolencia"> 1 Violencia</a></li>
-        <li><a href="#/seccionMitigacion"> 2 Mitigacion</a></li>
-        <li><a href="#/seccionPercepciones"> 3 Percepciones</a></li>
-        <li><a href="#/seccionEncuestadas"> 4 Encuestadas</a></li>
+        <li><a href="/periodistas-amenazadas/informe/#/"> indice</a></li>
+        <li>
+          <a href="/periodistas-amenazadas/informe/#/seccionViolencia">
+            1 Violencia</a
+          >
+        </li>
+        <li>
+          <a href="/periodistas-amenazadas/informe/#/seccionMitigacion">
+            2 Mitigacion</a
+          >
+        </li>
+        <li>
+          <a href="/periodistas-amenazadas/informe/#/seccionPercepciones">
+            3 Percepciones</a
+          >
+        </li>
+        <li>
+          <a href="/periodistas-amenazadas/informe/#/seccionEncuestadas">
+            4 Encuestadas</a
+          >
+        </li>
       </ul>
     </div>
   </div>

@@ -2,7 +2,7 @@
 
 ---
 
-<section id="sectionPercepcionesDificultad" class="r-stretch">
+<section id="seccionPercepcionesDificultad" class="r-stretch">
   <div id="percepciones-dificultad-container" class="w-10/12 h-full m-auto">
     <div id="graficoPercepcionesDificultad"></div>
   </div>
@@ -26,27 +26,23 @@
       left: "center",
     },
     xAxis: {
-      data: [
-        "Muy fácil",
-        "Fácil",
-        "Bastante",
-        "Difícil",
-        "Muy difícil",
-      ],
+      data: ["Muy fácil", "Fácil", "Bastante", "Difícil", "Muy difícil"],
       // axisLabel: { rotate: -45 },
     },
     yAxis: {},
     series: [
       {
         type: "bar",
-        data: [11,23,66,45,70],
+        data: [11, 23, 66, 45, 70],
         color: "#401F71",
       },
     ],
   };
 
   const resizeChart = () => {
-    const section = document.getElementById("percepciones-dificultad-container");
+    const section = document.getElementById(
+      "percepciones-dificultad-container"
+    );
     if (!chartDom) return;
     chartDom.style.width = section?.offsetWidth + "px";
     chartDom.style.height = section?.offsetHeight
