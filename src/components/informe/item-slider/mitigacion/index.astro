@@ -4,25 +4,25 @@ import TextoGrado from "./grado-texto.astro";
 import Grado from "./grado.astro";
 import TextoImpacto from "./impacto-texto.astro";
 import Impacto from "./impacto.astro";
-import TextoReaccion from "./reaccion-texto.astro";
+import MedidasTexto from "./medidas-texto.astro";
 import Reaccion from "./reaccion.astro";
 ---
 
 <section>
   <section id="seccionMitigacion">
-    <div>
       <h2 class="text-5xl">Capitulo sobre mitigación</h2>
-      <p class="text-sm">
-        Aquí puede ir un pequeño texto introduciendo a los datos relacionados
-        con las acciones de mitigación
+      <p class="text-lg mt-5 w-10/12 m-auto">
+        La <b>respuesta más común</b> de las mujeres periodistas frente a situaciones de violencia es 
+        <b>conversar sobre lo sucedido con otras mujeres</b>, tanto dentro del ámbito del periodismo (107 casos) como fuera de él (94 casos). 
+        Aunque la mayoría (132 casos) conoce organizaciones que abordan las violencias contra las mujeres en sus provincias, 
+        <b>pocas recurren</b> a ellas para <b>acompañamiento o asesoría</b>.
       </p>
-    </div>
   </section>
+  <Reaccion />
+  <MedidasTexto />
   <Medidas />
   <TextoGrado />
   <Grado />
   <TextoImpacto />
   <Impacto />
-  <TextoReaccion />
-  <Reaccion />
 </section>
