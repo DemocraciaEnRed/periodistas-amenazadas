@@ -10,11 +10,11 @@ import { Icon } from "astro-icon/components";
 
 <div class="reveal">
   <div class="slides !mx-4 lg:!mt-20 mt-1">
-    <Caratula />
     <CapituloViolencias />
     <CapituloMitigacion />
     <CapituloTrayectorias />
     <CapituloEncuestadas />
+    <Caratula />
   </div>
 </div>
 <div id="slide-overlay">
@@ -35,7 +35,7 @@ import { Icon } from "astro-icon/components";
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0, 0, 0, 0.9);
+      background: rgba(0, 0, 0, 0.99);
       color: white;
       font-size: 2rem;
       z-index: 9999;
@@ -80,7 +80,28 @@ import { Icon } from "astro-icon/components";
       initReveal();
     } //else deck.destroy();
   });
+  deck.on("slidechanged", () => {
+    const slideId = deck.getCurrentSlide().id;
+    if (slideId) window.location.hash = "/" + slideId;
+    highlightLinks();
+  });
+
   // deck.addEventListener("ready", function (event) {
   //   deck.slide(2, 7); //go to slide horizontal / vertical
   // });
+
+  function highlightLinks() {
+    const allLinks = document.querySelectorAll(".links-subnavbar");
+    const active = allLinks[deck.getIndices().h];
+
+    allLinks.forEach((el) => {
+      el?.parentElement?.classList.remove("bg-primary-500");
+      el?.parentElement?.classList.remove("text-white");
+    });
+
+    if (active) {
+      active?.parentElement?.classList.add("bg-primary-500");
+      active?.parentElement?.classList.add("text-white");
+    }
+  }
 </script>
