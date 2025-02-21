@@ -6,8 +6,8 @@
   <div id="graficoMitigacionReaccion" class="w-10/12 h-full m-auto"></div>
 </section>
 <script>
-  import { colors } from "../../../../utils/constants";
-  import { observer } from "../../../../utils/observer";
+  import { colors } from "@/utils/constants";
+  import { observer } from "@/utils/slider-utils";
   import * as echarts from "echarts";
   const chartDom = document.getElementById("graficoMitigacionReaccion");
   const chart = echarts.init(chartDom);

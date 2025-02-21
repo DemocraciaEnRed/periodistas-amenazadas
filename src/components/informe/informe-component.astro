@@ -8,15 +8,18 @@ import { Icon } from "astro-icon/components";
 // Define un estado inicial para currentSlide
 ---
 
-<div class="reveal">
-  <div class="slides !mx-4 lg:!mt-20 mt-1">
+<div class="reveal bg-white">
+  <div class="slides mt-1">
     <CapituloViolencias />
     <CapituloMitigacion />
     <CapituloTrayectorias />
     <CapituloEncuestadas />
     <Caratula />
   </div>
+  <div class="globo bg-secondary-500 absolute bottom-0 left-0 w-full opacity-0">
+  </div>
 </div>
+
 <div id="slide-overlay">
   <Icon name="mdi:phone-rotate-landscape" class="text-8xl" />
   Por favor, gira tu dispositivo para ver la presentación.
@@ -50,6 +53,26 @@ import { Icon } from "astro-icon/components";
       display: none;
     }
   }
+  .globo {
+    height: 10%;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    transition: opacity 0.5s;
+    &:after {
+      content: " ";
+      height: 0;
+      width: 0;
+      border: 50px solid transparent;
+      border-top: 0;
+      border-left: 0;
+      border-bottom: 50px solid theme("colors.secondary.500");
+      position: absolute;
+      top: -50px;
+      right: 10%;
+      z-index: 1;
+      border-top-left-radius: 10px;
+    }
+  }
 </style>
 
 <script>
@@ -60,8 +83,10 @@ import { Icon } from "astro-icon/components";
     : 1000;
 
   reveal.style.height = `${height}px`;
+
   import Reveal from "reveal.js";
   import Markdown from "reveal.js/plugin/markdown/markdown.esm.js";
+  import { showGlobo, highlightLink } from "@/utils/slider-utils.js";
 
   // Inicializa reveal.js
   let deck = new Reveal({
@@ -81,27 +106,7 @@ import { Icon } from "astro-icon/components";
     } //else deck.destroy();
   });
   deck.on("slidechanged", () => {
-    const slideId = deck.getCurrentSlide().id;
-    if (slideId) window.location.hash = "/" + slideId;
-    highlightLinks();
+    highlightLink(deck);
+    showGlobo(deck);
   });
-
-  // deck.addEventListener("ready", function (event) {
-  //   deck.slide(2, 7); //go to slide horizontal / vertical
-  // });
-
-  function highlightLinks() {
-    const allLinks = document.querySelectorAll(".links-subnavbar");
-    const active = allLinks[deck.getIndices().h];
-
-    allLinks.forEach((el) => {
-      el?.parentElement?.classList.remove("bg-primary-500");
-      el?.parentElement?.classList.remove("text-white");
-    });
-
-    if (active) {
-      active?.parentElement?.classList.add("bg-primary-500");
-      active?.parentElement?.classList.add("text-white");
-    }
-  }
 </script>

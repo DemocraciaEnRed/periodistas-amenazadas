@@ -1,7 +1,7 @@
 ---
 import Background from "../background.astro";
-import warningImage from "../../../../assets/warning.svg";
-import { tipoViolencia, datosAutores } from "../../../../utils/constants";
+import warningImage from "@/assets/warning.svg";
+import { tipoViolencia } from "@/utils/constants";
 ---
 
 <section id="seccionViolenciasAutores" class="r-stretch">
@@ -35,8 +35,8 @@ import { tipoViolencia, datosAutores } from "../../../../utils/constants";
   </div>
 </section>
 <script>
-  import { colors, datosAutores } from "../../../../utils/constants";
-  import { observer } from "../../../../utils/observer";
+  import { colors, datosAutores } from "@/utils/constants";
+  import { observer } from "@/utils/slider-utils";
   import * as echarts from "echarts";
   const chartDom = document.getElementById("graficoViolenciasAutores");
   const chart = echarts.init(chartDom);

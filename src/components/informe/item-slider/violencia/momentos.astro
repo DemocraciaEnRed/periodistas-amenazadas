@@ -1,6 +1,5 @@
 ---
-import { Image } from "astro:assets";
-import xImage from "../../../../assets/x.svg";
+import xImage from "@/assets/x.svg";
 import Background from "../background.astro";
 ---
 
@@ -11,7 +10,7 @@ import Background from "../background.astro";
   </div>
 </section>
 <script>
-  import { observer } from "../../../../utils/observer";
+  import { observer } from "@/utils/slider-utils";
   import * as echarts from "echarts";
   const chartDom = document.getElementById("graficoViolenciasMomento");
   const chart = echarts.init(chartDom);

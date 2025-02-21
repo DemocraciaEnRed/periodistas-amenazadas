@@ -1,8 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import fopea from "../../assets/fopea.png";
-import logoPeriodistas from "../../assets/logo.png";
-import logoUnesco from "../../assets/unesco.png";
+import fopea from "@/assets/fopea.png";
+import logoPeriodistas from "@/assets/logo.png";
+import logoUnesco from "@/assets/unesco.png";
 ---
 
 <footer class="">
@@ -40,10 +40,10 @@ import logoUnesco from "../../assets/unesco.png";
       <h6 class="text-primary-950 font-bold">Proyecto de</h6>
       <div class="pt-2 flex flex-col md:items-end">
         <Image
-        src={logoPeriodistas}
-        alt="logo periodistas amenazadas"
-        class="float-right"
-        width={100}
+          src={logoPeriodistas}
+          alt="logo periodistas amenazadas"
+          class="float-right"
+          width={100}
         />
         <Image src={fopea} alt="logo fopea" width={100} />
         <Image src={logoUnesco} alt="logo fopea" width={100} />
