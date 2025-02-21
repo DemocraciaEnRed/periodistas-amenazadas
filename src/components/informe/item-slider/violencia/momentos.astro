@@ -10,10 +10,7 @@ import Background from "../background.astro";
   </div>
 </section>
 <script>
-  import { observer } from "@/utils/slider-utils";
-  import * as echarts from "echarts";
-  const chartDom = document.getElementById("graficoViolenciasMomento");
-  const chart = echarts.init(chartDom);
+  import { initChartOnScreen, resizeChart } from "@/utils/slider-utils";
 
   const option = {
     title: {
@@ -94,29 +91,13 @@ import Background from "../background.astro";
     ],
   };
 
-  const resizeChart = () => {
-    const section = document.getElementById("violencias-momento-container");
-    if (!chartDom) return;
-    chartDom.style.width = section?.offsetWidth + "px";
-    chartDom.style.height = section?.offsetHeight
-      ? section.offsetHeight + "px"
-      : "100vh";
-    chart.resize();
-  };
-  const initGraph = () => {
-    resizeChart();
-    chart.setOption(option);
-  };
-
-  window.addEventListener("resize", () => {
-    if (chart) {
-      resizeChart();
-    }
-  });
-
-  observer(
-    chartDom,
-    () => initGraph(), // Función init
-    () => chart.clear() // Función destroy
+  initChartOnScreen(
+    "graficoViolenciasMomento",
+    () =>
+      resizeChart(
+        "violencias-momento-container",
+        "graficoViolenciasMomento",
+        option
+      ) // Función init
   );
 </script>

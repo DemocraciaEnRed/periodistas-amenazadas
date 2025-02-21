@@ -1,3 +1,5 @@
+import * as echarts from "echarts";
+
 export const showGlobo=(deck)=> {
   const globo = document.querySelector(".globo");
   deck.getCurrentSlide().className.includes("showGlobo")
@@ -26,14 +28,16 @@ export const highlightLink=(deck)=> {
   }
 }
 
-export const observer = (element, init, destroy) => {
+export const initChartOnScreen = (element, init) => {
+  const chartDom = document.getElementById(element);
+
   new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           init()
         } else {
-          destroy()
+          echarts.dispose(chartDom);
         }
       });
     },
@@ -41,7 +45,33 @@ export const observer = (element, init, destroy) => {
       root: null, // Usa el viewport como referencia
       threshold: 0.1, // El porcentaje visible requerido (10%)
     }
-  ).observe(element);
+  ).observe(chartDom);
 
 }
+
+
+export const resizeChart = (chartId, chartContainerId, chartOption) => {
+  const chartDom = document.getElementById(chartContainerId);
+  const chart = echarts.init(chartDom);
+
+  const section = document.getElementById(
+    chartId
+  );
+  if (!chartDom) return;
+  chartDom.style.width = section?.offsetWidth + "px";
+  chartDom.style.height = section?.offsetHeight
+    ? section.offsetHeight + "px"
+    : "100vh";
+
+  if (chartOption.title) chartOption.title.textStyle.fontSize = Math.max(chartDom?.offsetWidth / 35);
+  chart.resize();
+  chart.setOption(chartOption);
+
+  window.addEventListener("resize", () => {
+    chart.resize({
+      width: section?.offsetWidth,
+      height: section?.offsetHeight
+    });
+  });
+};
 

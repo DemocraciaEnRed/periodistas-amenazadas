@@ -2,15 +2,12 @@
 
 ---
 
-<section id="seccionMitigacionReaccion" class="r-stretch">
+<section id="mitigacion-reaccion-container" class="r-stretch">
   <div id="graficoMitigacionReaccion" class="w-10/12 h-full m-auto"></div>
 </section>
 <script>
   import { colors } from "@/utils/constants";
-  import { observer } from "@/utils/slider-utils";
-  import * as echarts from "echarts";
-  const chartDom = document.getElementById("graficoMitigacionReaccion");
-  const chart = echarts.init(chartDom);
+  import { initChartOnScreen, resizeChart } from "@/utils/slider-utils";
 
   const option = {
     title: {
@@ -50,17 +47,14 @@
       },
     ],
   };
-  const initGraph = () => {
-    const section = document.getElementById("seccionMitigacionReaccion");
-    chartDom.style.width = section.offsetWidth + "px";
-    chartDom.style.height = section.offsetHeight + "px";
-    chart.resize();
-    chart.setOption(option);
-  };
 
-  observer(
-    chartDom,
-    () => initGraph(), // Función init
-    () => chart.clear() // Función destroy
+  initChartOnScreen(
+    "graficoMitigacionReaccion",
+    () =>
+      resizeChart(
+        "mitigacion-reaccion-container",
+        "graficoMitigacionReaccion",
+        option
+      ) // Función init
   );
 </script>

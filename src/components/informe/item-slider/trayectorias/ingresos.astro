@@ -10,10 +10,8 @@
   </div>
 </section>
 <script>
-  import { observer } from "@/utils/slider-utils";
-  import * as echarts from "echarts";
-  const chartDom = document.getElementById("graficoTrayectoriasIngresos");
-  const chart = echarts.init(chartDom);
+  import { initChartOnScreen, resizeChart } from "@/utils/slider-utils";
+
   const buttons = document.getElementsByName("violencia-tipo");
   const colors = [
     "#401F71",
@@ -70,29 +68,21 @@
     ],
   };
 
-  const resizeChart = () => {
-    const section = document.getElementById("trayectorias-ingresos-container");
-    if (!chartDom) return;
-    chartDom.style.width = section?.offsetWidth + "px";
-    chartDom.style.height = section?.offsetHeight
-      ? section.offsetHeight + "px"
-      : "60vh";
-    chart.resize();
-  };
-  const initGraph = () => {
-    resizeChart();
-    chart.setOption(option);
-  };
-
   window.addEventListener("resize", () => {
-    if (chart) {
-      resizeChart();
-    }
+    resizeChart(
+      "trayectorias-ingresos-container",
+      "graficoTrayectoriasIngresos",
+      option
+    );
   });
 
-  observer(
-    chartDom,
-    () => initGraph(), // Función init
-    () => chart.clear() // Función destroy
+  initChartOnScreen(
+    "graficoTrayectoriasIngresos",
+    () =>
+      resizeChart(
+        "trayectorias-ingresos-container",
+        "graficoTrayectoriasIngresos",
+        option
+      ) // Función init
   );
 </script>

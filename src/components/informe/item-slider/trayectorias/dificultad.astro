@@ -9,17 +9,13 @@
 </section>
 
 <script>
-  import { observer } from "@/utils/slider-utils";
-  import * as echarts from "echarts";
+  import { initChartOnScreen, resizeChart } from "@/utils/slider-utils";
 
-  const chartDom = document.getElementById("graficoTrayectoriasDificultad");
-  const chart = echarts.init(chartDom);
   const option = {
     tooltip: {},
     title: {
       text: "Percepción sobre la dificultad en conseguir el puesto actual en el periodismo",
       textStyle: {
-        fontSize: 40,
         fontWeight: "normal",
         color: "#000",
       },
@@ -39,31 +35,13 @@
     ],
   };
 
-  const resizeChart = () => {
-    const section = document.getElementById(
-      "trayectorias-dificultad-container"
-    );
-    if (!chartDom) return;
-    chartDom.style.width = section?.offsetWidth + "px";
-    chartDom.style.height = section?.offsetHeight
-      ? section.offsetHeight + "px"
-      : "100vh";
-    chart.resize();
-  };
-  const initGraph = () => {
-    resizeChart();
-    chart.setOption(option);
-  };
-
-  window.addEventListener("resize", () => {
-    if (chart) {
-      resizeChart();
-    }
-  });
-
-  observer(
-    chartDom,
-    () => initGraph(), // Función init
-    () => chart.clear() // Función destroy
+  initChartOnScreen(
+    "graficoTrayectoriasDificultad",
+    () =>
+      resizeChart(
+        "trayectorias-dificultad-container",
+        "graficoTrayectoriasDificultad",
+        option
+      ) // Función init
   );
 </script>

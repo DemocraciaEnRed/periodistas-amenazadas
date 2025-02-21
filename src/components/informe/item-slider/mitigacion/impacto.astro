@@ -3,16 +3,13 @@
 ---
 
 <section class="r-stretch">
-  <div id="seccionMitigacionImpacto" class="w-10/12 h-full m-auto">
+  <div id="mitigacion-impacto-container" class="w-10/12 h-full m-auto">
     <div id="graficoMitigacionImpacto"></div>
   </div>
 </section>
 <script>
   import { colors } from "@/utils/constants";
-  import { observer } from "@/utils/slider-utils";
-  import * as echarts from "echarts";
-  const chartDom = document.getElementById("graficoMitigacionImpacto");
-  const chart = echarts.init(chartDom);
+  import { initChartOnScreen, resizeChart } from "@/utils/slider-utils";
 
   const option = {
     color: colors,
@@ -69,17 +66,14 @@
       { type: "bar" },
     ],
   };
-  const initGraph = () => {
-    const section = document.getElementById("seccionMitigacionImpacto");
-    chartDom.style.width = section.offsetWidth + "px";
-    chartDom.style.height = section.offsetHeight + "px";
-    chart.resize();
-    chart.setOption(option);
-  };
 
-  observer(
-    chartDom,
-    () => initGraph(), // Función init
-    () => chart.clear() // Función destroy
+  initChartOnScreen(
+    "graficoMitigacionImpacto",
+    () =>
+      resizeChart(
+        "mitigacion-impacto-container",
+        "graficoMitigacionImpacto",
+        option
+      ) // Función init
   );
 </script>

@@ -9,11 +9,8 @@
 </section>
 
 <script>
-  import { observer } from "@/utils/slider-utils";
-  import * as echarts from "echarts";
+  import { initChartOnScreen, resizeChart } from "@/utils/slider-utils";
 
-  const chartDom = document.getElementById("graficoTrayectoriasCuidados");
-  const chart = echarts.init(chartDom);
   const option = {
     tooltip: {},
     title: {
@@ -39,29 +36,13 @@
     ],
   };
 
-  const resizeChart = () => {
-    const section = document.getElementById("trayectorias-cuidados-container");
-    if (!chartDom) return;
-    chartDom.style.width = section?.offsetWidth + "px";
-    chartDom.style.height = section?.offsetHeight
-      ? section.offsetHeight + "px"
-      : "100vh";
-    chart.resize();
-  };
-  const initGraph = () => {
-    resizeChart();
-    chart.setOption(option);
-  };
-
-  window.addEventListener("resize", () => {
-    if (chart) {
-      resizeChart();
-    }
-  });
-
-  observer(
-    chartDom,
-    () => initGraph(), // Función init
-    () => chart.clear() // Función destroy
+  initChartOnScreen(
+    "graficoTrayectoriasCuidados",
+    () =>
+      resizeChart(
+        "trayectorias-cuidados-container",
+        "graficoTrayectoriasCuidados",
+        option
+      ) // Función init
   );
 </script>

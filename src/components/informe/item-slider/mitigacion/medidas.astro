@@ -11,11 +11,8 @@ import Background from "../background.astro";
 </section>
 
 <script>
-  import { observer } from "@/utils/slider-utils";
-  import * as echarts from "echarts";
+  import { initChartOnScreen, resizeChart } from "@/utils/slider-utils";
 
-  const chartDom = document.getElementById("graficoMitigacionMedidas");
-  const chart = echarts.init(chartDom);
   const option = {
     tooltip: {},
     title: {
@@ -49,29 +46,13 @@ import Background from "../background.astro";
     ],
   };
 
-  const resizeChart = () => {
-    const section = document.getElementById("mitigacion-medidas-container");
-    if (!chartDom) return;
-    chartDom.style.width = section?.offsetWidth + "px";
-    chartDom.style.height = section?.offsetHeight
-      ? section.offsetHeight + "px"
-      : "100vh";
-    chart.resize();
-  };
-  const initGraph = () => {
-    resizeChart();
-    chart.setOption(option);
-  };
-
-  window.addEventListener("resize", () => {
-    if (chart) {
-      resizeChart();
-    }
-  });
-
-  observer(
-    chartDom,
-    () => initGraph(), // Función init
-    () => chart.clear() // Función destroy
+  initChartOnScreen(
+    "graficoMitigacionMedidas",
+    () =>
+      resizeChart(
+        "mitigacion-medidas-container",
+        "graficoMitigacionMedidas",
+        option
+      ) // Función init
   );
 </script>

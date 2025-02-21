@@ -36,7 +36,7 @@ import { tipoViolencia } from "@/utils/constants";
 </section>
 <script>
   import { colors, datosAutores } from "@/utils/constants";
-  import { observer } from "@/utils/slider-utils";
+  import { initChartOnScreen, resizeChart } from "@/utils/slider-utils";
   import * as echarts from "echarts";
   const chartDom = document.getElementById("graficoViolenciasAutores");
   const chart = echarts.init(chartDom);
@@ -66,36 +66,24 @@ import { tipoViolencia } from "@/utils/constants";
     ],
   };
 
-  const resizeChart = () => {
-    const section = document.getElementById("violencias-autores-container");
-    if (!chartDom) return;
-    chartDom.style.width = section?.offsetWidth + "px";
-    chartDom.style.height = section?.offsetHeight
-      ? section.offsetHeight + "px"
-      : "60vh";
-    chart.resize();
-  };
-  const initGraph = () => {
-    resizeChart();
-    chart.setOption(option);
-  };
-
-  window.addEventListener("resize", () => {
-    if (chart) {
-      resizeChart();
-    }
-  });
-
-  observer(
-    chartDom,
-    () => initGraph(), // Función init
-    () => chart.clear() // Función destroy
+  initChartOnScreen(
+    "graficoViolenciasAutores",
+    () =>
+      resizeChart(
+        "violencias-autores-container",
+        "graficoViolenciasAutores",
+        option
+      ) // Función init
   );
+
   buttons.forEach((button) => {
     button.addEventListener("click", (event) => {
       option.series[0].data = datosAutores[event.target.value];
-      chart.clear();
-      initGraph();
+      resizeChart(
+        "violencias-autores-container",
+        "graficoViolenciasAutores",
+        option
+      );
     });
   });
 </script>
