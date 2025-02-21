@@ -63,11 +63,22 @@ export const resizeChart = (chartId, chartContainerId, chartOption) => {
     ? section.offsetHeight + "px"
     : "100vh";
 
-  if (chartOption.title) chartOption.title.textStyle.fontSize = Math.max(chartDom?.offsetWidth / 35);
+  if (chartOption.title) {
+    chartOption.title.textStyle = {
+      fontWeight: "normal",
+      color: "#000",
+      fontSize: Math.max(section?.offsetWidth / 40)
+    }
+  }
   chart.resize();
   chart.setOption(chartOption);
 
   window.addEventListener("resize", () => {
+    if (chartOption.title) {
+      chartOption.title.textStyle.fontSize = Math.max(section?.offsetWidth / 40);
+
+    }
+    chart.setOption(chartOption);
     chart.resize({
       width: section?.offsetWidth,
       height: section?.offsetHeight
