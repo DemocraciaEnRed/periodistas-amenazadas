@@ -5,18 +5,20 @@ import CapituloMitigacion from "./item-slider/mitigacion/index.astro";
 import CapituloTrayectorias from "./item-slider/trayectorias/index.astro";
 import CapituloEncuestadas from "./item-slider/encuestadas/index.astro";
 import { Icon } from "astro-icon/components";
+import SkeletonLoaderPresentation from "../common/skeleton-loader-presentation.astro";
 // Define un estado inicial para currentSlide
 ---
 
-<div class="reveal bg-white">
-  <div class="slides mt-1">
+<div id="loader" class="w-full flex h-[85vh] transition-all duration-1000">
+  <SkeletonLoaderPresentation />
+</div>
+<div class="reveal bg-white opacity-0 transition-opacity duration-1000">
+  <div class="slides mt-1 !h-full">
     <CapituloViolencias />
     <CapituloMitigacion />
     <CapituloTrayectorias />
     <CapituloEncuestadas />
     <Caratula />
-  </div>
-  <div class="globo bg-secondary-500 absolute bottom-0 left-0 w-full opacity-0">
   </div>
 </div>
 
@@ -49,32 +51,13 @@ import { Icon } from "astro-icon/components";
       display: none;
     }
   }
-  .globo {
-    height: 10%;
-    border-top-left-radius: 2rem;
-    border-top-right-radius: 2rem;
-    transition: opacity 0.5s;
-    &:after {
-      content: " ";
-      height: 0;
-      width: 0;
-      border: 50px solid transparent;
-      border-top: 0;
-      border-left: 0;
-      border-bottom: 50px solid theme("colors.secondary.500");
-      position: absolute;
-      top: -50px;
-      right: 10%;
-      z-index: 1;
-      border-top-left-radius: 10px;
-    }
-  }
 </style>
 
 <script>
   import Reveal from "reveal.js";
   import Markdown from "reveal.js/plugin/markdown/markdown.esm.js";
-  import { showGlobo, highlightLink } from "@/utils/slider-utils.js";
+  import { highlightLink } from "@/utils/slider-utils.js";
+  import { log } from "node_modules/astro/dist/core/logger/core";
   let deck = new Reveal({
     width: "100%",
     margin: 0,
@@ -83,21 +66,32 @@ import { Icon } from "astro-icon/components";
   const initReveal = () => {
     setTimeout(() => {
       const navbar = document.getElementById("navbar");
+      const loader = document.getElementById("loader");
       const reveal = document.querySelector(".reveal");
       const height = navbar?.offsetHeight
         ? window.innerHeight - navbar?.offsetHeight
         : 1000;
 
       reveal.style.height = `${height}px`;
+      reveal?.classList.remove("opacity-0");
+      loader?.classList.add("!h-0");
+      loader?.classList.add("opacity-0");
+    }, 1000);
 
-      // Inicializa reveal.js
+    // Inicializa reveal.js
 
-      deck.initialize();
-      deck.on("slidechanged", () => {
-        highlightLink(deck);
-        showGlobo(deck);
-      });
-    }, 300);
+    deck.on("ready", () => {
+      highlightLink(deck);
+    });
+
+    deck.on("slidechanged", () => {
+      highlightLink(deck);
+    });
+    deck.initialize({
+      minScale: 1,
+      maxScale: 1,
+      center: false,
+    });
   };
   if (window.innerWidth > window.innerHeight) {
     initReveal();
@@ -106,7 +100,9 @@ import { Icon } from "astro-icon/components";
   window.addEventListener("orientationchange", () => {
     const isLandscape = window.screen.orientation.type.includes("landscape");
     if (isLandscape) {
-      initReveal();
+      setTimeout(() => {
+        initReveal();
+      }, 300);
     } else deck.destroy();
   });
 </script>

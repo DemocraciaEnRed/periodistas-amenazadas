@@ -1,0 +1,38 @@
+---
+import Warning from "@/assets/warning.svg"
+import Image from "astro/components/Image.astro"
+---
+
+
+<section id="seccionViolencia" class="h-full">
+    <div class="h-full flex bg-primary-950 px-10">
+        <div class="flex flex-col lg:gap-16 py-3 justify-end text-container w-4/6 ">
+
+            <h2 class="lg:text-6xl w-10/12 mx-auto text-white text-left">
+                2. Mitigación y protección frente a violencias
+            </h2>
+            <p class="text-sm lg:text-lg mt-5 w-10/12 mx-auto bg-white p-5 rounded-3xl shadow-lg">
+                La <b>respuesta más común</b> de las mujeres periodistas frente a situaciones de violencia es 
+                <b>conversar sobre lo sucedido con otras mujeres</b>, tanto dentro del ámbito del periodismo (107 casos) como fuera de él (94 casos). 
+                Aunque la mayoría (132 casos) conoce organizaciones que abordan las violencias contra las mujeres en sus provincias, 
+                <b>pocas recurren</b> a ellas para <b>acompañamiento o asesoría</b>.
+            </p>
+        </div>
+        <div class="w-2/6 relative">
+            <Image src={Warning} alt="mano en alto" class="image w-auto h-3/4 left-1/2 transform -translate-x-1/2 bottom-0 absolute text-white"/>
+        </div>
+
+    </div>
+  </section>
+
+<style>
+    .image{
+        filter: grayscale(1) invert(1);
+        mask-image: linear-gradient(to bottom, rgba(0,0,0,.5), rgba(0,0,0,0));
+    }
+    @media screen and (min-width: 1024px) {
+    .text-container{
+        justify-content:center
+      }
+    }
+</style>

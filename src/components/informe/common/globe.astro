@@ -1,0 +1,24 @@
+<div class="globo bg-secondary-500 absolute bottom-0 left-0 w-full"></div>
+
+<style>
+  .globo {
+    height: 10%;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    transition: opacity 0.5s;
+    &:after {
+      content: " ";
+      height: 0;
+      width: 0;
+      border: 50px solid transparent;
+      border-top: 0;
+      border-left: 0;
+      border-bottom: 50px solid theme("colors.secondary.500");
+      position: absolute;
+      top: -50px;
+      right: 10%;
+      z-index: 1;
+      border-top-left-radius: 10px;
+    }
+  }
+</style>

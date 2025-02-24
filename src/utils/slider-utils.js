@@ -1,11 +1,5 @@
 import * as echarts from "echarts";
 
-export const showGlobo=(deck)=> {
-  const globo = document.querySelector(".globo");
-  deck.getCurrentSlide().className.includes("showGlobo")
-    ? globo?.classList.remove("opacity-0")
-    : globo?.classList.add("opacity-0");
-}
 
 export const highlightLink=(deck)=> {
   const horizontalSlideIndex = deck.getIndices().h;

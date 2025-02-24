@@ -4,25 +4,11 @@ import MomentosTexto from "./momentos-texto.astro";
 import Momentos from "./momentos.astro";
 import AutorTexto from "./autor-texto.astro";
 import Autor from "./autor.astro";
-import Impacto from "./impacto.astro";
+import CaratulaViolencia from "./caratula-violencia.astro";
 ---
 
-<section>
-  <section id="seccionViolencia">
-    <h2 class="text-5xl">
-      1. Violencias a mujeres periodistas en la Argentina
-    </h2>
-    <p class="text-lg mt-5 w-10/12 m-auto">
-      <b>Las mujeres periodistas en Argentina</b> enfrentan <b
-        >múltiples tipos y modalidades de violencia</b
-      > en su labor. <br />
-      La <b>violencia psicológica</b> es la más común (150 casos), seguida por la
-      institucional y económica (115 cada una). <br />
-      Incluso se reportaron altos niveles de violencia sexual (84). <br />
-      También aparecen casos de violencia en línea (88), laboral (31) y física (25),
-      <b>visibilizando una problemática generalizada en el sector</b>.
-    </p>
-  </section>
+<section class="h-full">
+  <CaratulaViolencia />
   <Violencia />
   <MomentosTexto />
   <Momentos />
