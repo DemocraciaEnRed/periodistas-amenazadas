@@ -3,13 +3,16 @@ import Globe from "../../common/globe.astro";
 ---
 
 <section class="r-stretch !h-full">
-  <div class="flex flex-col justify-center h-full py-10">
+  <div class="flex flex-col justify-center h-full py-5 lg:py-10">
     <p
-      class="lg:text-2xl w-10/12 m-auto bg-primary-900 p-16 rounded-3xl text-white"
+      class="lg:text-2xl w-10/12 m-auto bg-secondary-500 p-16 rounded-3xl text-white"
     >
       [...]
     </p>
-    <Globe />
+    <Globe
+      backgroundColor="bg-primary-600"
+      borderColor="border-b-primary-600"
+    />
   </div>
 </section>
 

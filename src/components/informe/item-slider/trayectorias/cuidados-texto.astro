@@ -2,11 +2,9 @@
 import Globe from "../../common/globe.astro";
 ---
 
-<section class="r-stretch !h-full">
-  <div class="flex flex-col justify-center h-full py-10">
-    <p
-      class="lg:text-2xl w-10/12 m-auto bg-primary-900 p-16 rounded-3xl text-white"
-    >
+<section class="r-stretch !h-full bg-secondary-500">
+  <div class="flex flex-col justify-center h-full py-5 lg:py-10">
+    <p class="lg:text-2xl w-10/12 m-auto bg-white p-16 rounded-3xl">
       Las <b>tareas de cuidado aparecen como un obstáculo</b> significativo <b
         >para el ejercicio profesional</b
       >, con un impacto marcado según 141 encuestadas. Además, se destacan
@@ -14,7 +12,10 @@ import Globe from "../../common/globe.astro";
         >la dificultad para conciliar responsabilidades laborales y familiares</b
       > como otras barreras clave en la trayectoria laboral de las mujeres periodistas.
     </p>
-    <Globe />
+    <Globe
+      backgroundColor="bg-primary-500"
+      borderColor="border-b-primary-500"
+    />
   </div>
 </section>
 

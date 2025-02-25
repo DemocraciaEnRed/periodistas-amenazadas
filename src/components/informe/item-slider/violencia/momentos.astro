@@ -4,7 +4,7 @@ import Background from "../background.astro";
 ---
 
 <section id="seccionViolenciasMomento" class="r-stretch !h-full">
-  <div class="flex flex-col justify-center h-full py-10">
+  <div class="flex flex-col justify-center h-full py-5 lg:py-10">
     <Background image={xImage} position="-right-96 -bottom-80" />
     <div id="violencias-momento-container" class="w-10/12 h-full m-auto">
       <div id="graficoViolenciasMomento"></div>
@@ -13,6 +13,19 @@ import Background from "../background.astro";
 </section>
 <script>
   import { initChartOnScreen, resizeChart } from "@/utils/slider-utils";
+  const lg = window.matchMedia("(min-width: 1024px)");
+  console.log(lg);
+  const legend = lg.matches
+    ? {
+        orient: "vertical",
+        right: 0,
+        top: 70,
+      }
+    : {
+        orient: "horizontal",
+        left: 0,
+        bottom: 0,
+      };
 
   const option = {
     title: {
@@ -24,11 +37,7 @@ import Background from "../background.astro";
       },
       left: "center",
     },
-    legend: {
-      orient: "vertical",
-      right: 0,
-      top: 70,
-    },
+    legend,
     grid: {
       left: 100,
       right: 100,

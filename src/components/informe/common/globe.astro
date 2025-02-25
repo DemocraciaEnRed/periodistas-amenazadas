@@ -1,4 +1,13 @@
-<div class="globo bg-secondary-500 absolute bottom-0 left-0 w-full"></div>
+---
+const {
+  backgroundColor = "bg-secondary-500",
+  borderColor = "border-b-secondary-500",
+} = Astro.props;
+---
+
+<div class={`globo absolute bottom-0 left-0 w-full ${backgroundColor}`}>
+  <div class={borderColor + " tail h-0 w-0 absolute"}></div>
+</div>
 
 <style>
   .globo {
@@ -6,15 +15,16 @@
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
     transition: opacity 0.5s;
-    &:after {
-      content: " ";
-      height: 0;
-      width: 0;
-      border: 50px solid transparent;
+    .tail {
+      border-width: 50px;
+      border-style: solid;
+      border-top-color: transparent !important;
+      border-left-color: transparent !important;
+      border-right-color: transparent !important;
       border-top: 0;
       border-left: 0;
-      border-bottom: 50px solid theme("colors.secondary.500");
-      position: absolute;
+      border-bottom-width: 50px;
+      border-bottom-style: solid;
       top: -50px;
       right: 10%;
       z-index: 1;
