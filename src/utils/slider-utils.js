@@ -12,12 +12,12 @@ export const highlightLink=(deck)=> {
   const active = allLinks[deck.getIndices().h];
 
   allLinks.forEach((el) => {
-    el?.parentElement?.classList.remove("bg-primary-500");
+    el?.parentElement?.classList.remove("bg-primary-900");
     el?.parentElement?.classList.remove("text-white");
   });
 
   if (active) {
-    active?.parentElement?.classList.add("bg-primary-500");
+    active?.parentElement?.classList.add("bg-primary-900");
     active?.parentElement?.classList.add("text-white");
   }
 }
@@ -46,6 +46,8 @@ export const initChartOnScreen = (element, init) => {
 
 export const resizeChart = (chartId, chartContainerId, chartOption) => {
   const chartDom = document.getElementById(chartContainerId);
+  console.log(chartDom.offsetWidth / 2);
+
   const chart = echarts.init(chartDom);
 
   const section = document.getElementById(

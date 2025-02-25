@@ -5,6 +5,9 @@ import Background from "../background.astro";
 
 <section id="seccionViolenciasMomento" class="r-stretch !h-full">
   <div class="flex flex-col justify-center h-full py-5 lg:py-10">
+    <h1 class="text-4xl">
+      Momento de ocurrencia de la violencia según tipo de violencia
+    </h1>
     <Background image={xImage} position="-right-96 -bottom-80" />
     <div id="violencias-momento-container" class="w-10/12 h-full m-auto">
       <div id="graficoViolenciasMomento"></div>
@@ -14,33 +17,29 @@ import Background from "../background.astro";
 <script>
   import { initChartOnScreen, resizeChart } from "@/utils/slider-utils";
   const lg = window.matchMedia("(min-width: 1024px)");
-  console.log(lg);
   const legend = lg.matches
     ? {
         orient: "vertical",
         right: 0,
         top: 70,
+        textStyle: {
+          fontSize: 15,
+        },
       }
     : {
         orient: "horizontal",
         left: 0,
         bottom: 0,
+        textStyle: {
+          fontSize: 18,
+        },
       };
 
   const option = {
-    title: {
-      text: "Momento de ocurrencia de la violencia según tipo de violencia",
-      textStyle: {
-        fontSize: 40,
-        fontWeight: "normal",
-        color: "#000",
-      },
-      left: "center",
-    },
     legend,
     grid: {
-      left: 100,
-      right: 100,
+      left: "15%",
+      right: "15%",
       top: 50,
       bottom: 50,
     },
@@ -58,7 +57,12 @@ import Background from "../background.astro";
         "Institucional",
         "En línea",
       ],
+      axisLabel: {
+        fontSize: 16,
+        color: "#000",
+      },
     },
+
     series: [
       {
         name: "Durante su actual empleo",

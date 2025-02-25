@@ -6,32 +6,58 @@ import { tipoViolencia } from "@/utils/constants";
 
 <section id="seccionViolenciasAutores" class="r-stretch !h-full">
   <div class="flex flex-col justify-center h-full py-5 lg:py-10">
+    <h1 class="text-4xl">Autores de las violencias</h1>
     <Background
       image={warningImage}
       size={600}
       position="-right-40 -bottom-20"
     />
-    <div class="flex w-full h-full justify-center">
-      <div class="flex flex-col justify-center w-2/12 gap-1 lg:gap-7">
-        {
-          tipoViolencia.map((tipo) => (
-            <div class="contents ">
+    <div
+      class="flex h-full justify-center w-10/12 my-10 shadow-lg rounded-3xl mx-auto border bg-white"
+    >
+      <div class="flex flex-col justify-center w-2/12">
+        <ul
+          class="w-48 text-sm font-medium text-primary-600 bg-white border-2 border-primary-600 rounded-lg"
+        >
+          {
+            tipoViolencia.map((tipo) => (
+              <li class="w-full border-b-2 last:border-0 border-primary-600 rounded-t-lg ">
+                <div class="flex items-center ">
+                  <input
+                    type="radio"
+                    name="violencia-tipo"
+                    id={tipo.slug}
+                    value={tipo.slug}
+                    checked={tipo.slug === `psicologica`}
+                    class="hidden peer"
+                  />
+                  <label
+                    for={tipo.slug}
+                    class="w-full py-3 font-semibold text-sm peer-checked:bg-primary-600 peer-checked:text-white cursor-pointer"
+                  >
+                    {tipo.name}
+                  </label>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+        <!-- <div class="contents ">
               <input
                 type="radio"
                 name="violencia-tipo"
                 id={tipo.slug}
                 value={tipo.slug}
                 class="hidden peer"
+                checked={tipo.slug === `psicologica`}
               />
               <label
-                class="bg-transparent w-fullfont-semibold w-full py-2 px-4  hover:bg-primary-500 text-gray-500  hover:text-white  border-2 border-primary-500 hover:border-transparent rounded-lg peer-checked:bg-primary-600 peer-checked:text-white cursor-pointer"
+                class="bg-transparent w-fullfont-semibold w-full py-2 px-4  hover:bg-primary-500 text-gray-500  hover:text-white  border-2 border-primary-500 hover:border-transparent peer-checked:bg-primary-600 peer-checked:text-white border-b-0 cursor-pointer"
                 for={tipo.slug}
               >
                 {tipo.name}
               </label>
-            </div>
-          ))
-        }
+            </div> -->
       </div>
       <div id="violencias-autores-container" class="w-8/12 h-full">
         <div id="graficoViolenciasAutores"></div>
@@ -51,8 +77,14 @@ import { tipoViolencia } from "@/utils/constants";
   const option = {
     legend: {
       top: "center",
-      right: 10,
+      right: 0,
       orient: "vertical",
+      textStyle: {
+        fontSize: 18,
+        width: 250,
+        overflow: "break",
+      },
+
       // backgroundColor: "white",
     },
     color: colors,
@@ -72,14 +104,12 @@ import { tipoViolencia } from "@/utils/constants";
     ],
   };
 
-  initChartOnScreen(
-    "graficoViolenciasAutores",
-    () =>
-      resizeChart(
-        "violencias-autores-container",
-        "graficoViolenciasAutores",
-        option
-      ) // Función init
+  initChartOnScreen("graficoViolenciasAutores", () =>
+    resizeChart(
+      "violencias-autores-container",
+      "graficoViolenciasAutores",
+      option
+    )
   );
 
   buttons.forEach((button) => {

@@ -4,6 +4,7 @@
 
 <section id="seccionTrayectoriasIngresos" class="r-stretch !h-full">
   <div class="flex flex-col justify-center h-full py-5 lg:py-10">
+    <h1 class="text-4xl">Percepción de las encuestadas sobre el ingreso</h1>
     <div class="flex w-full h-full justify-center">
       <div id="trayectorias-ingresos-container" class="w-8/12 h-full">
         <div id="graficoTrayectoriasIngresos"></div>
@@ -12,20 +13,8 @@
   </div>
 </section>
 <script>
+  import { colors } from "@/utils/constants";
   import { initChartOnScreen, resizeChart } from "@/utils/slider-utils";
-
-  const buttons = document.getElementsByName("violencia-tipo");
-  const colors = [
-    "#401F71",
-    "#88659F",
-    "#FFAC39",
-    "#E6E1CF",
-    "#ED8272",
-    "#2A0C4E",
-    "#B092C2",
-    "#F8D58D",
-    "#C9695B",
-  ];
 
   const option = {
     toolbox: {
@@ -34,15 +23,25 @@
         mark: { show: true },
       },
     },
+    label: {
+      labelStyle: {
+        fontSize: 18,
+      },
+    },
+    color: colors,
     series: [
       {
-        name: "Nightingale Chart",
         type: "pie",
         radius: [50, 250],
         center: ["50%", "50%"],
         roseType: "area",
         itemStyle: {
           borderRadius: 8,
+        },
+        label: {
+          fontSize: 16,
+          width: 250,
+          overflow: "break",
         },
         data: [
           {

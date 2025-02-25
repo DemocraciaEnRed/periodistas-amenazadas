@@ -4,6 +4,9 @@
 
 <section class="r-stretch !h-full">
   <div class="flex flex-col justify-center h-full py-5 lg:py-10">
+    <h1 class="text-4xl">
+      ¿Qué medidas existen para proteger a las mujeres periodistas?
+    </h1>
     <div id="mitigacion-grado-container" class="w-10/12 h-full m-auto">
       <div id="graficoMitigacionGrado"></div>
     </div>
@@ -15,17 +18,13 @@
 
   const option = {
     color: colors,
-    title: {
-      text: "¿Qué medidas existen para proteger a las mujeres periodistas?",
-      textStyle: {
-        fontSize: 40,
-        fontWeight: "normal",
-        color: "#000",
-      },
-      left: "center",
-    },
+
     legend: { bottom: 0 },
     tooltip: {},
+    grid: {
+      left: "25%",
+      right: "25%",
+    },
     dataset: {
       dimensions: ["product", "Nada", "Poco", "Bastante", "Mucho"],
       source: [
@@ -61,7 +60,15 @@
         },
       ],
     },
-    yAxis: { type: "category" },
+    yAxis: {
+      type: "category",
+      axisLabel: {
+        fontSize: 18,
+        width: 250,
+        overflow: "break",
+        color: "#000",
+      },
+    },
     xAxis: {},
     // Declare several bar series, each will be mapped
     // to a column of dataset.source by default.

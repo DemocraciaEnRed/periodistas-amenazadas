@@ -5,6 +5,9 @@ import Background from "../background.astro";
 
 <section id="seccionMitigacionMedidas" class="r-stretch !h-full">
   <div class="flex flex-col justify-center h-full py-5 lg:py-10">
+    <h1 class="text-4xl">
+      ¿Qué medidas existen para proteger a las mujeres periodistas?
+    </h1>
     <Background image={microphoneImage} position="-right-24 -bottom-20" />
     <div id="mitigacion-medidas-container" class="w-10/12 h-full m-auto">
       <div id="graficoMitigacionMedidas"></div>
@@ -17,14 +20,9 @@ import Background from "../background.astro";
 
   const option = {
     tooltip: {},
-    title: {
-      text: "¿Qué medidas existen para proteger a las mujeres periodistas?",
-      textStyle: {
-        fontSize: 40,
-        fontWeight: "normal",
-        color: "#000",
-      },
-      left: "center",
+    grid: {
+      left: "25%",
+      right: "25%",
     },
     yAxis: {
       data: [
@@ -36,7 +34,12 @@ import Background from "../background.astro";
         "Denuncia",
         "Apartamiento del victimario",
       ],
-      // axisLabel: { rotate: -45 },
+      axisLabel: {
+        fontSize: 18,
+        color: "#000",
+        width: 250,
+        overflow: "break",
+      },
     },
     xAxis: {},
     series: [

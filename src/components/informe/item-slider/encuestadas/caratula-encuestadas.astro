@@ -1,27 +1,28 @@
 ---
-import Ximage from "@/assets/x.svg";
+import FaceBlur from "@/assets/face_blur.jpg";
 import Image from "astro/components/Image.astro";
+import Subrayado from "@/assets/subrayado.svg";
 ---
 
-<section id="seccionEncuestadas" class="h-full">
-  <div class="h-full flex bg-primary-600 px-10">
-    <div class="flex flex-col lg:gap-16 py-3 justify-center text-container w-4/6">
-      <h2 class="text-xl lg:text-6xl w-10/12 mx-auto text-white text-left">
+<section
+  id="seccionEncuestadas"
+  class="h-full"
+  data-background-image={FaceBlur.src}
+>
+  <div class="h-full flex justify-center px-10">
+    <div
+      class="flex flex-col lg:gap-14 py-3 bg-primary-900 justify-center text-container w-6/12"
+    >
+      <h2 class="text-xl lg:text-6xl w-10/12 mx-auto text-white">
         4. Sobre las periodistas encuestadas
+        <Image src={Subrayado} alt="" class="m-auto w-4/6" />
       </h2>
       <p
         class="text-sm lg:text-lg mt-5 w-10/12 mx-auto bg-white p-5 rounded-3xl shadow-lg"
       >
-      Aquí puede ir un pequeño texto introduciendo a los datos relacionados con
-      las personas encuestadas
+        Aquí puede ir un pequeño texto introduciendo a los datos relacionados
+        con las personas encuestadas
       </p>
-    </div>
-    <div class="w-2/6 relative">
-      <Image
-        src={Ximage}
-        alt="mano en alto"
-        class="image w-auto h-3/4 left-1/2 transform -translate-x-1/2 bottom-0 absolute text-white"
-      />
     </div>
   </div>
 </section>
