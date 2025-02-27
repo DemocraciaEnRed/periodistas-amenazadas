@@ -6,22 +6,22 @@ import { tipoViolencia } from "@/utils/constants";
 
 <section id="seccionViolenciasAutores" class="r-stretch !h-full">
   <div class="flex flex-col justify-center h-full py-5 lg:py-10">
-    <h1 class="text-4xl">Autores de las violencias</h1>
+    <h2 class="text-lg lg:text-4xl">Autores de las violencias</h2>
     <Background
       image={warningImage}
       size={600}
       position="-right-40 -bottom-20"
     />
     <div
-      class="flex h-full justify-center w-10/12 my-10 shadow-lg rounded-3xl mx-auto border bg-white p-10"
+      class="flex lg:h-full justify-center lg:w-10/12 my-10 shadow-lg rounded-3xl mx-auto border bg-white p-10"
     >
-      <div class="flex flex-col justify-center w-3/12">
+      <div class="flex flex-row lg:flex-col justify-center w-12/12 lg:w-3/12 ">
         <ul
-          class="w-48 text-sm font-medium text-primary-600 bg-white border-2 border-primary-600 rounded-lg"
+          class="flex flex-row lg:flex-col lg:w-48 text-xs lg:text-sm font-medium text-primary-600 bg-white border-2 border-primary-600 rounded-lg"
         >
           {
             tipoViolencia.map((tipo) => (
-              <li class="w-full border-b-2 last:border-0 border-primary-600 rounded-t-lg ">
+              <li class="lg:w-full lg:border-b-2 lg:last:border-0 lg:border-primary-600 lg:rounded-t-lg ">
                 <div class="flex items-center ">
                   <input
                     type="radio"
@@ -33,7 +33,7 @@ import { tipoViolencia } from "@/utils/constants";
                   />
                   <label
                     for={tipo.slug}
-                    class="w-full py-3 font-semibold text-sm peer-checked:bg-primary-600 peer-checked:text-white cursor-pointer"
+                    class="lg:w-full py-3 px-3 font-semibold text-xs lg:text-sm peer-checked:bg-primary-600 peer-checked:text-white cursor-pointer"
                   >
                     {tipo.name}
                   </label>
@@ -42,29 +42,15 @@ import { tipoViolencia } from "@/utils/constants";
             ))
           }
         </ul>
-        <!-- <div class="contents ">
-              <input
-                type="radio"
-                name="violencia-tipo"
-                id={tipo.slug}
-                value={tipo.slug}
-                class="hidden peer"
-                checked={tipo.slug === `psicologica`}
-              />
-              <label
-                class="bg-transparent w-fullfont-semibold w-full py-2 px-4  hover:bg-primary-500 text-gray-500  hover:text-white  border-2 border-primary-500 hover:border-transparent peer-checked:bg-primary-600 peer-checked:text-white border-b-0 cursor-pointer"
-                for={tipo.slug}
-              >
-                {tipo.name}
-              </label>
-            </div> -->
       </div>
-      <div id="violencias-autores-container" class="w-9/12 h-full">
+      <!-- TODO: Arreglar que no se ve en mobile el gráfico -->
+      <div id="violencias-autores-container" class="lg:w-9/12 h-full">
         <div id="graficoViolenciasAutores"></div>
       </div>
     </div>
   </div>
 </section>
+
 
 <script>
   import { colors, datosAutores } from "@/utils/constants";
@@ -80,7 +66,7 @@ import { tipoViolencia } from "@/utils/constants";
       right: 0,
       orient: "vertical",
       textStyle: {
-        fontSize: 18,
+        fontSize: 12,
         width: 250,
         overflow: "break",
       },
@@ -92,7 +78,7 @@ import { tipoViolencia } from "@/utils/constants";
     series: [
       {
         type: "pie",
-        radius: [50, 250],
+        radius: [50, 200],
         center: ["30%", "50%"],
         roseType: "area",
         itemStyle: {

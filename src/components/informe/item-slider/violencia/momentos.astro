@@ -5,9 +5,7 @@ import Background from "../background.astro";
 
 <section id="seccionViolenciasMomento" class="r-stretch !h-full">
   <div class="flex flex-col justify-center h-full py-5 lg:py-10">
-    <h1 class="text-4xl">
-      Momento de ocurrencia de la violencia según tipo de violencia
-    </h1>
+    <h2 class="text-lg lg:text-4xl">Momento de ocurrencia de la violencia según tipo de violencia</h2>
     <Background image={xImage} position="-right-96 -bottom-80" />
     <div id="violencias-momento-container" class="w-10/12 h-full m-auto">
       <div id="graficoViolenciasMomento"></div>
@@ -23,15 +21,15 @@ import Background from "../background.astro";
         right: 0,
         top: 70,
         textStyle: {
-          fontSize: 15,
+          fontSize: 12,
         },
       }
     : {
-        orient: "horizontal",
-        left: 0,
-        bottom: 0,
+        orient: "vertical",
+        right: 0,
+        top: 40,
         textStyle: {
-          fontSize: 18,
+          fontSize: 9,
         },
       };
 
@@ -40,7 +38,7 @@ import Background from "../background.astro";
     grid: {
       left: "15%",
       right: "15%",
-      top: 50,
+      top: 40,
       bottom: 50,
     },
     yAxis: {
@@ -58,7 +56,7 @@ import Background from "../background.astro";
       "Laboral",
       ],
       axisLabel: {
-        fontSize: 16,
+        fontSize: 12,
         color: "#000",
       },
     },
