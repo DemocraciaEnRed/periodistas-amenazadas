@@ -4,12 +4,8 @@
 
 <section id="seccionTrayectoriasIngresos" class="r-stretch !h-full">
   <div class="flex flex-col justify-center h-full py-5 lg:py-10">
-    <h1 class="text-4xl">Percepción de las encuestadas sobre el ingreso</h1>
-    <div class="flex w-full h-full justify-center">
-      <div id="trayectorias-ingresos-container" class="w-8/12 h-full">
-        <div id="graficoTrayectoriasIngresos"></div>
-      </div>
-    </div>
+    <h2 class="text-lg lg:text-4xl">Percepción de las encuestadas sobre el ingreso</h2>
+    <div id="graficoTrayectoriasIngresos" class="w-10/12 h-full m-auto"></div>
   </div>
 </section>
 <script>
@@ -25,44 +21,44 @@
     },
     label: {
       labelStyle: {
-        fontSize: 18,
+        fontSize: 12,
       },
     },
     color: colors,
     series: [
       {
         type: "pie",
-        radius: [50, 250],
+        radius: [30, 140],
         center: ["50%", "50%"],
         roseType: "area",
         itemStyle: {
           borderRadius: 8,
         },
         label: {
-          fontSize: 16,
+          fontSize: 12,
           width: 250,
           overflow: "break",
         },
         data: [
           {
             value: 46,
-            name: "Ganan igual que los varones periodistas por iguales tareas",
+            name: "Ganan igual que los \nvarones periodistas por \niguales tareas",
           },
           {
             value: 97,
-            name: "Ganan menos que los varones periodistas por iguales tareas",
+            name: "Ganan menos que los \nvarones periodistas por \niguales tareas",
           },
           {
             value: 1,
-            name: "Ganan más que los varones periodistas por iguales tareas",
+            name: "Ganan más que los \nvarones periodistas por \niguales tareas",
           },
           {
             value: 39,
-            name: "Ganan menos que los varones periodistas por iguales tareas sólo en determinadas áreas.",
+            name: "Ganan menos que los \nvarones periodistas por \niguales tareas sólo en \ndeterminadas áreas.",
           },
           {
             value: 3,
-            name: "Ganan más que los varones periodistas por iguales tareas en determinadas áreas.",
+            name: "Ganan más que los \nvarones periodistas por \niguales tareas en determinadas \náreas.",
           },
         ],
       },
