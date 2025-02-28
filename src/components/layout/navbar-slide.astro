@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import logoPeriodistas from "@/assets/logo.png";
 import { Icon } from "astro-icon/components";
+import NavbarLinkList from "./navbar-link-list.astro";
 ---
 
 <nav id="navbar" class="border-b-2 border-gray-200 bg-white">
@@ -34,40 +35,7 @@ import { Icon } from "astro-icon/components";
           <Icon name="mdi:menu" class="text-4xl cursor-pointer menuButton" />
         </div>
         <div class="links">
-          <ul
-            class="flex-col md:p-2 md:flex-row w-full flex items-end gap-10 text-lg flex-nowrap justify-end"
-          >
-            <li
-              class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/acercade" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
-            >
-              <a href="/periodistas-amenazadas/">Inicio</a>
-            </li>
-            <li
-              class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/testimonios" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
-            >
-            <a href="/periodistas-amenazadas/#seccion-testimonios">Testimonios</a>
-            </li>
-            <li
-              class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/datos" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
-            >
-            <a href="/periodistas-amenazadas/#seccion-datos">Datos</a>
-            </li>
-            <li
-              class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/contacto" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
-            >
-            <a href="/periodistas-amenazadas/#seccion-contacto">Contacto</a>
-            </li>
-            <li
-              class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/metodologias" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
-            >
-              <a href="/periodistas-amenazadas/metodologias">Metodologia</a>
-            </li>
-            <li
-              class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/faqs" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
-            >
-              <a href="/periodistas-amenazadas/faqs">Faqs</a>
-            </li>
-          </ul>
+          <NavbarLinkList nowrap />
         </div>
       </div>
       <Icon name="mdi:menu" class="text-4xl cursor-pointer menuButton" />
@@ -75,43 +43,7 @@ import { Icon } from "astro-icon/components";
     <div
       class="hidden fixed bottom-0 right-0 z-50 w-full h-screen md:w-auto md:h-auto bg-white md:bg-transparent md:relative lg:block"
     >
-      <div class="flex justify-end p-5 md:hidden">
-        <Icon name="mdi:menu" class="text-4xl cursor-pointer menuButton" />
-      </div>
-      <ul
-        class="flex-col md:p-2 md:flex-row w-full flex items-end gap-10 text-lg flex-wrap justify-end"
-      >
-        <li
-          class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/acercade" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
-        >
-          <a href="/periodistas-amenazadas/">Inicio</a>
-        </li>
-        <li
-          class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/testimonios" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
-        >
-          <a href="/periodistas-amenazadas/#seccion-testimonios">Testimonios</a>
-        </li>
-        <li
-          class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/datos" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
-        >
-          <a href="/periodistas-amenazadas/#seccion-datos">Datos</a>
-        </li>
-        <li
-          class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/contacto" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
-        >
-          <a href="/periodistas-amenazadas/#seccion-contacto">Contacto</a>
-        </li>
-        <li
-          class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/metodologias" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
-        >
-          <a href="/periodistas-amenazadas/metodologias">Metodologia</a>
-        </li>
-        <li
-          class={`border-b border-gray-100 w-full text-right px-8 md:w-auto md:border-none md:px-0 ${Astro.url.pathname === "/faqs" ? "text-primary-900 font-semibold" : "text-gray-500"}`}
-        >
-          <a href="/periodistas-amenazadas/faqs">Faqs</a>
-        </li>
-      </ul>
+      <NavbarLinkList />
     </div>
   </div>
   <div class="border-t-2 text-gray-500">
