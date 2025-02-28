@@ -6,7 +6,7 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				serif: ["Poppins", ...defaultTheme.fontFamily.serif],
+				serif: ["Montserrat", ...defaultTheme.fontFamily.serif],
 			},
 			colors: {
 				primary: {
@@ -48,5 +48,7 @@ export default {
 			},
 		},
 	},
-	plugins: [],
+	plugins: [
+		require('@tailwindcss/typography')
+	],
 }

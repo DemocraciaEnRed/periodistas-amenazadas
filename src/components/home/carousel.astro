@@ -2,78 +2,93 @@
 import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 
-const videos = await getCollection("videos");
+const testimoniosColect = await getCollection("testimonios");
+const { except } = Astro.props;
+const testimonios = except
+  ? testimoniosColect.filter((testimonio) => testimonio.slug !== except)
+  : testimoniosColect;
 ---
 
 <div class="flex my-4">
+  <button id="prevBtn" class="mx-3 p-2">
+    <Icon
+      name="mdi:chevron-double-left"
+      class="text-6xl text-secondary-500 cursor-pointer menuButton"
+    />
+  </button>
 
-
-    <button
-      id="prevBtn"
-      class="mx-3  p-2 "
-    >
-    <Icon name="mdi:chevron-double-left" class="text-6xl text-secondary-500 cursor-pointer menuButton" />
-
-    </button>
-    
-      <!-- Carrusel -->
-      <div id="carousel" class="flex gap-4 overflow-x-auto scroll-smooth px-1 py-2">
-        {videos.map((video, index) => {
-            const { slug, data, body } = video;
-            const { title, relatoUrl, poster } = data;
-            return (
-          <div  class="card-carousel w-3/12 min-w-[250px] bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
-            <div class="bg-gray-300 h-24  mb-4"></div>
+  <!-- Carrusel -->
+  <div
+    id="carousel"
+    class="flex gap-4 overflow-x-auto scroll-smooth px-1 py-20"
+  >
+    {
+      testimonios.map((testimonio, index) => {
+        const { slug, data, body } = testimonio;
+        const { title, imageUrl, shortDesc } = data;
+        return (
+          <div class="card-carousel w-4/12 min-w-[24%] bg-white rounded-lg shadow-md overflow-hidden flex flex-col hover:scale-125 transition">
+            <div
+              class={`h-24 mb-4 bg-cover`}
+              style={{ backgroundImage: `url('${imageUrl}')` }}
+            />
             <div class="flex flex-col px-4 pb-4">
-            <h3 class="text-lg font-semibold">{title}</h3>
-            <p class="text-gray-600 text-sm">
-              {body}
-            </p>
-            <a href={relatoUrl} class="mt-auto text-center bg-red-500 text-white font-semibold py-2 rounded-lg">
-              Ver relato completo
-            </a>
-
+              <h3 class="text-lg font-semibold">{title}</h3>
+              <p class="text-gray-600 text-sm">{shortDesc}</p>
+              <a
+                href={`/periodistas-amenazadas/testimonio/${slug}`}
+                class="mt-auto text-center bg-red-500 text-white font-semibold py-2 rounded-lg"
+              >
+                Ver relato completo
+              </a>
             </div>
           </div>
-        )})}
-      </div>
-    
-    <button
-      id="nextBtn"
-      class=" mx-3  p-2 "
-    >
-    <Icon name="mdi:chevron-double-right" class="text-6xl text-secondary-500 cursor-pointer menuButton" />
-    </button>
+        );
+      })
+    }
+  </div>
+
+  <button id="nextBtn" class="mx-3 p-2">
+    <Icon
+      name="mdi:chevron-double-right"
+      class="text-6xl text-secondary-500 cursor-pointer menuButton"
+    />
+  </button>
 </div>
 <style>
-    #carousel {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE y Edge */
-}
-
-#carousel::-webkit-scrollbar {
-  display: none; /* Chrome, Safari y Edge */
-}
-</style>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-  const carousel = document.getElementById("carousel");
-  const card = document.querySelector<HTMLElement>('.card-carousel')
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
-
-  let scrollAmount = 255
-  if (card){
-      scrollAmount = card.offsetWidth +16; // Cantidad de píxeles que se moverá el carrusel
+  #carousel {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE y Edge */
   }
 
-  prevBtn?.addEventListener("click", () => {
-    carousel?.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-  });
+  #carousel::-webkit-scrollbar {
+    display: none; /* Chrome, Safari y Edge */
+  }
+</style>
+<script>
+  //TODO dejar solo 4
+  //TODO hover scale
+  //TODO paginator (capaz no)
+  //TODO nueva pagina
+  //TODO share menu whatsapp, twiter, linkedin, link
 
-  nextBtn?.addEventListener("click", () => {
-    carousel?.scrollBy({ left: scrollAmount, behavior: "smooth" });
-  });
-});
+  document.addEventListener("DOMContentLoaded", () => {
+    const carousel = document.getElementById("carousel");
+    const card = document.querySelector<HTMLElement>(".card-carousel");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
 
+    let scrollAmount = 255;
+    if (card) {
+      scrollAmount = card.offsetWidth + 16; // Cantidad de píxeles que se moverá el carrusel
+    }
+
+    prevBtn?.addEventListener("click", () => {
+      carousel?.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    });
+
+    nextBtn?.addEventListener("click", () => {
+      carousel?.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    });
+  });
 </script>

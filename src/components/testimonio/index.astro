@@ -1,0 +1,15 @@
+---
+import { Image } from "astro:assets"
+import CommentUser from "@/assets/coment-user.svg"
+
+const {testimonio, Content} = Astro.props
+
+---
+
+<div class="container p-10 border mx-auto bg-white rounded-3xl ">
+    <h1 class="text-7xl text-primary-900 font-bold"> 
+        <Image src={CommentUser} height={100} class="inline mr-10" alt=""/> {testimonio.data.name}</h1>
+    <div class="prose max-w-full  text-primary-900  my-10">
+        <Content/>
+    </div>
+</div>
