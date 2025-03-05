@@ -25,16 +25,12 @@ const testimonios = except
     {
       testimonios.map((testimonio, index) => {
         const { slug, data, body } = testimonio;
-        const { title, imageUrl, shortDesc } = data;
+        const { title, imageUrl, shortDesc, name } = data;
         return (
-          <div class="card-carousel w-4/12 min-w-[24%] bg-white rounded-lg shadow-md overflow-hidden flex flex-col hover:scale-125 transition">
-            <div
-              class={`h-24 mb-4 bg-cover`}
-              style={{ backgroundImage: `url('${imageUrl}')` }}
-            />
-            <div class="flex flex-col px-4 pb-4">
-              <h3 class="text-lg font-semibold">{title}</h3>
-              <p class="text-gray-600 text-sm">{shortDesc}</p>
+          <div class="card-carousel w-4/12 min-w-[24%] bg-white rounded-lg shadow-md overflow-hidden flex flex-col hover:scale-110 transition">
+            <div class="flex flex-col p-6 h-52">
+              <h3 class="text-lg font-semibold">{name}</h3>
+              <p class="text-gray-600 text-sm flex-1">{shortDesc}</p>
               <a
                 href={`/periodistas-amenazadas/testimonio/${slug}`}
                 class="mt-auto text-center bg-red-500 text-white font-semibold py-2 rounded-lg"
@@ -66,11 +62,7 @@ const testimonios = except
   }
 </style>
 <script>
-  //TODO dejar solo 4
-  //TODO hover scale
   //TODO paginator (capaz no)
-  //TODO nueva pagina
-  //TODO share menu whatsapp, twiter, linkedin, link
 
   document.addEventListener("DOMContentLoaded", () => {
     const carousel = document.getElementById("carousel");

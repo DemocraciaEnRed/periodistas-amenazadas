@@ -1,15 +1,97 @@
 ---
-import { Image } from "astro:assets"
-import CommentUser from "@/assets/coment-user.svg"
+import { Image } from "astro:assets";
+import CommentUser from "@/assets/coment-user.svg";
+import { Icon } from "astro-icon/components";
+const { href } = Astro.url;
 
-const {testimonio, Content} = Astro.props
-
+const { testimonio, Content } = Astro.props;
+const { data } = testimonio;
+const { name, shortDesc } = data;
 ---
 
-<div class="container p-10 border mx-auto bg-white rounded-3xl ">
-    <h1 class="text-7xl text-primary-900 font-bold"> 
-        <Image src={CommentUser} height={100} class="inline mr-10" alt=""/> {testimonio.data.name}</h1>
-    <div class="prose max-w-full  text-primary-900  my-10">
-        <Content/>
+<div class="container p-10 border mx-auto bg-white rounded-3xl">
+  <h1 class="text-7xl text-primary-900 font-bold">
+    <Image src={CommentUser} height={100} class="inline mr-10" alt="" />
+    {name}
+  </h1>
+  <div class="prose max-w-full text-primary-900 my-10">
+    <Content />
+    <div class="actions flex w-10/12 mx-auto mt-10">
+      <a
+        href="/periodistas-amenazadas/"
+        class="border-4 border-primary-900 text-primary-900 block w-1/2 mx-4 text-center p-2 rounded-full font-semibold no-underline"
+        >Volver al Inicio</a
+      >
+      <div class="relative w-1/2 mx-4">
+        <button
+          data-button-menu
+          class="border-4 border-secondary-500 w-full bg-secondary-500 text-white block text-center p-2 rounded-full font-semibold no-underline"
+          >Compartir testimonio</button
+        >
+        <ul
+          data-menu
+          class="absolute z-10 min-w-[180px] overflow-auto rounded-lg border-slate-200 bg-white shadow-lg focus:outline-none bottom-full w-full transition max-h-0 flex"
+        >
+          <li
+            role="menuitem"
+            class="cursor-pointer text-slate-800 flex w-full text-sm items-center rounded-md p-3 transition-all hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100"
+          >
+            <a
+              href={`whatsapp://send?text=${shortDesc} conoce la historia de ${name} y enterate de las situaciónes que viven las mujeres periodistas en Argentina. Esta y muchas más historias en la web de Periodistas Amenazadas. ${href}`}
+              target="_blank"
+              class="flex no-underline items-center w-full justify-center"
+            >
+              <Icon size={40} class="text-primary-900" name="mdi:whatsapp" />
+            </a>
+          </li>
+          <li
+            role="menuitem"
+            class="cursor-pointer text-slate-800 flex w-full text-sm items-center rounded-md p-3 transition-all hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100"
+          >
+            <a
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=${href}`}
+              target="_blank"
+              class="flex no-underline items-center w-full justify-center"
+            >
+              <Icon size={40} class="text-primary-900" name="mdi:linkedin" />
+            </a>
+          </li>
+          <li
+            role="menuitem"
+            class="cursor-pointer text-slate-800 flex w-full text-sm items-center rounded-md p-3 transition-all hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100"
+          >
+            <a
+              class="flex no-underline items-center w-full justify-center"
+              target="_blank"
+              href={`https://twitter.com/intent/tweet?text=${shortDesc} conoce la historia de ${name} y enterate de las situaciónes que viven las mujeres periodistas en Argentina. Esta y muchas más historias en la web de Periodistas Amenazadas. ${href}`}
+            >
+              <Icon size={40} class="text-primary-900" name="pajamas:twitter" />
+            </a>
+          </li>
+          <li
+            role="menuitem"
+            class="cursor-pointer text-slate-800 flex w-full text-sm items-center rounded-md p-3 transition-all hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100"
+          >
+            <a
+              href={`https://www.facebook.com/sharer/sharer.php?u=${href}`}
+              target="_blank"
+              class="flex no-underline items-center w-full justify-center"
+            >
+              <Icon size={40} class="text-primary-900" name="mdi:facebook" />
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
 </div>
+
+<script>
+  const buttonMenu = document.querySelector("[data-button-menu]");
+  const menu = document.querySelector("[data-menu]");
+  buttonMenu?.addEventListener("click", () => {
+    menu?.classList.toggle("max-h-screen");
+    menu?.classList.toggle("border");
+    menu?.classList.toggle("p-1.5");
+  });
+</script>
