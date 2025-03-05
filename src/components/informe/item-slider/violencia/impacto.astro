@@ -1,0 +1,62 @@
+---
+
+---
+
+<section id="seccionViolenciasImpacto" class="r-stretch !h-full">
+    <div class="flex flex-col justify-center h-full py-5 lg:py-10">
+      <h2 class="text-lg lg:text-4xl">¿Cuál es el impacto de las violencias sufridas <br />según las mujeres encuestadas?</h2>
+      <div id="graficoViolenciaImpacto" class="w-10/12 h-full m-auto"></div>
+    </div>
+  </section>
+  <script>
+    import { colors } from "@/utils/constants";
+    import { initChartOnScreen, resizeChart } from "@/utils/slider-utils";
+  
+    const option = {
+      color: colors,
+      radar: {
+        // shape: 'circle',
+        indicator: [
+            { name: "En la libertad de expresión", max: 130 },
+            { name: "En el desarrollo profesional", max: 130 },
+            { name: "En la salud mental", max: 130 },
+            { name: "Físico, emocional, psicológico y en \nla salud en todas sus formas", max: 130 },
+            { name: "En el ámbito laboral, censura, \namenazas, renuncia, despido", max: 130 },
+        ],
+        axisName: {
+          color: "#000",
+          fontSize: 12,
+        },
+      },
+      series: [
+        {
+          name: "",
+          type: "radar",
+          data: [
+            {
+              value: [54,91,126,69,53],
+              name: "Reacción",
+            },
+          ],
+        },
+      ],
+    };
+  
+    initChartOnScreen(
+      "graficoViolenciaImpacto",
+      () =>
+        resizeChart(
+          "seccionViolenciasImpacto",
+          "graficoViolenciaImpacto",
+          option
+        ) // Función init
+    );
+  </script>
+  
+
+
+
+
+
+
+
