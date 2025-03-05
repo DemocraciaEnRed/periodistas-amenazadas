@@ -2,10 +2,12 @@
 
 ---
 
-<section id="mitigacion-reaccion-container" class="r-stretch !h-full">
+<section id="seccion-mitigacion-reaccion" class="r-stretch !h-full">
   <div class="flex flex-col justify-center h-full py-5 lg:py-10">
-    <h1 class="text-4xl">¿Qué se hace frente a los casos de violencia?</h1>
-    <div id="graficoMitigacionReaccion" class="w-10/12 h-full m-auto"></div>
+    <h2 class="text-lg lg:text-4xl">¿Qué se hace frente a los casos de violencia?</h2>
+    <div id="mitigacion-reaccion-container" class="w-10/12 h-full m-auto">
+      <div id="graficoMitigacionReaccion" class="w-10/12 h-full m-auto"></div>
+    </div>
   </div>
 </section>
 <script>
@@ -14,27 +16,24 @@
 
   const option = {
     color: colors,
-    legend: {
-      data: ["Allocated Budget", "Actual Spending"],
-    },
     radar: {
       // shape: 'circle',
       indicator: [
         { name: "No hizo o dijo nada", max: 120 },
-        { name: "Lo comentó con otras mujeres en el periodismo,", max: 120 },
-        { name: "Lo comentó con varones en el periodismo", max: 120 },
-        { name: "Lo comentó con otras mujeres fuera del periodismo", max: 120 },
-        { name: "Lo comentó con varones fuera del periodismo", max: 120 },
-        { name: "Denunció ante órganos competentes", max: 120 },
+        { name: "Lo comentó con otras \nmujeres en el periodismo,", max: 120 },
+        { name: "Lo comentó con varones \nen el periodismo", max: 120 },
+        { name: "Lo comentó con otras \nmujeres fuera del periodismo", max: 120 },
+        { name: "Lo comentó con varones \nfuera del periodismo", max: 120 },
+        { name: "Denunció ante órganos \ncompetentes", max: 120 },
       ],
       axisName: {
         color: "#000",
-        fontSize: 16,
+        fontSize: 12,
       },
     },
     series: [
       {
-        name: "Budget vs spending",
+        name: "",
         type: "radar",
         data: [
           {

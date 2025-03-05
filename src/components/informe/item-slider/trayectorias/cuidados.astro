@@ -4,10 +4,10 @@
 
 <section id="seccionTrayectoriasCuidados" class="r-stretch !h-full">
   <div class="flex flex-col justify-center h-full py-5 lg:py-10">
-    <h1 class="text-4xl">
+    <h2 class="text-lg lg:text-4xl">
       ¿Qué impactó tienen las tareas de cuidado en la
       <br /> trayectoria laboral de las mujeres periodistas?
-    </h1>
+    </h2>
     <div id="trayectorias-cuidados-container" class="w-10/12 h-full m-auto">
       <div id="graficoTrayectoriasCuidados"></div>
     </div>
@@ -25,18 +25,23 @@
     xAxis: {
       data: ["Nada", "Poco", "Algo", "Bastante", "Mucho"],
       axisLabel: {
-        fontSize: 18,
+        fontSize: 12,
         color: "#000",
         width: 250,
         overflow: "break",
       },
     },
+    grid: {
+      left: "20%",
+      right: "20%",
+    },    
     yAxis: {},
     series: [
       {
         type: "bar",
         data: [15, 15, 44, 58, 83],
         color: "#401F71",
+        barWidth: '40%',
       },
     ],
   };

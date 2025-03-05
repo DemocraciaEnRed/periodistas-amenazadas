@@ -46,7 +46,6 @@ export const initChartOnScreen = (element, init) => {
 
 export const resizeChart = (chartId, chartContainerId, chartOption) => {
   const chartDom = document.getElementById(chartContainerId);
-  console.log(chartDom.offsetWidth / 2);
 
   const chart = echarts.init(chartDom);
 
@@ -63,9 +62,19 @@ export const resizeChart = (chartId, chartContainerId, chartOption) => {
     chartOption.title.textStyle = {
       fontWeight: "normal",
       color: "#000",
-      fontSize: Math.max(section?.offsetWidth / 40)
+      fontSize: Math.max(section?.offsetWidth / 40),
     }
   }
+  chartOption.graphic = {
+        type: 'text',
+        right: 0,
+        bottom: 10,
+        style: {
+            text: 'Fuente: elaboración propia. N=215',
+            fill: '#000',
+            fontSize: 12,
+        }
+    }
   chart.resize();
   chart.setOption(chartOption);
 

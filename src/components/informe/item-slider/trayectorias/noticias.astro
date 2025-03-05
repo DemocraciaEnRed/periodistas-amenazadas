@@ -2,12 +2,12 @@
 
 ---
 
-<section id="trayectorias-noticias-container" class="r-stretch !h-full">
+<section id="seccion-trayectorias-noticias" class="r-stretch !h-full">
   <div class="flex flex-col justify-center h-full py-5 lg:py-10">
-    <h1 class="text-4xl">
-      ¿Hay tratamiento de noticias con perspectiva de género?
-    </h1>
-    <div id="graficoTrayectoriasNoticias"></div>
+    <h2 class="text-lg lg:text-4xl">¿Hay tratamiento de noticias con perspectiva de género?</h2>
+    <div id="trayectorias-noticias-container" class="w-10/12 h-full m-auto">
+      <div id="graficoTrayectoriasNoticias" class="w-10/12 h-full m-auto"></div>
+    </div>
   </div>
 </section>
 <script>
@@ -16,9 +16,6 @@
 
   const option = {
     color: colors,
-    legend: {
-      data: ["Allocated Budget", "Actual Spending"],
-    },
     radar: {
       // shape: 'circle',
       indicator: [
@@ -26,25 +23,25 @@
           name: "Sólo en temáticas puntuales se trabaja con perspectiva de género",
           max: 130,
         },
-        { name: "Siempre se trabajan con perspectiva de género", max: 130 },
+        { name: "Siempre se trabajan con \nperspectiva de género", max: 130 },
         {
-          name: "Muchas veces se trabajan con perspectiva de género,",
+          name: "Muchas veces se trabajan \ncon perspectiva de género,",
           max: 130,
         },
         {
-          name: "Algunas veces se trabajan con perspectiva de género",
+          name: "Algunas veces se trabajan \ncon perspectiva de género",
           max: 130,
         },
-        { name: "Nunca se trabaja con perspectiva de género", max: 130 },
+        { name: "Nunca se trabaja con \nperspectiva de género", max: 130 },
       ],
       axisName: {
         color: "#000",
-        fontSize: 16,
+        fontSize: 12,
       },
     },
     series: [
       {
-        name: "Budget vs spending",
+        name: "",
         type: "radar",
         data: [
           {

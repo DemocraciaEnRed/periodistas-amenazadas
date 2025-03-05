@@ -5,9 +5,7 @@ import Background from "../background.astro";
 
 <section id="seccionViolenciasMomento" class="r-stretch !h-full">
   <div class="flex flex-col justify-center h-full py-5 lg:py-10">
-    <h1 class="text-4xl">
-      Momento de ocurrencia de la violencia según tipo de violencia
-    </h1>
+    <h2 class="text-lg lg:text-4xl">Momento de ocurrencia de la violencia según tipo de violencia</h2>
     <Background image={xImage} position="-right-96 -bottom-80" />
     <div id="violencias-momento-container" class="w-10/12 h-full m-auto">
       <div id="graficoViolenciasMomento"></div>
@@ -23,15 +21,15 @@ import Background from "../background.astro";
         right: 0,
         top: 70,
         textStyle: {
-          fontSize: 15,
+          fontSize: 12,
         },
       }
     : {
-        orient: "horizontal",
-        left: 0,
-        bottom: 0,
+        orient: "vertical",
+        right: 0,
+        top: 40,
         textStyle: {
-          fontSize: 18,
+          fontSize: 9,
         },
       };
 
@@ -40,7 +38,7 @@ import Background from "../background.astro";
     grid: {
       left: "15%",
       right: "15%",
-      top: 50,
+      top: 40,
       bottom: 50,
     },
     yAxis: {
@@ -49,16 +47,16 @@ import Background from "../background.astro";
     xAxis: {
       type: "category",
       data: [
-        "Psicológica",
-        "Física",
-        "Económica",
-        "Sexual",
-        "Laboral",
-        "Institucional",
-        "En línea",
+      "Psicológica",
+      "Institucional",
+      "Económica",
+      "En línea",
+      "Sexual",
+      "Física",
+      "Laboral",
       ],
       axisLabel: {
-        fontSize: 16,
+        fontSize: 12,
         color: "#000",
       },
     },
@@ -68,6 +66,7 @@ import Background from "../background.astro";
         name: "Durante su actual empleo",
         type: "bar",
         stack: "total",
+        barWidth: '40%',
         label: {
           show: true,
         },
@@ -75,10 +74,10 @@ import Background from "../background.astro";
         emphasis: {
           focus: "series",
         },
-        data: [36, 1, 32, 17, 4, 36, 38],
+        data: [36,36,32,38,17,1,4],
       },
       {
-        name: "Durante empleos al comienzo de su trayectoria periodística",
+        name: "Durante empleos al comienzo \nde su trayectoria periodística",
         type: "bar",
         stack: "total",
         label: {
@@ -88,10 +87,10 @@ import Background from "../background.astro";
         emphasis: {
           focus: "series",
         },
-        data: [71, 19, 58, 61, 23, 46, 19],
+        data: [71,46,58,19,61,19,23],
       },
       {
-        name: "Durante el tratamiento de una noticia sensible",
+        name: "Durante el tratamiento de una \nnoticia sensible",
         type: "bar",
         stack: "total",
         label: {
@@ -101,7 +100,7 @@ import Background from "../background.astro";
         emphasis: {
           focus: "series",
         },
-        data: [36, 9, 11, 1, 2, 26, 27],
+        data: [36,26,11,27,1,9,2],
       },
     ],
   };

@@ -4,9 +4,7 @@
 
 <section class="r-stretch !h-full">
   <div class="flex flex-col justify-center h-full py-5 lg:py-10">
-    <h1 class="text-4xl">
-      ¿Qué medidas existen para proteger a las mujeres periodistas?
-    </h1>
+    <h2 class="text-lg lg:text-4xl">¿Cuál es el impacto de las medidas para proteger a las mujeres periodistas?</h2>
     <div id="mitigacion-grado-container" class="w-10/12 h-full m-auto">
       <div id="graficoMitigacionGrado"></div>
     </div>
@@ -22,37 +20,35 @@
     legend: { bottom: 0 },
     tooltip: {},
     grid: {
-      left: "25%",
-      right: "25%",
+      left: "35%",
+      right: "10%",
     },
     dataset: {
       dimensions: ["product", "Nada", "Poco", "Bastante", "Mucho"],
       source: [
         {
-          product: "Protocolos de igualdad de género en las redacciones",
+          product: "Protocolos de igualdad de \ngénero en las redacciones",
           Nada: 29,
           Poco: 68,
           Bastante: 65,
           Mucho: 39,
         },
         {
-          product:
-            "Procesos internos para resguardar a las víctimas en espacios laborales",
+          product: "Procesos internos para resguardar\n a las víctimas en espacios laborales",
           Nada: 27,
           Poco: 56,
           Bastante: 67,
           Mucho: 51,
         },
         {
-          product:
-            "Denuncias públicas sobre casos de violencia en ejercicio del periodismo",
+          product: "Denuncias públicas sobre casos de \nviolencia en ejercicio del periodismo",
           Nada: 29,
           Poco: 50,
           Bastante: 74,
           Mucho: 53,
         },
         {
-          product: "Capacitaciones sobre seguridad digital para periodistas",
+          product: "Capacitaciones sobre seguridad \ndigital para periodistas",
           Nada: 23,
           Poco: 45,
           Bastante: 75,
@@ -63,7 +59,7 @@
     yAxis: {
       type: "category",
       axisLabel: {
-        fontSize: 18,
+        fontSize: 12,
         width: 250,
         overflow: "break",
         color: "#000",
@@ -73,10 +69,10 @@
     // Declare several bar series, each will be mapped
     // to a column of dataset.source by default.
     series: [
-      { type: "bar" },
-      { type: "bar" },
-      { type: "bar" },
-      { type: "bar" },
+      { type: "bar", barWidth: "10%" },
+      { type: "bar", barWidth: "10%" },
+      { type: "bar", barWidth: "10%" },
+      { type: "bar", barWidth: "10%" },
     ],
   };
 
