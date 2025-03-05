@@ -5,7 +5,9 @@
 <section id="seccionViolenciasImpacto" class="r-stretch !h-full">
     <div class="flex flex-col justify-center h-full py-5 lg:py-10">
       <h2 class="text-lg lg:text-4xl">¿Cuál es el impacto de las violencias sufridas?</h2>
-      <div id="graficoViolenciaImpacto" class="w-10/12 h-full m-auto"></div>
+      <div id="violencias-impacto-container" class="w-10/12 h-full m-auto">
+        <div id="graficoViolenciaImpacto" class="w-10/12 h-full m-auto"></div>
+      </div>
     </div>
   </section>
   <script>
@@ -46,7 +48,7 @@
       "graficoViolenciaImpacto",
       () =>
         resizeChart(
-          "seccionViolenciasImpacto",
+          "violencias-impacto-container",
           "graficoViolenciaImpacto",
           option
         ) // Función init
