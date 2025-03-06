@@ -179,12 +179,12 @@ export const datosProfesionales:DatosProfesionales = {
 
 export const colors = [
   "#401F71",
-  "#88659F",
   "#FFAC39",
-  "#E6E1CF",
-  "#ED8272",
   "#2A0C4E",
-  "#B092C2",
-  "#F8D58D",
+  "#E6E1CF",
   "#C9695B",
+  "#88659F",
+  "#F8D58D",
+  "#ED8272",
+  "#B092C2",
 ];
