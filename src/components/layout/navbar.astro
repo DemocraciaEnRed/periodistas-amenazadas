@@ -24,9 +24,13 @@ import NavbarLinkList from "./navbar-link-list.astro";
       <Icon name="mdi:menu" class="text-4xl cursor-pointer menuButton" />
     </div>
     <div
-      class="linkMenu fixed bottom-0 right-0 z-50 w-full h-screen md-w-auto md:h-auto bg-white hidden md:bg-transparent md:relative md:block"
+      class="overlay fixed top-0 h-screen w-screen -right-full opacity-0 transition-opacity duration-200 bg-black z-40"
     >
-      <div class="flex justify-end p-5 md:hidden">
+    </div>
+    <div
+      class="linkMenu fixed bottom-0 z-50 h-screen md-w-auto md:h-auto bg-white md:bg-transparent md:relative transition-all duration-300 w-10/12 -right-full overflow-hidden md:block"
+    >
+      <div class="flex justify-end p-3 md:hidden">
         <Icon name="mdi:menu" class="text-4xl cursor-pointer menuButton" />
       </div>
       <NavbarLinkList />
@@ -40,7 +44,9 @@ import NavbarLinkList from "./navbar-link-list.astro";
   const menuButton = document.querySelectorAll(".menuButton");
   menuButton?.forEach((button) => {
     button.addEventListener("click", () => {
-      document.querySelector(".linkMenu")?.classList.toggle("hidden");
+      document.querySelector(".linkMenu")?.classList.toggle("!right-0");
+      document.querySelector(".overlay")?.classList.toggle("!right-0");
+      document.querySelector(".overlay")?.classList.toggle("!opacity-70");
     });
   });
 </script>
