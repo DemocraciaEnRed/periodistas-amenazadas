@@ -46,17 +46,24 @@ export const initChartOnScreen = (element, init) => {
 
 export const resizeChart = (chartId, chartContainerId, chartOption) => {
   const chartDom = document.getElementById(chartContainerId);
-
   const chart = echarts.init(chartDom);
-
   const section = document.getElementById(
     chartId
   );
   if (!chartDom) return;
+
+  var source = document.createElement('div')
+  source.classList.add(`source-${chartId}`)
+  source.classList.add('source')
+  source.innerHTML = 'Fuente: elaboración propia. N=215'
+  const exist = chartDom.closest('section').getElementsByClassName(`source-${chartId}`)
+  if (!exist.length) chartDom.closest('section').append(source)
+
   chartDom.style.width = section?.offsetWidth + "px";
   chartDom.style.height = section?.offsetHeight
     ? section.offsetHeight + "px"
     : "100vh";
+
 
   if (chartOption.title) {
     chartOption.title.textStyle = {
@@ -65,16 +72,8 @@ export const resizeChart = (chartId, chartContainerId, chartOption) => {
       fontSize: Math.max(section?.offsetWidth / 40),
     }
   }
-  chartOption.graphic = {
-        type: 'text',
-        right: 0,
-        bottom: 10,
-        style: {
-            text: 'Fuente: elaboración propia. N=215',
-            fill: '#000',
-            fontSize: 12,
-        }
-    }
+
+
   chart.resize();
   chart.setOption(chartOption);
 

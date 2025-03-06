@@ -13,9 +13,9 @@ import { tipoViolencia } from "@/utils/constants";
       position="-right-40 -bottom-20"
     />
     <div
-      class="flex lg:h-full justify-center lg:w-10/12 my-10 shadow-lg rounded-3xl mx-auto border bg-white p-10"
+      class="flex lg:h-full h-screen flex-col lg:flex-row justify-center lg:w-10/12 lg:my-10 shadow-lg rounded-3xl mx-auto border bg-white p-3 lg:p-10"
     >
-      <div class="flex flex-row lg:flex-col justify-center w-12/12 lg:w-3/12 ">
+      <div class="flex flex-row lg:flex-col justify-center w-12/12 lg:w-3/12">
         <ul
           class="flex flex-row lg:flex-col lg:w-48 text-xs lg:text-sm font-medium text-primary-600 bg-white border-2 border-primary-600 rounded-lg"
         >
@@ -51,7 +51,6 @@ import { tipoViolencia } from "@/utils/constants";
   </div>
 </section>
 
-
 <script>
   import { colors, datosAutores } from "@/utils/constants";
   import { initChartOnScreen, resizeChart } from "@/utils/slider-utils";
@@ -60,13 +59,16 @@ import { tipoViolencia } from "@/utils/constants";
   const chart = echarts.init(chartDom);
   const buttons = document.getElementsByName("violencia-tipo");
 
+  const radius = window.innerWidth < 1024 ? [30, 100] : [50, 200];
+  const center = window.innerWidth < 1024 ? ["20%", "50%"] : ["30%", "50%"];
+
   const option = {
     legend: {
       top: "center",
       right: 0,
       orient: "vertical",
       textStyle: {
-        fontSize: 12,
+        fontSize: window.innerWidth < 1024 ? 10 : 12,
         width: 250,
         overflow: "break",
       },
@@ -78,8 +80,8 @@ import { tipoViolencia } from "@/utils/constants";
     series: [
       {
         type: "pie",
-        radius: [50, 200],
-        center: ["30%", "50%"],
+        radius,
+        center,
         roseType: "area",
         itemStyle: {
           borderRadius: 8,

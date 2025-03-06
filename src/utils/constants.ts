@@ -1,3 +1,5 @@
+import type { DatosProfesionales } from "./typos";
+
 export const tipoViolencia = [
   { name: "Psicológica", slug: "psicologica" },
   { name: "Física", slug: "fisica" },
@@ -146,7 +148,9 @@ export const categoriasProfesionalesEncuestadas = [
   { name: "Plataforma en la que se desarrolla", slug: "plataforma" },
 ];
 
-export const datosProfesionales = {
+
+
+export const datosProfesionales:DatosProfesionales = {
   anos: [
     { name: "0 a 5 años", value: 28 },
     { name: "6 a 10 años", value: 28 },

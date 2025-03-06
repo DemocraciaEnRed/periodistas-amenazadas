@@ -6,6 +6,167 @@ import { categoriasPersonalesEncuestadas } from "@/utils/constants";
   <div class="flex flex-col justify-center h-full py-5 lg:py-10">
     <h2 class="text-lg lg:text-4xl">Información de las encuestadas</h2>
     <div
+      class="flex w-11/12 lg:h-full h-screen flex-col-reverse lg:flex-row justify-center lg:w-10/12 lg:my-10 shadow-lg rounded-3xl mx-auto border bg-white p-3 lg:p-10"
+    >
+      <div id="encuestadas-personal-container" class="lg:w-9/12 h-full">
+        <div id="graficoEncuestadasPersonal"></div>
+      </div>
+      <div class="flex flex-row lg:flex-col justify-center w-12/12 lg:w-3/12">
+        <ul
+          class="flex flex-row lg:flex-col lg:w-48 text-xs lg:text-sm font-medium text-primary-600 bg-white border-2 border-primary-600 rounded-lg"
+        >
+          {
+            categoriasPersonalesEncuestadas.map((tipo) => (
+              <li class="lg:w-full lg:border-b-2 lg:last:border-0 lg:border-primary-600 lg:rounded-t-lg">
+                <div class="flex items-center">
+                  <input
+                    type="radio"
+                    name="categoria"
+                    id={tipo.slug}
+                    value={tipo.slug}
+                    checked={tipo.slug === `edad`}
+                    class="hidden peer"
+                  />
+                  <label
+                    for={tipo.slug}
+                    class="lg:w-full py-3 px-3 font-semibold text-xs lg:text-sm peer-checked:bg-primary-600 peer-checked:text-white cursor-pointer"
+                  >
+                    {tipo.name}
+                  </label>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import * as echarts from "echarts";
+  import { colors, datosPersonales } from "@/utils/constants";
+  import { initChartOnScreen, resizeChart } from "@/utils/slider-utils";
+  import type { DatosPersonales } from "@/utils/typos";
+
+  type Categoria = keyof DatosPersonales;
+
+  // Función para generar datos basados en la categoría seleccionada
+  function generarDatos(categoria: Categoria) {
+    const datosCategoria = datosPersonales[categoria];
+
+    const datos: { itemStyle: { color: string }; value: number[] }[] = [];
+    const leyenda: string[] = []; // Array para almacenar las categorías de la leyenda
+    let index = 0;
+
+    datosCategoria.forEach((item, i) => {
+      leyenda.push(item.name); // Agregar el nombre de la categoría a la leyenda
+      for (let j = 0; j < item.value; j++) {
+        datos.push({
+          value: [index % 43, Math.floor(index / 43)], // Posición en una cuadrícula 5x43
+          itemStyle: {
+            color: colors[i % colors.length], // Asignar colores basados en el índice
+          },
+        });
+        index++;
+      }
+    });
+    console.log(leyenda);
+
+    return { datos, leyenda }; // Devolver tanto los datos como la leyenda
+  }
+
+  // Inicializar el gráfico
+  const chartDom = document.getElementById("graficoEncuestadasPersonal");
+  const chart = echarts.init(chartDom);
+
+  let xData: number[] = [];
+  let yData: number[] = [];
+  let data = [];
+  for (let y = 0; y < 5; y++) {
+    yData.push(y);
+    for (let x = 0; x < 43; x++) {
+      data.push([x, y, 43]);
+    }
+  }
+  for (let x = 0; x < 43; x++) {
+    xData.push(x);
+  }
+
+  //Función para actualizar el gráfico al cambiar la categoría
+  function actualizarGrafico(categoria: Categoria) {
+    const { datos, leyenda } = generarDatos(categoria); // Obtener datos y leyenda
+
+    return {
+      legend: {
+        data: leyenda, // Asignar las categorías a la leyenda
+        bottom: 10, // Posición de la leyenda
+        left: "center", // Centrar horizontalmente
+        textStyle: {
+          fontSize: 12, // Tamaño de la fuente
+          color: "#000", // Color del texto
+        },
+      },
+      xAxis: {
+        show: false,
+        type: "category",
+        data: xData,
+      },
+      yAxis: {
+        show: false,
+        type: "category",
+        data: yData,
+      },
+      grid: {
+        left: "10%",
+        right: "10%",
+        top: "10%",
+        bottom: "10%",
+      },
+      series: [
+        {
+          type: "scatter",
+          data: datos,
+          symbol:
+            "path://M113.231 393.168L111.711 416.668C111.261 423.568 105.491 428.988 98.5808 428.978H60.6208C53.7008 428.978 47.9407 423.568 47.4907 416.668L45.9707 393.168H113.231ZM136.64 213.797V237.987H22.5303V213.797H136.64ZM156.75 90.3306H17.8003L2.42017 90.3203C1.79017 90.3203 1.37017 90.6506 1.17017 90.8506C0.980166 91.0406 0.660156 91.4603 0.660156 92.0903V202.561C0.660156 203.191 0.990166 203.61 1.17017 203.8C1.37017 204 1.78017 204.311 2.42017 204.331H156.77C157.4 204.331 157.82 204 158.01 203.82C158.21 203.62 158.52 203.21 158.54 202.57V92.1304C158.53 91.1404 157.74 90.3506 156.76 90.3506L156.75 90.3306ZM112.1 165.831C112.1 167.131 111.56 168.331 110.71 169.181C109.86 170.031 108.67 170.57 107.36 170.57H51.8003C49.1703 170.58 47.0503 168.46 47.0603 165.84C47.0603 163.23 49.1903 161.101 51.8003 161.101H107.37C109.98 161.071 112.11 163.211 112.1 165.831ZM112.11 128.791C112.11 130.091 111.57 131.291 110.72 132.141C109.87 132.991 108.68 133.53 107.37 133.53H51.7903C49.1703 133.56 47.0403 131.42 47.0503 128.8C47.0503 126.17 49.1703 124.051 51.7903 124.061H107.36C109.98 124.051 112.11 126.181 112.11 128.791ZM136.64 57.499V80.8291H22.5303V57.499C22.5303 26.039 48.1203 0.449219 79.5803 0.449219C111.04 0.449219 136.63 26.039 136.63 57.499H136.64ZM36.5098 247.469L45.3298 383.668H113.84L122.65 247.479L36.5098 247.469Z",
+          symbolKeepAspect: true,
+          universalTransition: true,
+          symbolSize: 30,
+        },
+      ],
+    };
+  }
+
+  initChartOnScreen("graficoEncuestadasPersonal", () => {
+    const option = actualizarGrafico("edad");
+
+    resizeChart(
+      "encuestadas-personal-container",
+      "graficoEncuestadasPersonal",
+      option
+    );
+  });
+
+  const buttons = document.getElementsByName("categoria");
+  buttons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const categoria = event.target.value;
+      const option = actualizarGrafico(categoria);
+      resizeChart(
+        "encuestadas-personal-container",
+        "graficoEncuestadasPersonal",
+        option
+      );
+    });
+  });
+</script>
+
+<!-- --- import {categoriasPersonalesEncuestadas} from "@/utils/constants"; ---
+
+<section id="seccionEncuestadasPersonal" class="r-stretch !h-full">
+  <div class="flex flex-col justify-center h-full py-5 lg:py-10">
+    <h2 class="text-lg lg:text-4xl">Información de las encuestadas</h2>
+    <div
       class="flex lg:h-full justify-center lg:w-10/12 my-10 shadow-lg rounded-3xl mx-auto border bg-white p-10"
     >
       <div class="flex flex-row lg:flex-col justify-center w-12/12 lg:w-3/12">
@@ -38,109 +199,107 @@ import { categoriasPersonalesEncuestadas } from "@/utils/constants";
       </div>
       <div id="encuestadas-personal-container" class="lg:w-9/12 h-full">
         <div id="graficoEncuestadasPersonal" class="w-[50vw] h-[50vh]"></div>
-
       </div>
     </div>
   </div>
 </section>
 
 <script>
-import * as echarts from "echarts";
-import { colors, datosPersonales } from "@/utils/constants";
+  import * as echarts from "echarts";
+  import { colors, datosPersonales } from "@/utils/constants";
 
+  // Función para generar datos basados en la categoría seleccionada
+  function generarDatos(categoria) {
+    const datosCategoria = datosPersonales[categoria];
 
-// Función para generar datos basados en la categoría seleccionada
-function generarDatos(categoria) {
-  const datosCategoria = datosPersonales[categoria];
+    const datos = [];
+    const leyenda = []; // Array para almacenar las categorías de la leyenda
+    let index = 0;
 
-  const datos = [];
-  const leyenda = []; // Array para almacenar las categorías de la leyenda
-  let index = 0;
+    datosCategoria.forEach((item, i) => {
+      leyenda.push(item.name); // Agregar el nombre de la categoría a la leyenda
+      for (let j = 0; j < item.value; j++) {
+        datos.push({
+          value: [index % 43, Math.floor(index / 43)], // Posición en una cuadrícula 5x43
+          itemStyle: {
+            color: colors[i % colors.length], // Asignar colores basados en el índice
+          },
+        });
+        index++;
+      }
+    });
 
-  datosCategoria.forEach((item, i) => {
-    leyenda.push(item.name); // Agregar el nombre de la categoría a la leyenda
-    for (let j = 0; j < item.value; j++) {
-      datos.push({
-        value: [index % 43, Math.floor(index / 43)], // Posición en una cuadrícula 5x43
-        itemStyle: {
-          color: colors[i % colors.length], // Asignar colores basados en el índice
-        },
-      });
-      index++;
-    }
-  });
-
-  return { datos, leyenda }; // Devolver tanto los datos como la leyenda
-}
-
-// Inicializar el gráfico
-const chartDom = document.getElementById("graficoEncuestadasPersonal");
-const chart = echarts.init(chartDom);
-
-let xData = [];
-let yData = [];
-let data = [];
-for (let y = 0; y < 5; y++) {
-  yData.push(y);
-  for (let x = 0; x < 43; x++) {
-    data.push([x, y, 43]);
+    return { datos, leyenda }; // Devolver tanto los datos como la leyenda
   }
-}
-for (let x = 0; x < 43; x++) {
-  xData.push(x);
-}
 
-// Función para actualizar el gráfico al cambiar la categoría
-function actualizarGrafico(categoria) {
-  const { datos, leyenda } = generarDatos(categoria); // Obtener datos y leyenda
+  // Inicializar el gráfico
+  const chartDom = document.getElementById("graficoEncuestadasPersonal");
+  const chart = echarts.init(chartDom);
 
-  chart.setOption({
-    legend: {
-      data: leyenda, // Asignar las categorías a la leyenda
-      bottom: 10, // Posición de la leyenda
-      left: "center", // Centrar horizontalmente
-      textStyle: {
-        fontSize: 12, // Tamaño de la fuente
-        color: "#000", // Color del texto
+  let xData = [];
+  let yData = [];
+  let data = [];
+  for (let y = 0; y < 5; y++) {
+    yData.push(y);
+    for (let x = 0; x < 43; x++) {
+      data.push([x, y, 43]);
+    }
+  }
+  for (let x = 0; x < 43; x++) {
+    xData.push(x);
+  }
+
+  // Función para actualizar el gráfico al cambiar la categoría
+  function actualizarGrafico(categoria) {
+    const { datos, leyenda } = generarDatos(categoria); // Obtener datos y leyenda
+
+    chart.setOption({
+      legend: {
+        data: leyenda, // Asignar las categorías a la leyenda
+        bottom: 10, // Posición de la leyenda
+        left: "center", // Centrar horizontalmente
+        textStyle: {
+          fontSize: 12, // Tamaño de la fuente
+          color: "#000", // Color del texto
+        },
       },
-    },
-    xAxis: {
-      show: false,
-      type: "category",
-      data: xData,
-    },
-    yAxis: {
-      show: false,
-      type: "category",
-      data: yData,
-    },
-    series: [
-      {
-        type: "scatter",
-        data: datos,
-        symbol:
-          "path://M113.231 393.168L111.711 416.668C111.261 423.568 105.491 428.988 98.5808 428.978H60.6208C53.7008 428.978 47.9407 423.568 47.4907 416.668L45.9707 393.168H113.231ZM136.64 213.797V237.987H22.5303V213.797H136.64ZM156.75 90.3306H17.8003L2.42017 90.3203C1.79017 90.3203 1.37017 90.6506 1.17017 90.8506C0.980166 91.0406 0.660156 91.4603 0.660156 92.0903V202.561C0.660156 203.191 0.990166 203.61 1.17017 203.8C1.37017 204 1.78017 204.311 2.42017 204.331H156.77C157.4 204.331 157.82 204 158.01 203.82C158.21 203.62 158.52 203.21 158.54 202.57V92.1304C158.53 91.1404 157.74 90.3506 156.76 90.3506L156.75 90.3306ZM112.1 165.831C112.1 167.131 111.56 168.331 110.71 169.181C109.86 170.031 108.67 170.57 107.36 170.57H51.8003C49.1703 170.58 47.0503 168.46 47.0603 165.84C47.0603 163.23 49.1903 161.101 51.8003 161.101H107.37C109.98 161.071 112.11 163.211 112.1 165.831ZM112.11 128.791C112.11 130.091 111.57 131.291 110.72 132.141C109.87 132.991 108.68 133.53 107.37 133.53H51.7903C49.1703 133.56 47.0403 131.42 47.0503 128.8C47.0503 126.17 49.1703 124.051 51.7903 124.061H107.36C109.98 124.051 112.11 126.181 112.11 128.791ZM136.64 57.499V80.8291H22.5303V57.499C22.5303 26.039 48.1203 0.449219 79.5803 0.449219C111.04 0.449219 136.63 26.039 136.63 57.499H136.64ZM36.5098 247.469L45.3298 383.668H113.84L122.65 247.479L36.5098 247.469Z",
-        symbolKeepAspect: true,
-        universalTransition: true,
-        symbolSize: 30,
+      xAxis: {
+        show: false,
+        type: "category",
+        data: xData,
       },
-    ],
+      yAxis: {
+        show: false,
+        type: "category",
+        data: yData,
+      },
+      series: [
+        {
+          type: "scatter",
+          data: datos,
+          symbol:
+            "path://M113.231 393.168L111.711 416.668C111.261 423.568 105.491 428.988 98.5808 428.978H60.6208C53.7008 428.978 47.9407 423.568 47.4907 416.668L45.9707 393.168H113.231ZM136.64 213.797V237.987H22.5303V213.797H136.64ZM156.75 90.3306H17.8003L2.42017 90.3203C1.79017 90.3203 1.37017 90.6506 1.17017 90.8506C0.980166 91.0406 0.660156 91.4603 0.660156 92.0903V202.561C0.660156 203.191 0.990166 203.61 1.17017 203.8C1.37017 204 1.78017 204.311 2.42017 204.331H156.77C157.4 204.331 157.82 204 158.01 203.82C158.21 203.62 158.52 203.21 158.54 202.57V92.1304C158.53 91.1404 157.74 90.3506 156.76 90.3506L156.75 90.3306ZM112.1 165.831C112.1 167.131 111.56 168.331 110.71 169.181C109.86 170.031 108.67 170.57 107.36 170.57H51.8003C49.1703 170.58 47.0503 168.46 47.0603 165.84C47.0603 163.23 49.1903 161.101 51.8003 161.101H107.37C109.98 161.071 112.11 163.211 112.1 165.831ZM112.11 128.791C112.11 130.091 111.57 131.291 110.72 132.141C109.87 132.991 108.68 133.53 107.37 133.53H51.7903C49.1703 133.56 47.0403 131.42 47.0503 128.8C47.0503 126.17 49.1703 124.051 51.7903 124.061H107.36C109.98 124.051 112.11 126.181 112.11 128.791ZM136.64 57.499V80.8291H22.5303V57.499C22.5303 26.039 48.1203 0.449219 79.5803 0.449219C111.04 0.449219 136.63 26.039 136.63 57.499H136.64ZM36.5098 247.469L45.3298 383.668H113.84L122.65 247.479L36.5098 247.469Z",
+          symbolKeepAspect: true,
+          universalTransition: true,
+          symbolSize: 30,
+        },
+      ],
+    });
+  }
+
+  // Asignar eventos a los botones de categoría
+  const buttons = document.getElementsByName("categoria");
+  buttons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      actualizarGrafico(event.target.value);
+    });
   });
-}
 
-// Asignar eventos a los botones de categoría
-const buttons = document.getElementsByName("categoria");
-buttons.forEach((button) => {
-  button.addEventListener("click", (event) => {
-    actualizarGrafico(event.target.value);
+  // Manejar el redimensionamiento del gráfico
+  window.addEventListener("resize", () => {
+    chart.resize();
   });
-});
 
-// Manejar el redimensionamiento del gráfico
-window.addEventListener("resize", () => {
-  chart.resize();
-});
-
-// Inicializar el gráfico con la categoría "edad" por defecto
-actualizarGrafico("edad");
-</script>
+  // Inicializar el gráfico con la categoría "edad" por defecto
+  actualizarGrafico("edad");
+</script> -->
