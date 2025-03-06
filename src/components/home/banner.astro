@@ -1,20 +1,20 @@
 ---
 import { Image } from "astro:assets";
-import silent from "@/assets/silent.png";
+import FaceBlur from "@/assets/face_blur.jpg";
 ---
 
 <div class="container mx-auto px-4 py-8">
-  <h2 class="text-3xl 1 md:text-5xl tracking-wide">
+  <h2 class="text-2xl 1 lg:text-5xl tracking-wide">
     Violencia psicológica, institucional y económica impactan en la trayectoria
     de las mujeres periodistas en Argentina
   </h2>
-  <div class="flex flex-col md:flex-row mt-12">
-    <div class="w-full md:w-1/2">
+  <div class="flex flex-col-reverse lg:flex-row lg:mt-12">
+    <div class="w-full lg:w-1/2">
       <div class="px-4 py-8">
-        <h3 class="font-bold text-2xl my-2">
+        <h3 class="font-bold text-1xl md:text-2xl my-2">
           Lo revela una encuesta federal y los testimonios de 20 entrevistadas.
         </h3>
-        <p class="text-lg py-8">
+        <p class="text-lg py-8 hidden lg:block">
           Con el apoyo de UNESCO, FOPEA investigó qué tipos de violencias sufren
           las trabajadoras de prensa en todo el país. Las conclusiones dan
           cuenta de un escenario marcado por agresiones, discriminación y
@@ -27,17 +27,17 @@ import silent from "@/assets/silent.png";
       <div class="flex gap-5 px-5">
         <a
           href="#"
-          class="w-full text-center bg-secondary-500 text-white px-4 py-2 rounded-full text-3xl"
+          class="w-full text-center bg-secondary-500 text-white px-4 py-2 rounded-full text-1xl lg:text-3xl"
           >visitar informe completo</a
         >
       </div>
     </div>
-    <div class="w-full pt-10 md:pt-0 md:w-1/2">
+    <div class="w-full pt-10 lg:pt-0 lg:w-1/2">
       <Image
         transition:name="informe-image"
-        src={silent}
+        src={FaceBlur}
         alt="mujer silenciada"
-        class="h-full"
+        class="h-full rounded-3xl"
       />
     </div>
   </div>
