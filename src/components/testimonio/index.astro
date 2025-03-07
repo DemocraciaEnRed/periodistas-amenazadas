@@ -1,12 +1,13 @@
 ---
 import { Image } from "astro:assets";
 import CommentUser from "@/assets/coment-user.svg";
+import Location from "@/assets/location.svg";
 import { Icon } from "astro-icon/components";
 const { href } = Astro.url;
 
 const { testimonio, Content } = Astro.props;
 const { data } = testimonio;
-const { name, shortDesc } = data;
+const { name, location, shortDesc } = data;
 ---
 
 <div class="container p-10 border mx-auto bg-white rounded-3xl">
@@ -14,6 +15,10 @@ const { name, shortDesc } = data;
     <Image src={CommentUser} height={100} class="inline mr-10" alt="" />
     {name}
   </h1>
+  <h3 class="mt-5 text-primary-900 font-bold">
+    <Image src={Location} height={40} class="inline mx-9" alt="" />
+    {location}
+  </h3>
   <div class="prose max-w-full text-primary-900 my-10">
     <Content />
     <div class="actions flex w-10/12 mx-auto mt-10">

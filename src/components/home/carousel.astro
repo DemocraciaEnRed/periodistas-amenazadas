@@ -25,7 +25,7 @@ const testimonios = except
     {
       testimonios.map((testimonio, index) => {
         const { slug, data, body } = testimonio;
-        const { title, imageUrl, shortDesc, name } = data;
+        const { location, imageUrl, shortDesc, name } = data;
         return (
           <div class="card-carousel min-w-[48%] lg:min-w-[24%] bg-white rounded-lg shadow-md overflow-hidden flex flex-col hover:scale-110 transition">
             <div class="flex flex-col p-4 lg:p-6 h-full">
