@@ -1,4 +1,5 @@
 import * as echarts from "echarts";
+import { PreguntaDeRespuestaMúltiple } from "./constants";
 
 
 export const highlightLink=(deck)=> {
@@ -55,7 +56,8 @@ export const resizeChart = (chartId, chartContainerId, chartOption) => {
   var source = document.createElement('div')
   source.classList.add(`source-${chartId}`)
   source.classList.add('source')
-  source.innerHTML = 'Fuente: elaboración propia. N=215'
+  source.innerHTML = 'Fuente: elaboración propia. N=215 '
+  if (PreguntaDeRespuestaMúltiple.includes(chartContainerId)) source.innerHTML += '| Pregunta de respuesta múltiple.'
   const exist = chartDom.closest('section').getElementsByClassName(`source-${chartId}`)
   if (!exist.length) chartDom.closest('section').append(source)
 

@@ -148,7 +148,14 @@ export const categoriasProfesionalesEncuestadas = [
   { name: "Plataforma en la que se desarrolla", slug: "plataforma" },
 ];
 
-
+export const PreguntaDeRespuestaMúltiple = [
+  "graficoViolenciasViolencia",
+  "graficoViolenciasMomento",
+  "graficoViolenciasAutores",
+  "graficoViolenciaImpacto",
+  "graficoMitigacionMedidas",
+  "graficoMitigacionReaccion",
+];
 
 export const datosProfesionales:DatosProfesionales = {
   anos: [

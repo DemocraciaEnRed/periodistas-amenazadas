@@ -6,9 +6,10 @@
   <div class="mt-10 text-center h-full flex flex-col">
     <h4 class="text-4xl mb-5 font-bold">215 periodistas encuestadas</h4>
     <p class="text-lg mdpx-16">
-      FOPEA llevó adelante esta investigación federal con periodistas de todo el
-      país. Se busca visibilizar las violencias que atraviesan en su labor y
-      preguntarnos sobre como la construcción de un entorno más seguro e
+      FOPEA llevó adelante este estudio de casos múltiples con carácter federal
+      recogiendo testimonios de periodistas de distintas provincias. Se busca
+      visibilizar las violencias que atraviesan en su labor y preguntarnos sobre
+      cómo podemos aportar a la construcción de un entorno más seguro e
       igualitario para el ejercicio del periodismo.
     </p>
     <div class="flex-1 flex flex-col gap-5 mt-4">
@@ -42,23 +43,34 @@
 
   // Registrar el mapa en ECharts
   const dataAmbito = [
-    { value: 87, itemStyle: { color: "#401F71" } },
-    { value: 12, itemStyle: { color: "#FFAC39" } },
+    { name: "Afirmativa", value: 187, itemStyle: { color: "#401F71" } },
+    { name: "Negativa", value: 28, itemStyle: { color: "#FF4C39" } },
   ];
 
   const dataforma = [
-    { value: 74, itemStyle: { color: "#401F71" } },
-    { value: 26, itemStyle: { color: "#FFAC39" } },
+    { name: "Afirmativa", value: 159, itemStyle: { color: "#401F71" } },
+    { name: "Negativa", value: 56, itemStyle: { color: "#FF4C39" } },
   ];
+
+  const getHigherPercentage = (valor1, valor2, total) => {
+    if (total === 0) return "Indefinido"; // Evita división por cero
+
+    const porcentaje1 = (valor1 / total) * 100;
+    const porcentaje2 = (valor2 / total) * 100;
+
+    return porcentaje1 > porcentaje2
+      ? porcentaje1.toFixed(0) + "%"
+      : porcentaje2.toFixed(0) + "%";
+  };
 
   const formatOptions = (data) => {
     const options = {
       tooltip: {
         trigger: "item",
+        formatter: "{b}: {c}",
       },
       legend: {
-        top: "5%",
-        left: "center",
+        show: false,
       },
       series: [
         {
@@ -71,7 +83,13 @@
             position: "center",
             formatter: function (params) {
               // Encontrar el valor más alto
-              let maxValue = Math.max(...data.map((item) => item.value)) + "%";
+              let maxValue = getHigherPercentage(
+                data.map((item) => item.value)[0],
+                data.map((item) => item.value)[1],
+                data.map((item) => item.value)[0] +
+                  data.map((item) => item.value)[1]
+              );
+
               // Mostrar solo el valor más alto
               return maxValue;
             },
@@ -79,11 +97,7 @@
             fontWeight: "bold",
           },
           emphasis: {
-            label: {
-              show: true,
-              fontSize: 40,
-              fontWeight: "bold",
-            },
+            disabled: true,
           },
           labelLine: {
             show: false,

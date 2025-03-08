@@ -4,45 +4,82 @@ import fopea from "@/assets/fopea.png";
 import logoPeriodistas from "@/assets/logo.png";
 import logoUnesco from "@/assets/unesco.png";
 import logoDER from "@/assets/DER.jpeg";
+import { Icon } from "astro-icon/components";
 ---
 
 <footer class="">
   <div
-    class="container mx-auto py-8 flex flex-col md:flex-row items-center gap-4"
+    class="container mx-auto px-4 py-8 flex flex-col md:flex-row items-center md:items-start gap-4"
   >
     <div class="w-1/3 text-center md:text-left">
       <h6 class="text-primary-950 font-bold text-xl">Secciones Web</h6>
       <ul class="p-2 flex flex-col gap-4 text-gray-500">
         <li>
-          <a href="/periodistas-amenazadas/acercade">Acerca De</a>
+          <a href="/periodistas-amenazadas/#upper">inicio</a>
         </li>
         <li>
-          <a href="/periodistas-amenazadas/testimonios">Testimonios</a>
+          <a href="/periodistas-amenazadas/#seccion-testimonios">Testimonios</a>
         </li>
         <li>
-          <a href="/periodistas-amenazadas/datos">Datos</a>
+          <a href="/periodistas-amenazadas/#seccion-datos">Datos</a>
         </li>
         <li>
-          <a href="/periodistas-amenazadas/contacto">Contacto</a>
+          <a href="/periodistas-amenazadas/#seccion-capaticaciones"
+            >Capacitaciones</a
+          >
         </li>
         <li>
-          <a href="/periodistas-amenazadas/metodologias">Metodologia</a>
+          <a href="/periodistas-amenazadas/metodologias">Metodología</a>
         </li>
         <li>
           <a href="/periodistas-amenazadas/faqs">Faqs</a>
         </li>
       </ul>
     </div>
-    <div class="p-8 md:w-1/3 text-center">
-      <h6 class="pt-2 text-primary-950 font-bold text-xl mb-4">
-        Capacitaciones
-      </h6>
-      <p>
-        FOPEA impulsará capacitaciones para fortalecer la prevención y respuesta
-        ante las violencias que enfrentan las mujeres periodistas. El objetivo
-        es brindar herramientas y estrategias para un ejercicio profesional más
-        seguro e igualitario. Anotate y enterate las novedades.
+    <div class="p-8 md:p-0 md:w-1/3 text-center">
+      <h6 class="text-primary-950 font-bold text-xl mb-4">Contacto</h6>
+      <p class="text-sm">
+        ¿Sos mujer y has sufrido situaciones de violencia en el ejercicio del
+        periodismo? Podés escribir al correo periodistasamenazasdas@fopea.org o
+        comunicarte con el Monitoreo de Libertad de Expresión al correo
+        <a href="mailto:monitoreofopea@gmail.com" class="text-blue-600">
+          monitoreofopea@gmail.com</a
+        >. Esta sección será monitoreada con regularidad por el equipo de FOPEA
+        para brindar información a quienes la soliciten.
       </p>
+      <div class="flex w-full justify-center mt-4 text-purple-900">
+        <a
+          href="https://www.linkedin.com/company/fopea/?originalSubdomain=ar"
+          target="_blank"
+        >
+          <Icon
+            size={40}
+            class="border-2 mx-4 rounded-full border-primary-900 p-1"
+            name="mdi:linkedin"
+          />
+        </a>
+        <a href="https://x.com/FOPEA" target="_blank">
+          <Icon
+            size={40}
+            class="border-2 mx-4 rounded-full border-primary-900 p-1"
+            name="pajamas:twitter"
+          />
+        </a>
+        <a href="https://www.instagram.com/fopea/" target="_blank">
+          <Icon
+            size={40}
+            class="border-2 mx-4 rounded-full border-primary-900 p-1"
+            name="mdi:instagram"
+          />
+        </a>
+        <a href="https://www.youtube.com/@FopeaTv" target="_blank">
+          <Icon
+            size={40}
+            class="border-2 mx-4 rounded-full border-primary-900 p-1"
+            name="mdi:youtube"
+          />
+        </a>
+      </div>
     </div>
     <div class="w-1/3 flex justify-end">
       <div class="text-center w-max flex flex-col justify-center items-center">
@@ -66,8 +103,21 @@ import logoDER from "@/assets/DER.jpeg";
   <!-- <div
     class="border-t-2 border-t-gray-500 border-b-[20px] border-b-secondary-500 bor text-center py-4 mt-4"
   >
-    Espacio para legales, derechos, términos y condiciones - Agregar cookies.
-  </div> -->
+    <div class="container mx-auto px-4">
+      <p class="text-xs">
+        Esta investigación fue realizada por FOPEA con el apoyo de UNESCO a
+        través del Fondo Mundial para la Defensa de los Medios. Email de
+        contacto:
+        <a href="mailto:periodistasamenazadas@fopea.org" class="text-blue-600"
+          >periodistasamenazadas@fopea.org</a
+        >. Las denominaciones empleadas y la presentación del material en esta
+        (publicación/informe/sitio web/comunicado/etc.) no implican la expresión
+        de ninguna opinión por parte de la UNESCO sobre la condición jurídica de
+        ningún país, territorio, ciudad o zona, ni de sus autoridades, ni sobre
+        la delimitación de sus fronteras o límites.
+      </p>
+    </div>
+  </div>
 </footer>
 <!-- TODO preguntar form -->
 <style></style>
