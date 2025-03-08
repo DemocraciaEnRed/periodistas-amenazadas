@@ -5,7 +5,9 @@ import Background from "../background.astro";
 
 <section id="seccionMitigacionMedidas" class="r-stretch !h-full">
   <div class="flex flex-col justify-center h-full py-5 lg:py-10">
-    <h2 class="text-lg lg:text-4xl">¿Qué medidas existen para proteger a las mujeres periodistas?</h2>
+    <h2 class="text-lg lg:text-4xl">
+      ¿Qué medidas existen para proteger a las mujeres periodistas?
+    </h2>
     <Background image={microphoneImage} position="-right-24 -bottom-20" />
     <div id="mitigacion-medidas-container" class="w-10/12 h-full m-auto">
       <div id="graficoMitigacionMedidas"></div>
@@ -24,13 +26,13 @@ import Background from "../background.astro";
     },
     yAxis: {
       data: [
-      "Sindicatos (organizaciones de apoyo)",
-      "Acciones efectivas (penas y afines)",
-      "Capacitación y formación en general",
-      "Concientización y difusión",
-      "Nuevos protocolos y/o legislación",
-      "Denuncia",
-      "Apartamiento del victimario",
+        "Sindicatos (organizaciones de apoyo)",
+        "Acciones efectivas (penas y afines)",
+        "Capacitación y formación en general",
+        "Concientización y difusión",
+        "Nuevos protocolos y/o legislación",
+        "Denuncia",
+        "Apartamiento del victimario",
       ],
       axisLabel: {
         fontSize: 12,
@@ -43,9 +45,12 @@ import Background from "../background.astro";
     series: [
       {
         type: "bar",
-        data: [37,33,33,24,21,21,4],
+        data: [37, 33, 33, 24, 21, 21, 4],
         color: "#401F71",
-        barWidth: '50%',
+        barWidth: "50%",
+        label: {
+          show: true,
+        },
       },
     ],
   };

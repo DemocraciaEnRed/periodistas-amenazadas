@@ -5,8 +5,9 @@ import Background from "../background.astro";
 
 <section id="seccionViolenciasViolencia" class="r-stretch !h-full">
   <div class="flex flex-col justify-center h-full py-5 lg:py-10">
-    
-    <h2 class="text-lg lg:text-4xl">Violencias sufridas por mujeres periodistas</h2>
+    <h2 class="text-lg lg:text-4xl">
+      Violencias sufridas por mujeres periodistas
+    </h2>
     <Background image={microphoneImage} position="-right-24 -bottom-20" />
     <div id="violencias-violencia-container" class="w-10/12 h-full m-auto">
       <div id="graficoViolenciasViolencia"></div>
@@ -25,13 +26,13 @@ import Background from "../background.astro";
     },
     yAxis: {
       data: [
-      "Violencia física",
-      "Violencia laboral",
-      "Violencia sexual",
-      "Violencia en línea",
-      "Violencia económica",
-      "Violencia institucional",
-      "Violencia psicológica",
+        "Violencia física",
+        "Violencia laboral",
+        "Violencia sexual",
+        "Violencia en línea",
+        "Violencia económica",
+        "Violencia institucional",
+        "Violencia psicológica",
       ],
       axisLabel: {
         fontSize: 12,
@@ -44,9 +45,12 @@ import Background from "../background.astro";
     series: [
       {
         type: "bar",
-        data: [25,31,84,88,115,115,150,],
+        data: [25, 31, 84, 88, 115, 115, 150],
         color: "#401F71",
-        barWidth: '50%'
+        barWidth: "50%",
+        label: {
+          show: true,
+        },
       },
     ],
   };
