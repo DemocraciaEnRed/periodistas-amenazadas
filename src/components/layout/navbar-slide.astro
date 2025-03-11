@@ -10,18 +10,22 @@ import NavbarLinkList from "./navbar-link-list.astro";
 <nav id="navbar" class="border-b-2 border-gray-200 bg-white">
   <div class="container lg:p-3 mx-auto flex justify-between">
     <div class="hidden lg:block top-16 lg:top-0 z-50">
-      <a href="/periodistas-amenazadas/" class="flex gap-5">
-        <Image
-          src={logoPeriodistas}
-          alt="logo periodistas amenazadas"
-          class="md:h-12 h-10 w-auto"
-        />
-        <Image
-          src={logoFopea}
-          alt="logo periodistas amenazadas"
-          class="md:h-12 h-10 w-auto"
-        />
-      </a>
+      <div class="flex gap-5 items-center">
+        <a href="/periodistas-amenazadas/">
+          <Image
+            src={logoPeriodistas}
+            alt="logo periodistas amenazadas"
+            class="md:h-12 h-10 w-auto"
+          />
+        </a>
+        <a href="https://fopea.org/" target="_blank">
+          <Image
+            src={logoFopea}
+            alt="logo periodistas amenazadas"
+            class="md:h-12 h-10 w-auto"
+          />
+        </a>
+      </div>
     </div>
     <div
       class="lg:hidden absolute right-0 top-16 z-50 flex justify-end bg-white rounded-lg m-1 p-1"
