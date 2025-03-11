@@ -5,6 +5,7 @@ export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		extend: {
+
 			fontFamily: {
 				serif: ["Montserrat", ...defaultTheme.fontFamily.serif],
 			},
@@ -46,6 +47,44 @@ export default {
 					900: '#996821',
 				}
 			},
+			typography: () => ({
+				primary: {
+					css: {
+						'--tw-prose-body': '#401F71',
+						'--tw-prose-headings': '#482072',
+						'--tw-prose-lead': '#6B37AA',
+						'--tw-prose-links': '#482072',
+						'--tw-prose-bold': '#482072',
+						'--tw-prose-counters': '#864DC6',
+						'--tw-prose-bullets': '#A978E6',
+						'--tw-prose-hr': '#BE97EC',
+						'--tw-prose-quotes': '#482072',
+						'--tw-prose-quote-borders': '#BE97EC',
+						'--tw-prose-captions': '#6B37AA',
+						'--tw-prose-code': '#482072',
+						'--tw-prose-pre-code': '#E8D8F8',
+						'--tw-prose-pre-bg': '#482072',
+						'--tw-prose-th-borders': '#BE97EC',
+						'--tw-prose-td-borders': '#D4B8F2',
+						'--tw-prose-invert-body': '#D4B8F2',
+						'--tw-prose-invert-headings': 'var(--color-white)',
+						'--tw-prose-invert-lead': '#BE97EC',
+						'--tw-prose-invert-links': 'var(--color-white)',
+						'--tw-prose-invert-bold': 'var(--color-white)',
+						'--tw-prose-invert-counters': '#A978E6',
+						'--tw-prose-invert-bullets': '#864DC6',
+						'--tw-prose-invert-hr': '#6B37AA',
+						'--tw-prose-invert-quotes': '#E8D8F8',
+						'--tw-prose-invert-quote-borders': '#6B37AA',
+						'--tw-prose-invert-captions': '#A978E6',
+						'--tw-prose-invert-code': 'var(--color-white)',
+						'--tw-prose-invert-pre-code': '#BE97EC',
+						'--tw-prose-invert-pre-bg': 'rgb(0 0 0 / 50%)',
+						'--tw-prose-invert-th-borders': '#864DC6',
+						'--tw-prose-invert-td-borders': '#6B37AA',
+					},
+				},
+			}),
 		},
 	},
 	plugins: [
