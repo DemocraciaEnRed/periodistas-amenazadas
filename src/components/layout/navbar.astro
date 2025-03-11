@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import logoPeriodistas from "@/assets/logo.png";
-import logoUnesco from "@/assets/unesco.png";
+import logoFopea from "@/assets/fopea.png";
 import { Icon } from "astro-icon/components";
 import NavbarLinkList from "./navbar-link-list.astro";
 ---
@@ -18,9 +18,14 @@ import NavbarLinkList from "./navbar-link-list.astro";
           alt="logo periodistas amenazadas"
           class="md:h-12 h-10 w-auto"
         />
+        <Image
+          src={logoFopea}
+          alt="logo periodistas amenazadas"
+          class="md:h-12 h-10 w-auto"
+        />
       </a>
     </div>
-    <div class="md:hidden">
+    <div class="lg:hidden">
       <Icon name="mdi:menu" class="text-4xl cursor-pointer menuButton" />
     </div>
     <div
@@ -28,9 +33,9 @@ import NavbarLinkList from "./navbar-link-list.astro";
     >
     </div>
     <div
-      class="linkMenu fixed bottom-0 z-50 h-screen md-w-auto md:h-auto bg-white md:bg-transparent md:relative transition-all duration-300 w-10/12 -right-full md:right-0 md:block"
+      class="linkMenu fixed bottom-0 z-50 h-screen md-w-auto lg:h-auto bg-white lg:bg-transparent lg:relative transition-all duration-300 w-10/12 -right-full lg:right-0 lg:block"
     >
-      <div class="flex justify-end p-3 md:hidden">
+      <div class="flex justify-end p-3 lg:hidden">
         <Icon name="mdi:menu" class="text-4xl cursor-pointer menuButton" />
       </div>
       <NavbarLinkList />
