@@ -50,7 +50,7 @@ import { Icon } from "astro-icon/components";
             />
           </button>
           <div
-            class={`px-8  bg-purple-50 text-gray-700   transition-all`}
+            class={`px-8  bg-purple-50 text-gray-700  transition-all `}
             data-accordion-content
           >
             {pregunta.answer.split("\n").map((line, i) => (
@@ -93,7 +93,6 @@ import { Icon } from "astro-icon/components";
       max-height: 100vh;
       box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
         var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-      padding-top: 2rem;
       padding-bottom: 2rem;
     }
     [data-accordion-button] {
