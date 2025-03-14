@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import FaceBlur from "@/assets/face_blur.jpg";
+import { YouTube } from "astro-embed";
 ---
 
 <div class="container mx-auto px-4 py-8">
@@ -33,13 +34,8 @@ import FaceBlur from "@/assets/face_blur.jpg";
         >
       </div>
     </div>
-    <div class="w-full pt-10 lg:pt-0 lg:w-1/2">
-      <Image
-        transition:name="informe-image"
-        src={FaceBlur}
-        alt="mujer silenciada"
-        class="h-full rounded-3xl"
-      />
+    <div class="w-full px-4 pt-10 lg:pt-0 lg:w-1/2">
+      <YouTube id="apFiF7h4Z5Y" />
     </div>
   </div>
 </div>
