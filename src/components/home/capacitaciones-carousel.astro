@@ -2,41 +2,37 @@
 import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 
-const testimoniosColect = await getCollection("testimonios");
+const capacitacionesColect = await getCollection("capacitaciones");
 const { except } = Astro.props;
-const testimonios = except
-  ? testimoniosColect.filter((testimonio) => testimonio.slug !== except)
-  : testimoniosColect;
+const capacitaciones = except
+  ? capacitacionesColect.filter((capacitacion) => capacitacion.slug !== except)
+  : capacitacionesColect;
 ---
 
 <div class="flex lg:my-4">
-  <button id="prevBtn" class="mx-3 p-2 hidden lg:block">
-    <Icon
-      name="mdi:chevron-double-left"
-      class="text-6xl text-secondary-500 cursor-pointer"
-    />
-  </button>
-
   <!-- Carrusel -->
   <div
     id="carousel"
     class="flex gap-4 overflow-x-auto scroll-smooth px-1 py-10"
   >
     {
-      testimonios.map((testimonio, index) => {
-        const { slug, data, body } = testimonio;
-        const { location, imageUrl, shortDesc, name } = data;
+      capacitaciones.map((capacitacion, index) => {
+        const { slug, data, body } = capacitacion;
+        const { title, subtitle } = data;
         return (
           <div class="card-carousel min-w-[48%] lg:min-w-[24%] bg-white rounded-3xl shadow-md overflow-hidden flex flex-col hover:scale-110 transition">
             <div class="flex flex-col p-4 lg:p-6 h-full">
+              <h3 class="text-xl lg:text-2xl font-bold text-gray-800">
+                {title}
+              </h3>
               <p class="text-gray-600 lg:text-lg font-semibold flex-1 my-2">
-                {shortDesc}
+                {subtitle}
               </p>
               <a
-                href={`/periodistas-amenazadas/testimonio/${slug}`}
+                href={`/capacitacion/${slug}`}
                 class="mt-auto text-center bg-red-500 text-white font-semibold py-2 rounded-lg"
               >
-                Ver relato completo
+                Ver más
               </a>
             </div>
           </div>
@@ -45,12 +41,6 @@ const testimonios = except
     }
   </div>
 
-  <button id="nextBtn" class="mx-3 p-2 hidden lg:block">
-    <Icon
-      name="mdi:chevron-double-right"
-      class="text-6xl text-secondary-500 cursor-pointer"
-    />
-  </button>
 </div>
 <style>
   #carousel {

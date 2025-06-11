@@ -1,0 +1,85 @@
+---
+import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
+
+const testimoniosColect = await getCollection("testimonios");
+const { except } = Astro.props;
+const testimonios = except
+  ? testimoniosColect.filter((testimonio) => testimonio.slug !== except)
+  : testimoniosColect;
+---
+
+<div class="flex lg:my-4">
+  <button id="prevBtn" class="mx-3 p-2 hidden lg:block">
+    <Icon
+      name="mdi:chevron-double-left"
+      class="text-6xl text-secondary-500 cursor-pointer"
+    />
+  </button>
+
+  <!-- Carrusel -->
+  <div
+    id="carousel"
+    class="flex gap-4 overflow-x-auto scroll-smooth px-1 py-10"
+  >
+    {
+      testimonios.map((testimonio, index) => {
+        const { slug, data, body } = testimonio;
+        const { location, imageUrl, shortDesc, name } = data;
+        return (
+          <div class="card-carousel min-w-[48%] lg:min-w-[24%] bg-white rounded-3xl shadow-md overflow-hidden flex flex-col hover:scale-110 transition">
+            <div class="flex flex-col p-4 lg:p-6 h-full">
+              <p class="text-gray-600 lg:text-lg font-semibold flex-1 my-2">
+                {shortDesc}
+              </p>
+              <a
+                href={`/testimonio/${slug}`}
+                class="mt-auto text-center bg-red-500 text-white font-semibold py-2 rounded-lg"
+              >
+                Ver relato completo
+              </a>
+            </div>
+          </div>
+        );
+      })
+    }
+  </div>
+
+  <button id="nextBtn" class="mx-3 p-2 hidden lg:block">
+    <Icon
+      name="mdi:chevron-double-right"
+      class="text-6xl text-secondary-500 cursor-pointer"
+    />
+  </button>
+</div>
+<style>
+  #carousel {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE y Edge */
+  }
+
+  #carousel::-webkit-scrollbar {
+    display: none; /* Chrome, Safari y Edge */
+  }
+</style>
+<script>
+  //TODO paginator (capaz no)
+
+  const carousel = document.getElementById("carousel");
+  const card = document.querySelector<HTMLElement>(".card-carousel");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  let scrollAmount = 255;
+  if (card) {
+    scrollAmount = card.offsetWidth + 16; // Cantidad de píxeles que se moverá el carrusel
+  }
+
+  prevBtn?.addEventListener("click", () => {
+    carousel?.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+  });
+
+  nextBtn?.addEventListener("click", () => {
+    carousel?.scrollBy({ left: scrollAmount, behavior: "smooth" });
+  });
+</script>
