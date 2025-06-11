@@ -1,36 +1,36 @@
 ---
 import Carousel from "@/components/home/capacitaciones-carousel.astro";
-import TestimoniosComponent from "@/components/testimonio/index.astro";
+import CapacitacionComponent from "@/components/capacitacion/index.astro";
 import Layout from "@/layouts/Layout.astro";
 import { render } from "astro:content";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const testimonios = await getCollection("testimonios");
-  const slugs = testimonios.map((testimonio) => ({
-    params: { slug: testimonio.slug },
-    props: { testimonio },
+  const capacitaciones = await getCollection("capacitaciones");
+  const slugs = capacitaciones.map((capacitacion) => ({
+    params: { slug: capacitacion.slug },
+    props: { capacitacion },
   }));
 
   return slugs.map((item) => item);
 }
 
-const { testimonio } = Astro.props;
-const { Content } = await render(testimonio);
+const { capacitacion } = Astro.props;
+const { Content } = await render(capacitacion);
 ---
 
 <Layout>
   <main class="min-h-screen bg-gray-100 py-14">
-    <TestimoniosComponent testimonio={testimonio} Content={Content} />
+    <CapacitacionComponent capacitacion={capacitacion} Content={Content} />
     <div class="container mx-auto mt-16">
       <div class="px-10">
         <h5 class="text-4xl font-bold mb-5">Mas historias</h5>
         <p>
-          Conoce otros testimonios sobre el estado de situación de las mujeres
+          Conoce otros capacitaciones sobre el estado de situación de las mujeres
           periodistas en Argentina.
         </p>
       </div>
-      <Carousel except={testimonio.slug} />
+      <Carousel except={capacitacion.slug} />
     </div>
   </main>
 </Layout>
