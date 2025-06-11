@@ -9,4 +9,12 @@ const testimonios = defineCollection({
   }),
 });
 
-export const collections = { testimonios };
+const capacitaciones = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    subtitle: z.string(),
+    author: z.string()
+  }),
+});
+
+export const collections = { testimonios, capacitaciones };
